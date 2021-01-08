@@ -1,0 +1,451 @@
+{
+	"info": {
+		"_postman_id": "2b233f27-4934-4f42-9149-d04c7df82bc1",
+		"name": "game",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email_id",
+							"value": "Samu@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Samu",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}signup",
+					"host": [
+						"{{url}}signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "ayeenkhaan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "111222",
+							"type": "text"
+						},
+						{
+							"key": "email_id",
+							"value": "samisam@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}login",
+					"host": [
+						"{{url}}login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email_id",
+							"value": "samisam@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "product_category",
+							"value": "Men",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "brand",
+							"value": "Playstore",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}forgot-password",
+					"host": [
+						"{{url}}forgot-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot Username",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}forgot-username?email_id=samisam@gmail.com",
+					"host": [
+						"{{url}}forgot-username"
+					],
+					"query": [
+						{
+							"key": "email_id",
+							"value": "samisam@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "verification_code",
+							"value": "6015",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "abcd1234",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}reset-password",
+					"host": [
+						"{{url}}reset-password"
+					],
+					"query": [
+						{
+							"key": "email_id",
+							"value": "samisam@gmail.com",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Profile",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email_id",
+							"value": "samisam@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "ayeenkhaan",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "111222",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Samu M Samu/Downloads/pdp.jpg"
+						},
+						{
+							"key": "user_id",
+							"value": "5ff2cc9341176a0930a8bc0d",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}update_profile",
+					"host": [
+						"{{url}}update_profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Games Stats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user_id",
+							"value": "5ff2cc9341176a0930a8bc0d",
+							"type": "text"
+						},
+						{
+							"key": "game_played",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "game_won",
+							"value": "8",
+							"type": "text"
+						},
+						{
+							"key": "game_lost",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}game",
+					"host": [
+						"{{url}}game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Game Stats",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user_id",
+							"value": "5ff2cc9341176a0930a8bc0d",
+							"type": "text"
+						},
+						{
+							"key": "game_played",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "game_won",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "game_lost",
+							"value": "5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}game",
+					"host": [
+						"{{url}}game"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user_id",
+							"value": "121212",
+							"type": "text"
+						},
+						{
+							"key": "otherUser_id",
+							"value": "43434",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "request_type",
+							"value": "Send",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}send-request",
+					"host": [
+						"{{url}}send-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accept Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "request_id",
+							"value": "5ff2f542c9d6661f7c2fb3bf",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "43434",
+							"type": "text"
+						},
+						{
+							"key": "request_type",
+							"value": "send",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "0",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}accept-request",
+					"host": [
+						"{{url}}accept-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Block/Delete Friend",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "status",
+							"value": "Block",
+							"description": "Delete, Active, Block",
+							"type": "text"
+						},
+						{
+							"key": "friend_id",
+							"value": "121212",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "43434",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}friend-status",
+					"host": [
+						"{{url}}friend-status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}users",
+					"host": [
+						"{{url}}users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Friend List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}user_friend?user_id=43434",
+					"host": [
+						"{{url}}user_friend"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "43434"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
