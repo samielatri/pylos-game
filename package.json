@@ -10,13 +10,11 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
-    "expense",
-    "tracker",
-    "reactAPP",
-    "fullstack",
-    "bootcamp",
-    "express",
-    "mongodb"
+    "game_app",
+    "game",
+    "pylos",
+    "multiplayer",
+    "online"
   ],
   "author": "samu",
   "license": "ISC",

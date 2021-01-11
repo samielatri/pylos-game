@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2b233f27-4934-4f42-9149-d04c7df82bc1",
+		"_postman_id": "2e552390-18e6-40fd-a286-c6f13c0a5960",
 		"name": "game",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,12 +15,12 @@
 					"urlencoded": [
 						{
 							"key": "email_id",
-							"value": "Samu@gmail.com",
+							"value": "test@gmail.com",
 							"type": "text"
 						},
 						{
 							"key": "username",
-							"value": "Samu",
+							"value": "test",
 							"type": "text"
 						},
 						{
@@ -49,17 +49,17 @@
 					"urlencoded": [
 						{
 							"key": "username",
-							"value": "ayeenkhaan",
+							"value": "test",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "111222",
+							"value": "123123",
 							"type": "text"
 						},
 						{
 							"key": "email_id",
-							"value": "samisam@gmail.com",
+							"value": "",
 							"type": "text"
 						}
 					]
@@ -83,18 +83,18 @@
 					"urlencoded": [
 						{
 							"key": "email_id",
-							"value": "samisam@gmail.com",
+							"value": "test@gmail.com",
 							"type": "text"
 						},
 						{
-							"key": "product_category",
-							"value": "Men",
+							"key": "",
+							"value": "",
 							"type": "text",
 							"disabled": true
 						},
 						{
-							"key": "brand",
-							"value": "Playstore",
+							"key": "",
+							"value": "",
 							"type": "text",
 							"disabled": true
 						}
@@ -111,18 +111,25 @@
 		},
 		{
 			"name": "Forgot Username",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
 				"url": {
-					"raw": "{{url}}forgot-username?email_id=samisam@gmail.com",
+					"raw": "{{url}}forgot-username?email_id=test@gmail.com",
 					"host": [
 						"{{url}}forgot-username"
 					],
 					"query": [
 						{
 							"key": "email_id",
-							"value": "samisam@gmail.com"
+							"value": "test@gmail.com"
 						}
 					]
 				}
@@ -163,7 +170,7 @@
 					"query": [
 						{
 							"key": "email_id",
-							"value": "samisam@gmail.com",
+							"value": "test@gmail.com",
 							"disabled": true
 						}
 					]
@@ -177,34 +184,8 @@
 				"method": "PUT",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "email_id",
-							"value": "samisam@gmail.com",
-							"type": "text"
-						},
-						{
-							"key": "username",
-							"value": "ayeenkhaan",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "111222",
-							"type": "text"
-						},
-						{
-							"key": "file",
-							"type": "file",
-							"src": "/C:/Users/Samu M Samu/Downloads/pdp.jpg"
-						},
-						{
-							"key": "user_id",
-							"value": "5ff2cc9341176a0930a8bc0d",
-							"type": "text"
-						}
-					]
+					"mode": "file",
+					"file": {}
 				},
 				"url": {
 					"raw": "{{url}}update_profile",
@@ -221,29 +202,8 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "user_id",
-							"value": "5ff2cc9341176a0930a8bc0d",
-							"type": "text"
-						},
-						{
-							"key": "game_played",
-							"value": "10",
-							"type": "text"
-						},
-						{
-							"key": "game_won",
-							"value": "8",
-							"type": "text"
-						},
-						{
-							"key": "game_lost",
-							"value": "2",
-							"type": "text"
-						}
-					]
+					"mode": "file",
+					"file": {}
 				},
 				"url": {
 					"raw": "{{url}}game",
@@ -415,9 +375,16 @@
 		},
 		{
 			"name": "Get All users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
 				"url": {
 					"raw": "{{url}}users",
 					"host": [
@@ -429,9 +396,16 @@
 		},
 		{
 			"name": "Get User Friend List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
 				"url": {
 					"raw": "{{url}}user_friend?user_id=43434",
 					"host": [

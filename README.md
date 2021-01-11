@@ -19,3 +19,5 @@ Some front examples (others need to be done) :
 		URL: http://localhost:7000/users
 		
 		
+To check the database : 
+	use mongodbcompass and connect to (by default) localhost:27017
