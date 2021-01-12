@@ -1,5 +1,7 @@
 const express = require('express');
+
 const router = express.Router();
+
 const { registerUser, updateProfile } = require('../../controller/user/signup');
 const { addGameStats, updateGameStats } = require('../../controller/game/game');
 const { friendRequest, acceptRequest, changeFriendStatus } = require('../../controller/friends/friends');
@@ -7,8 +9,10 @@ const { friendRequest, acceptRequest, changeFriendStatus } = require('../../cont
 var fileUpload = require('../../controller/user/file-upload');
 router.route('/api/v1/signup')
     .post(registerUser);
+
 // router.route('/api/v1/update_profile',fileUpload.upload.single('file'))
 // .put(updateProfile)
+
 
 router.put(`/api/v1/update_profile`, fileUpload.upload.single('file'), function (req, res, next) {
 
