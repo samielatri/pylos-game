@@ -27,7 +27,6 @@ Here are some front examples used with the API :
 	Login :
 		Method: POST
 		URL: http://localhost:7000/login
-		
 	Get all users:
 		method Get
 		URL: http://localhost:7000/users
