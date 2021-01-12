@@ -1,18 +1,15 @@
-
-
 body#jeu {
 	margin: 0px;
 	background-image: url("Pylos.png");
 }
 
 nav > .nav.nav-tabs{
-
   border: none;
     color:#fff;
     background:#272e38;
     border-radius:0;
-
 }
+
 nav > div a.nav-item.nav-link,
 nav > div a.nav-item.nav-link.active
 {
@@ -32,6 +29,7 @@ nav > div a.nav-item.nav-link.active:after
   border: 15px solid transparent;
   border-top-color: #e74c3c ;
 }
+
 .tab-content{
   background: #fdfdfd;
     line-height: 25px;
@@ -112,7 +110,6 @@ html {
 	background-color: #c0392b !important;
 }
 
-..............................................................................................
 .context-dark, .bg-gray-dark, .bg-primary {
     color: rgba(255, 255, 255, 0.8);
 }
@@ -148,9 +145,11 @@ ul, ol {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.5);
 }
+
 .social-container .col {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .nav-list li a:before {
     content: "\f14f";
     font: 400 21px/1 "Material Design Icons";
