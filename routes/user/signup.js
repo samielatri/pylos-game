@@ -14,6 +14,7 @@ router.route('/api/v1/signup')
 // .put(updateProfile)
 
 
+
 router.put(`/api/v1/update_profile`, fileUpload.upload.single('file'), function (req, res, next) {
 
     var file = "http://localhost/uploads/" + req.file.filename;

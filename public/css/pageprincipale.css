@@ -1,8 +1,6 @@
-
-
 body#jeu {
 	margin: 0px;
-	background-image: url("Pylos.png");
+	background-image: url("../../Pylos.png");
 }
 
 nav > .nav.nav-tabs{
@@ -48,7 +46,7 @@ nav > div a.nav-item.nav-link:focus
     background: #e74c3c;
     color:#fff;
     border-radius:0;
-    transition:background 0.20s linear;
+    transition: background 0.20s linear;
 }
 
 
@@ -64,8 +62,8 @@ html {
 .connexion {
 	height: 400px;
 	width: 350px;
-	margin-top: 50px;
-     margin-bottom: 80px;
+	margin-top: auto;
+     margin-bottom: auto;
 	background: #f39c12;
 	position: relative;
 	display: flex;
