@@ -1,9 +1,11 @@
 const path = require('path');
+const http = require('http');
 const express = require('express');
+const socketio = require('scoket.io'); // socket io
 
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var io = require('scoket.io'); // socket io
+
 
 const dotenv = require('dotenv'); // env file
 const morgan = require('morgan'); // for logs
@@ -18,6 +20,23 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 const app = express();
+
+const io = socketio(server); 
+// Run when a client connect (socket)
+io.on('connection', socket => {
+    console.log('new websocket connection...');
+
+    socket.emit('message', 'Welcome to Pylos game'); // single client
+
+    // Boradcast when a user connects to a game 
+    socket.broadcast.emit('message', 'A user has joined the game'); // all clients except the current client 
+
+    // Runs when a user disconnects from the game
+    socket.on('disconnect', () =>{
+        io.emit('message', 'A user has left the game'); // all
+    })
+    
+})
 
 app.use(cors());
 // parse application/x-www-form-urlencoded
