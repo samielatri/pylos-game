@@ -1,15 +1,19 @@
+
+/* Page principale */
+
 body#jeu {
 	margin: 0px;
-	background-image: url("Pylos.png");
+	background-image: url("../../Pylos.png");
 }
 
 nav > .nav.nav-tabs{
+
   border: none;
     color:#fff;
     background:#272e38;
     border-radius:0;
-}
 
+}
 nav > div a.nav-item.nav-link,
 nav > div a.nav-item.nav-link.active
 {
@@ -29,7 +33,6 @@ nav > div a.nav-item.nav-link.active:after
   border: 15px solid transparent;
   border-top-color: #e74c3c ;
 }
-
 .tab-content{
   background: #fdfdfd;
     line-height: 25px;
@@ -62,8 +65,8 @@ html {
 .connexion {
 	height: 400px;
 	width: 350px;
-	margin-top: 50px;
-     margin-bottom: 80px;
+	margin-top: auto;
+     margin-bottom: auto;
 	background: #f39c12;
 	position: relative;
 	display: flex;
@@ -110,6 +113,7 @@ html {
 	background-color: #c0392b !important;
 }
 
+..............................................................................................
 .context-dark, .bg-gray-dark, .bg-primary {
     color: rgba(255, 255, 255, 0.8);
 }
@@ -145,11 +149,9 @@ ul, ol {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.5);
 }
-
 .social-container .col {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .nav-list li a:before {
     content: "\f14f";
     font: 400 21px/1 "Material Design Icons";
@@ -161,4 +163,87 @@ ul, ol {
     opacity: 0;
     visibility: hidden;
     transition: .22s ease;
+}
+
+
+/* Création de compte et règles du jeu*/
+body#jeu2 {
+	margin: 0px;
+	background-image: url("../../Pylos2.jpg");
+}
+
+/* Conditions générales*/
+.noir {
+	margin: 5em 4em 2em 4em;
+	font-size: 100%;
+	font-family: 'Courier New', Courier, monospace;
+	color: rgb(185, 210, 232);
+}
+
+#img .noir .exit_wrap .exit {
+	display: inline-block;
+	height: 35px;
+	padding: 0 20px;
+	line-height: 35px;
+	background: #1f3345;
+	border-radius: 5px;
+	color: #fff;
+	font-weight: 600;
+	vertical-align: middle;
+}
+
+body {
+	background-color: black;
+	background-image: url("../images/menu/fond.JPG");
+	background-repeat: no-repeat;
+	background-size: 120%;
+	margin: 0;
+}
+
+#img {
+	background-image: url("../images/menu/fondC.JPG");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin: 5em;
+	text-align: center;
+}
+
+
+/* Contact */
+.panel-table > .panel-heading {
+    display: table-header-group;
+    background: black;
+}
+.panel-table > .panel-footer {
+    display: table-footer-group;
+    background: black;
+}
+.panel-table > div > .tr {
+    display: table-row;
+}
+.panel-table .td {
+    display: table-cell;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-left: none;
+}
+.panel-table .td:last-child {
+    border-right: none;
+}
+.panel-table > .panel-heading > .tr > .td,
+.panel-table > .panel-footer > .tr > .td {
+    background-color: black;
+}
+.panel-table > .panel-heading > .tr > .td:first-child {
+    border-radius: 4px 0 0 0;
+}
+.panel-table > .panel-heading > .tr > .td:last-child {
+    border-radius: 0 4px 0 0;
+}
+.panel-table > .panel-footer > .tr > .td:first-child {
+    border-radius: 0 0 0 4px;
+}
+.panel-table > .panel-footer > .tr > .td:last-child {
+    border-radius: 0 0 4px 0;
 }
