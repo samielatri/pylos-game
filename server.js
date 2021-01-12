@@ -21,10 +21,18 @@ connectDB();
 
 const app = express();
 
+// list of sockets, a socket by user
+var socket_list = {};
+
 const io = socketio(server); 
 // Run when a client connect (socket)
 io.on('connection', socket => {
-    console.log('new websocket connection...');
+    console.log('new websocket connection');
+
+    // TODO : check that id is unique with do while exitsts
+    socket.id = Math.random();
+    socket.board = null;    
+    socket_list[socket.id] = socket;
 
     socket.emit('message', 'Welcome to Pylos game'); // single client
 
@@ -35,8 +43,28 @@ io.on('connection', socket => {
     socket.on('disconnect', () =>{
         io.emit('message', 'A user has left the game'); // all
     })
+
+    // test socket
+    //socket.on('happy', function(data) {
+    //    console.log('happy because ' + data);
+    //})
     
 })
+
+// shows the board
+setInterval(function(){
+    // package
+    let pack = [];
+    for (let i in socket_list) {
+        let socket = socket_list[i];
+        pack.push({
+            board:socket.board
+        })
+        socket.emit('newBoard', {
+            board:socket.board
+        });    
+    }
+},1000/25) // runs every 40ms
 
 app.use(cors());
 // parse application/x-www-form-urlencoded
