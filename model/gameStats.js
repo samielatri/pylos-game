@@ -1,6 +1,6 @@
 const mogoose = require('mongoose');
 
-const productSchema = new mogoose.Schema({
+const productSchema = new mongoose.Schema({
     user_id: {
         type: String,
         trim: true,

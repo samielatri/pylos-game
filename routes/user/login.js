@@ -3,7 +3,6 @@ const router= express.Router();
 const { userLogin, forGotPassword, forGotUsername,resetPassword, allUsers, getFriendList }= require('../../controller/user/login');
 /* GET users listing. */
 router.get('/login', function(req,res){
-    // console.log("ayeen")
     res.render('index');
   });
 

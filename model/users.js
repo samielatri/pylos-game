@@ -1,6 +1,6 @@
 const mogoose = require('mongoose');
 
-const userRegisterSchema = new mogoose.Schema({
+const userRegisterSchema = new mongoose.Schema({
     email_id: {
         type: String,
         required: [true, 'Please add valid email']
