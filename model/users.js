@@ -1,6 +1,7 @@
-const mogoose = require('mongoose');
+import { Schema } from 'mongoose';
 
-const userRegisterSchema = new mongoose.Schema({
+// userRegisterSchema
+const userRegisterSchema = new Schema({
     email_id: {
         type: String,
         required: [true, 'Please add valid email']

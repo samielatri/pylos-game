@@ -10,13 +10,11 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
-    "expense",
-    "tracker",
-    "reactAPP",
-    "fullstack",
-    "bootcamp",
-    "express",
-    "mongodb"
+    "game_app",
+    "game",
+    "pylos",
+    "multiplayer",
+    "online"
   ],
   "author": "samu",
   "license": "ISC",
@@ -33,7 +31,8 @@
     "mongoose": "^5.9.19",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
-    "nodemailer": "^6.4.17"
+    "nodemailer": "^6.4.17",
+    "socket.io": "^3.0.5"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",

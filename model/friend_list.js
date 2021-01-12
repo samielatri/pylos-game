@@ -1,6 +1,7 @@
-const mogoose = require('mongoose');
+import { Schema } from 'mongoose';
 
-const userRegisterSchema = new mogoose.Schema({
+// iserRegosterSchema
+const userRegisterSchema = new Schema({
     user_id: {
         type: String,
         trim: true,
@@ -18,4 +19,4 @@ const userRegisterSchema = new mogoose.Schema({
     },
 })
 
-module.exports = mogoose.model('friends', userRegisterSchema)
+export default model('friends', userRegisterSchema)
