@@ -34,6 +34,6 @@ const userRegisterSchema = new mogoose.Schema({
         type: Date,
         default: Date.now
     }
-})
+}, { timestamps: true });
 
 module.exports = mogoose.model('users', userRegisterSchema)

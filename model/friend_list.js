@@ -16,6 +16,6 @@ const userRegisterSchema = new mogoose.Schema({
         trim: true,
         required: [true, 'Please Add user id']
     },
-})
+}, { timestamps: true });
 
 module.exports = mogoose.model('friends', userRegisterSchema)

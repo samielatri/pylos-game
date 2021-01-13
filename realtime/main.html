@@ -6,19 +6,21 @@
     <title>Document</title>
     <script defer src="http://localhost:3200/socket.io/socket.io.js"></script>
     <script defer src="script.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
+	<script type="text/javascript" src="test.js"></script>
+	<script type="text/javascript" src="Cell.js"></script>
+
 </head>
 <body>
     <div id="board" class="plateau">
-
+        
     </div>
     <div class="msg-container">
-        <form id="send-container">
             <input id="x" type="text">
             <input id="y" type="text">
             <input id="z" type="text">
-            <button type="submit" id="send-button">Send</button>
-        </form>
-        <button onclick="console.log('ok');emitSearch();">Emit search</button>
+            <button id="send-button">Send</button>
+            <button id="emit-search">Emit search</button>
     </div>
 </body>
 <style>

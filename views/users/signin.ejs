@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head') -%>
+    <link rel="stylesheet" href="./css/index.css">
+  </head>
+
+  <%- include('partials/nav') -%>
+
+<body id="jeu2">
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="connexion">
+                <div class="d-flex justify-content-center">
+                <h1> Connexion </h1>
+                </div> 
+            <div class="d-flex justify-content-center form_container">
+
+                <form action="/api/v1/login" method="POST">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user">@</i></span>
+                        </div>
+                        <input type="text" name="username" class="form-control input_user" id="username" placeholder="username" required autofocus>
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key">&#128274</i></span>
+                        </div>
+                        <input type="password" name="password" class="form-control input_pass" id="password" placeholder="password" required>
+                    </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                 <input type="submit" class="btn btn-success login_btn" value="login" required>
+               </div>
+                </form>
+
+            </div>
+    
+            <div class="mt-4">
+                <div class="d-flex justify-content-center links">
+                    Don't have an account? <a href="Signup.html" class="ml-2"> Sign Up</a>
+                </div>
+                <div class="d-flex justify-content-center links">
+                    <a href="signup.ejs">Forgot your password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>
+
+</body>
+</html>

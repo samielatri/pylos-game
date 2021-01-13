@@ -1,9 +1,10 @@
 
 const {Board} = require('./board.js')
+
 class PylosGame{
     constructor(ID,player1,player2){
         this.board = new Board();
-        this.ID;
+        this.ID=ID;
         this.player1=player1;
         this.player2=player2;
         this.currentPlayer=1;

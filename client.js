@@ -1,6 +1,6 @@
-let socket = io();
+//let socket = io();
 
-socket.on('updateBoard', function(data) {
+//socket.on('updateBoard', function(data) {
 
 
-})
+//})

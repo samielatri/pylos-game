@@ -4,7 +4,7 @@ const app = express();
 const {PylosGame} = require("../pylos-js/pylosGame.js");
 //const server = http.createServer(app)
 const server =app.listen(3200,()=>{
-    console.log("lsitening")
+    console.log("listening...")
 })
 const io = require('socket.io')(server,{
     cors:{
@@ -19,7 +19,7 @@ function generateID(){
 }
 let connectedUsers = {};
 let usersSearchingGame=[];
-let inGame=[];
+let inGame={};
 
 io.sockets.on('connection', socket=>{
     connectedUsers[socket.id] = socket;
@@ -37,9 +37,8 @@ io.sockets.on('connection', socket=>{
             return;
         }
         let user=usersSearchingGame.pop();
-        let gameID=generateID();
-        let newGame = new PylosGame(gameID,user.id,socket.id); 
-        inGame.push(newGame); 
+        let gameID=generateID(); 
+        inGame[gameID]=new PylosGame(gameID,user.id,socket.id); 
         user.emit("search-response", {
             found:true,
             gameID:gameID
@@ -50,10 +49,10 @@ io.sockets.on('connection', socket=>{
         })
         console.log("found")
     })
-
+    
     socket.on("play-movement", payload =>{
         const {gameID} = payload;
-        let userGame=inGame.find(game => game.id===gameID);
+        let userGame=inGame[gameID];
         if(!userGame.cmpCurrentPlayer(socket.id)){
             socket.emit("play-movement-res",{isValid:false})
             return; 
