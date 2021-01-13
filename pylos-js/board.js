@@ -1,6 +1,6 @@
-import {initLayer,hasBallOnTop} from './boardHelper.js';
-
-export class Board{
+//import {initLayer,hasBallOnTop} from './boardHelper.js';
+const {initLayer,hasBallOnTop} = require('./boardHelper.js');
+class Board{
     constructor(){
         let layer1=initLayer(4,0);
         let layer2=initLayer(3,0);
@@ -161,4 +161,7 @@ export class Board{
         return true;
     }
     
+}
+module.exports={
+    Board
 }

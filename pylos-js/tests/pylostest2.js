@@ -1,5 +1,5 @@
-import {PylosGame} from "../pylosGame.js";
-
+//const {PylosGame} = require ("../pylosGame.js");
+var PylosGame = require ("../pylosGame.js").PylosGame;
 let pylosGame = new PylosGame("Player1","Player2");
 console.log(
     pylosGame.playMovement({

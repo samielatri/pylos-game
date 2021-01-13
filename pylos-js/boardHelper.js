@@ -1,7 +1,7 @@
 /*
     initialise la un tableau a 2 dimensions, de largeur width avec la valeur value
 */
-export const initLayer =(width,value)=>{
+const initLayer =(width,value)=>{
     let layer=[];
     for(let i=0;i<width;i++){
         let layer_x=[]
@@ -13,11 +13,11 @@ export const initLayer =(width,value)=>{
     return layer;
 }
 
-export const getValidMovements=()=>{
+const getValidMovements=()=>{
 
 }
 
-export const hasBallOnTop=(layers,layer,x,y)=>{
+const hasBallOnTop=(layers,layer,x,y)=>{
     if(layer>=layers.length-1){
         return false;
     }
@@ -49,7 +49,7 @@ export const hasBallOnTop=(layers,layer,x,y)=>{
     } 
 }
 
-export const getPopableMovements=(board,player)=>{
+const getPopableMovements=(board,player)=>{
     let movements = [];
 
 }
@@ -59,7 +59,7 @@ export const getPopableMovements=(board,player)=>{
     initialise la un tableau a 2 dimensions
 */
 
-export const printLayer =(layer)=>{
+const printLayer =(layer)=>{
     for(let i=0;i<layer.length;i++){
         for(let j=0;j<layer.length;j++){
             process.stdout.write(layer[i][j]); 
@@ -67,4 +67,12 @@ export const printLayer =(layer)=>{
         process.stdout.write("\n"); 
     }
     return layer 
+}
+
+module.exports={
+    initLayer,
+    hasBallOnTop,
+    printLayer,
+    getPopableMovements,
+    getValidMovements
 }

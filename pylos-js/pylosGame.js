@@ -1,6 +1,6 @@
-import {Board} from './board.js';
 
-export class PylosGame{
+const {Board} = require('./board.js')
+class PylosGame{
     constructor(player1,player2){
         this.board = new Board();
         this.player1=player1;
@@ -9,15 +9,15 @@ export class PylosGame{
         this.popBallCpt=0;
     }
     playMovement(payload){
-        const {movement,popBall}= payload;
-
+        const {movement}= payload;
+        const popsBall=false; 
         //check if coordinates valid
         if(!this.board.isEntryValid(movement.x,movement.y,movement.layer)){
             return {success:false, board:this.board, popBall:false, currentPlayer:this.currentPlayer, msg:"Error: entry is not valid."}; 
         }
         //si on est en train de pop ball
         if(this.popBallCpt>0){
-            if(!popBall){
+            if(!popsBall){
                 this.popBallCpt=0;
                 this._switchTurn();
                 return {success:false, board:this.board.layers, popBall:false, currentPlayer:this.currentPlayer, msg:"Error: entry is not valid, cannot pop."};             
@@ -65,4 +65,8 @@ export class PylosGame{
         return Object.assign(Object.create(Object.getPrototypeOf(this)), this);
     }
 
+}
+
+module.exports={
+    PylosGame
 }

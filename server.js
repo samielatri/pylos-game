@@ -1,7 +1,7 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
-const socketio = require('scoket.io'); // socket io
+//const socketio = require('soket.io'); // socket io
 
 var bodyParser = require('body-parser');
 var cors = require('cors');
@@ -23,7 +23,7 @@ const app = express();
 
 // list of sockets, a socket by user
 var socket_list = {};
-
+/*
 const io = socketio(server); 
 // Run when a client connect (socket)
 io.on('connection', socket => {
@@ -50,7 +50,7 @@ io.on('connection', socket => {
     //})
     
 })
-
+*/
 // shows the board
 setInterval(function(){
     // package

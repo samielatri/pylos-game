@@ -1,4 +1,4 @@
-import {Board} from "../board";
+const {Board} = require("../board.js");
 
 let plateau = new Board();
 l
