@@ -1,6 +1,6 @@
 body#jeu2 {
 	margin: 0px;
-	background-image: url("../../Pylos2.jpg");
+	background-image: url("../img/Pylos2.jpg");
 }
 
 .noir {
@@ -20,22 +20,6 @@ body#jeu2 {
 	color: #fff;
 	font-weight: 600;
 	vertical-align: middle;
-}
-
-body {
-	background-color: black;
-	background-image: url("../images/menu/fond.JPG");
-	background-repeat: no-repeat;
-	background-size: 120%;
-	margin: 0;
-}
-
-#img {
-	background-image: url("../images/menu/fondC.JPG");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	margin: 5em;
-	text-align: center;
 }
 
 
