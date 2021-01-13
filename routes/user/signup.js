@@ -13,6 +13,11 @@ var fileUpload = require('../../controller/user/file-upload');
 //router.route('/index')
 //.get(mainMenu);
 
+/************************ GET routes ************************/
+router.get('/signup', function(req,res){
+    // console.log("/signup")
+    res.render('users/signup', { title: "sign up" });
+  });
 
 /************************ POST routes ************************/
 
