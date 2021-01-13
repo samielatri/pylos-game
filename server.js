@@ -92,8 +92,6 @@ if (process.env.NODE_ENV === 'development') {
 app.use(signup);
 app.use(login);
 // app.use('',games);
-
-
 // Configuration for deploymnet of on server and run on one port
 // TODO : change it to normal build, this one is for REACT
 if (process.env.NODE_ENV === 'production') {
