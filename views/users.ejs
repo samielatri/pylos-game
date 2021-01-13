@@ -5,33 +5,25 @@
 	  <link rel="stylesheet" href="../css/bootstrap.min.css">
   </head>
   <body>
+    
+    <%- include('partials/nav') -%>
+
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12 ">
-          <nav>
-            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="projet2.html" role="tab" aria-controls="nav-home" aria-selected="true"> Pylos </a>
-              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="regles.html" role="tab" aria-controls="nav-profile" aria-selected="false"> Regle de jeu </a>
-              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> Spectateurs </a>
-              <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Mes amis</a>
-
-<a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false"> Jouer </a>
-
-            </div>
-          </nav>
-                        
+      <div class="d-flex justify-content-center">
+        <div class="searchbar">
+          <input class="search_input" type="text" name="" placeholder="Search...">
+          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
         </div>
       </div>
-</div>
-</div>
-</div>
+    </div>
+    
+
     <div class="well">
         <table class="table">
           <thead>
             <tr>
               <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
+              <th>Email</th>
               <th>Username</th>
               <th style="width: 36px;"></th>
             </tr>

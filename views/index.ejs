@@ -2,11 +2,12 @@
 <html>
   <head>
     <%- include('partials/head') -%>
-    <link rel="stylesheet" href="../../public/pageprincipale.css">
+    <link rel="stylesheet" href="../../public/index.css">
   </head>
 
   <%- include('partials/nav') -%>
 
+<body id="jeu2">
 <div class="container h-100">
     <div class="d-flex justify-content-center h-100">
         <div class="connexion">
@@ -14,6 +15,7 @@
                 <h1> Connexion </h1>
                 </div> 
             <div class="d-flex justify-content-center form_container">
+
                 <form action="/api/v1/login" method="POST">
                     <div class="input-group mb-3">
                         <div class="input-group-append">
@@ -31,6 +33,7 @@
                  <input type="submit" class="btn btn-success login_btn" value="login" required>
                </div>
                 </form>
+
             </div>
     
             <div class="mt-4">
@@ -38,7 +41,7 @@
                     Don't have an account? <a href="Signup.html" class="ml-2"> Sign Up</a>
                 </div>
                 <div class="d-flex justify-content-center links">
-                    <a href="#">Forgot your password?</a>
+                    <a href="signup.ejs">Forgot your password?</a>
                 </div>
             </div>
         </div>

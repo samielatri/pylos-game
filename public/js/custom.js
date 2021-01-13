@@ -1,3 +1,4 @@
+/*
 const socket = io();
 
 socket.on('message', message=>{
@@ -8,7 +9,7 @@ socket.on('message', message=>{
 socket.on('happy', message=>{
     reason: 'its my birthday'
 })
-
+*/
 
 // User played his turn
 //something.addEventListner('submit', e=>{

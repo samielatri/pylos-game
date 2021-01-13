@@ -8,13 +8,55 @@ const { friendRequest, acceptRequest, changeFriendStatus } = require('../../cont
 
 var fileUpload = require('../../controller/user/file-upload');
 
+
+/************************ POST routes ************************/
+
 // POST sign up
 router.route('/api/v1/signup')
-    .post(registerUser);
+.post(registerUser);
 
+// POST game stats
+router.route('/api/v1/game')
+.post(addGameStats);
+
+// POST send friend request
+router.route('/api/v1/send-request')
+.post(friendRequest);
+
+// POST accept friend request
+router.post(`/api/v1/accept-request`, function (req, res, next) {
+    console.log(req.body);
+     acceptRequest(req.body)
+         .then((data) => {
+             res.status(200).json(data);
+         })
+         .catch((err) => {
+             res.json(err);
+         })
+     // console.log("file name is",file);
+ 
+ });
+
+// POST friend status
+router.post(`/api/v1/friend-status`, function (req, res, next) {
+    // console.log(req.body);
+    changeFriendStatus(req.body)
+         .then((data) => {
+             res.status(200).json(data);
+         })
+         .catch((err) => {
+             res.json(err);
+         })
+     // console.log("file name is",file);
+ 
+ });
+
+
+/*********************** PUT routes *************************/
+
+// not used yet !
 // router.route('/api/v1/update_profile',fileUpload.upload.single('file'))
 // .put(updateProfile)
-
 
 // PUT update profile
 router.put(`/api/v1/update_profile`, fileUpload.upload.single('file'), function (req, res, next) {
@@ -38,10 +80,6 @@ router.put(`/api/v1/update_profile`, fileUpload.upload.single('file'), function 
 
 });
 
-// POST game stats
-router.route('/api/v1/game')
-    .post(addGameStats);
-
 // PUT game stats
 router.put(`/api/v1/game`, function (req, res, next) {
 
@@ -61,37 +99,5 @@ router.put(`/api/v1/game`, function (req, res, next) {
     // console.log("file name is",file);
 
 });
-
-// POST send friend request
-router.route('/api/v1/send-request')
-    .post(friendRequest);
-
-// POST accept friend request
-router.post(`/api/v1/accept-request`, function (req, res, next) {
-   console.log(req.body);
-    acceptRequest(req.body)
-        .then((data) => {
-            res.status(200).json(data);
-        })
-        .catch((err) => {
-            res.json(err);
-        })
-    // console.log("file name is",file);
-
-});
-
-// POST friend status
-router.post(`/api/v1/friend-status`, function (req, res, next) {
-    // console.log(req.body);
-    changeFriendStatus(req.body)
-         .then((data) => {
-             res.status(200).json(data);
-         })
-         .catch((err) => {
-             res.json(err);
-         })
-     // console.log("file name is",file);
- 
- });
 
 module.exports = router;
