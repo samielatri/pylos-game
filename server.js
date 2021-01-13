@@ -3,39 +3,17 @@ const http = require('http');
 const express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-
-
 const dotenv = require('dotenv'); // env file
 const morgan = require('morgan'); // for logs
 const colors = require('colors'); // colors
-
-
 const connectDB = require('./config/db');
 var cookieParser = require('cookie-parser');
-
 dotenv.config({ path: './config/config.env' });
 
 // connect to database
 connectDB();
 
 const app = express();
-
-// list of sockets, a socket by user
-setInterval(function(){
-    // package
-    let pack = [];
-    for (let i in socket_list) {
-        let socket = socket_list[i];
-        pack.push({
-            board:socket.board
-        })
-        socket.emit('newBoard', {
-            board:socket.board
-        });    
-    }
-},1000/25) // runs every 40ms
-
-
 app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());
