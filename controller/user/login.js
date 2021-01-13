@@ -41,14 +41,11 @@ exports.userLogin = async (req, res, next) => {
                 //     data: response
                 // })
             } else {
-                // return response
-                //res.status(201).json({
-                //    success: false,
-                //    code: 201,
-                //    error: 'Username or password Incorrect'
-                //})
-                // redirection
-                res.redirect('/login');
+                return res.status(201).json({
+                    success: false,
+                    code: 201,
+                    error: 'Username or password Incorrect'
+                });
             }
         });
     } catch (error) { // intrernal server error
