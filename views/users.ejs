@@ -1,6 +1,96 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="../css/projet.css">
+	  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 ">
+          <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="projet2.html" role="tab" aria-controls="nav-home" aria-selected="true"> Pylos </a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="regles.html" role="tab" aria-controls="nav-profile" aria-selected="false"> Regle de jeu </a>
+              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"> Spectateurs </a>
+              <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Mes amis</a>
+
+<a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false"> Jouer </a>
+
+            </div>
+          </nav>
+                        
+        </div>
+      </div>
+</div>
+</div>
+</div>
+    <div class="well">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+              <th style="width: 36px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% var count=1;for(index in users){%>
+            <tr>
+              <td>
+                <%= count;%>
+              </td>
+              <td>
+                <%= users[index].email_id;%>
+              </td>
+              <td>
+                <%= users[index].username;%>
+              </td>
+            </tr>
+              <% count++;}%>
+            <tbody>
+          </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
 
   </head>
   <body>
@@ -100,20 +190,7 @@
                             
                           </tr>
                         </thead>
-                        <tbody>
-                            <% var count=1;for(index in users){%>
-                          <tr>
-                            <td><%= count;%></td>
-                            <td><%= users[index].email_id;%></td>
-                            <td><%= users[index].username;%></td>
-                            <!-- <td>
-                                <p>
-                                    <a href="#" data-toggle="modal" data-target="#employee" onclick="EditEmployee()"><i class="fa fa-edit fa-2x"></i></a>
-                        
-                                </p>
-                            </td> -->
-                          </tr>
-                      <% count++;}%>
+
                          
                         </tbody>
                       </table>
