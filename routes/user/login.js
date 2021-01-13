@@ -32,11 +32,16 @@ router.route('/api/v1/users')
 router.route('/api/v1/user_friend')
 .get(getFriendList);
 
+// Get gameMenu
+router.get('/game-menu', function(req,res){
+  // console.log("/")
+  res.render('game/game-menu', { title: "game menu" });
+});
 
 /************************ POST routes ************************/
 
 // POST userLogin
-router.route('/api/v1/login')
+router.route('/login')
 .post(userLogin);
 
 // POST forGotPossword
