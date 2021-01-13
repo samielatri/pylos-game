@@ -21,21 +21,28 @@ router.route('/users')
 .get(allUsers);
 
 // GET forGotUsername
-router.route('/api/v1/forgot-username')
+router.route('/forgot-username')
 .get(forGotUsername);
 
 // GET allUsers
-router.route('/api/v1/users')
+router.route('/users')
 .get(allUsers);
 
 // GET friendList
-router.route('/api/v1/user_friend')
+router.route('/user_friend')
 .get(getFriendList);
 
 // Get gameMenu
 router.get('/game-menu', function(req,res){
   // console.log("/")
   res.render('game/game-menu', { title: "game menu" });
+});
+
+
+// Get gameMenu
+router.get('/forgot-password', function(req,res){
+  // console.log("/")
+  res.render('users/forgotpassword', { title: "game menu" });
 });
 
 /************************ POST routes ************************/
@@ -45,11 +52,11 @@ router.route('/login')
 .post(userLogin);
 
 // POST forGotPossword
-router.route('/api/v1/forgot-password')
+router.route('/forgot-password')
 .post(forGotPassword);
 
 // POST resetPassword
-router.route('/api/v1/reset-password')
+router.route('/reset-password')
 .post(resetPassword);
 
 module.exports = router;
