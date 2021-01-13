@@ -41,6 +41,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// satatic
 app.use(express.static(path.join(__dirname, 'public')));
 
 
@@ -56,6 +58,7 @@ const login = require('./routes/user/login');
 
 app.use(express.json());
 
+// configure logs
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev')); // for logs
 }

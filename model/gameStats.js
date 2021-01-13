@@ -28,6 +28,6 @@ const productSchema = new mogoose.Schema({
         type: Date,
         default: Date.now
     }
-})
+}, { timestamps: true });
 
 module.exports = mogoose.model('game_stats', productSchema)

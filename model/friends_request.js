@@ -22,11 +22,6 @@ const userRegisterSchema = new mogoose.Schema({
     status: {
         type: String,
     },
-    // date of creation
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
-})
+}, { timestamps: true });
 
 module.exports = mogoose.model('friend_request', userRegisterSchema)
