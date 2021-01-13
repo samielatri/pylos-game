@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('partials/head') -%>
+    <link rel="stylesheet" href="./css/creationcompte.css">
+  </head>
+
+  <%- include('partials/nav') -%>
+
+        <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+          <div class="container">
+            <div class="row wow fadeIn">
+                <div class="col-md-6 mb-4 text-primary text-center text-md-left">
+                <h1 class="display-4 font-weight-bold">Sign UP</h1>
+                <hr class="hr-light">
+                <p>
+                  <strong>Pylos Inscription</strong>
+                </p>
+                <p class="mb-4 d-none d-md-block">
+                  <strong>Bonjour ! Bienvenu sur le fameux site de jeu Pylos. Inscrivez-vous gratuitement � droite pour profitez au maximum des fonctionnalités offertes par le jeu Pylos. </strong>
+                </p>
+              </div>
+              <div class="col-md-6 col-xl-5 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <form action="/api/v1/update_profile" method="POST" >
+                      <p class="h4 text-center mb-4">Sign up</p>
+                      <div class="md-form">
+                         <i class="fa fa-user prefix grey-text"></i>
+				    <label for="materialFormRegisterNameEx">Nom</label>
+                         <input type="text" id="username" name="username" class="form-control">
+                      </div>
+                      <div class="md-form">
+                         <i class="fa fa-envelope prefix grey-text"></i>
+			         <label for="materialFormRegisterEmailEx">Email</label>
+                         <input type="email" id="email_id" name="email_id" class="form-control">
+                       </div>
+                      <div class="md-form">
+                         <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+				    <label for="materialFormRegisterConfirmEx">Confirmer email</label>
+                         <input type="email" id="materialFormRegisterConfirmEx" class="form-control">
+                      </div>
+                      <div class="md-form">
+                        <i class="fa fa-lock prefix grey-text"></i>
+				  <label for="materialFormRegisterPasswordEx">Mot de passe</label>
+                        <input type="password" id="password" name="password" class="form-control">
+                      </div>
+                      <div class="md-form">
+                            <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+				      <label for="materialFormRegisterPasswordEx">Confirmer mot de passe</label>
+                            <input type="password" id="materialFormRegisterConfirmEx" class="form-control">
+                      </div>
+                      <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="defaultCheck12">
+                            <label for="defaultCheck12" class="grey-text">Accept the
+                                <a href="#" class="blue-text"> Terms and Conditions</a>
+                            </label>
+                        </div>
+                      <div class="text-center mt-4">
+                       <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">Register</button>
+                       <div class="modal fade" id="myModal" role="dialog">
+                         <div class="modal-dialog"> 
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                        <h4 class="modal-title">OOPS!</h4>
+                                  <button type="button" class="close" data-dismiss="modal">�</button>
+                                </div>
+                                <div class="modal-body">
+                                  <p>Connection ERROR.........!</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                   </form> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       </div>	
+
+</body>
+</html>
+
