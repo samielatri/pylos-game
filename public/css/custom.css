@@ -166,13 +166,13 @@ ul, ol {
 }
 
 
-/* Création de compte et règles du jeu*/
+/* Création de compte*/
 body#jeu2 {
 	margin: 0px;
 	background-image: url("../../Pylos2.jpg");
 }
 
-/* Conditions générales*/
+/* Conditions générales et règles de jeu*/
 .noir {
 	margin: 5em 4em 2em 4em;
 	font-size: 100%;
