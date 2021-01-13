@@ -53,7 +53,7 @@ app.set('views', path.join(__dirname, 'views')); // set views directory
 // const trnasactions = require('./routes/transactions');
 const signup = require('./routes/user/signup');
 const login = require('./routes/user/login');
-// const games = require('./routes/game/game');
+const games = require('./routes/game/game');
 
 
 app.use(express.json());

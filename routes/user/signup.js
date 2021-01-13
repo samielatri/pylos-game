@@ -121,4 +121,17 @@ router.put(`/api/v1/game`, function (req, res, next) {
 
 });
 
+
+// GET
+
+// Get gameMenu
+router.get('/game', function(req, res){
+    // console.log("/game")
+    res.render('game/play', { title: "game" });
+  });
+  
+// POST
+router.route('game')
+.post(addGameStats);
+
 module.exports = router;

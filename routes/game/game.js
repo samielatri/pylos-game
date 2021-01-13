@@ -1,8 +1,18 @@
-// no routes yet
+// TODO : call it
+const express= require('express');
+const router= express.Router();
+const { addGameStats }= require('../../controller/game/game');
 
-// const express= require('express');
-// const router= express.Router();
-// const { addGameStats }= require('../../controller/game/game');
+// GET
 
-// router.route('/api/v1/game')
-// .post(addGameStats);
+// Get gameMenu
+router.get('/game', function(req, res){
+    // console.log("/game")
+    res.render('user/login', { title: "game" });
+  });
+  
+// POST
+router.route('game')
+.post(addGameStats);
+
+module.exports = router;
