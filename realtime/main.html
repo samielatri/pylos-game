@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script defer src="http://localhost:3200/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="msg-container">
+    <div id="board" class="plateau">
 
+    </div>
+    <div class="msg-container">
         <form id="send-container">
             <input id="x" type="text">
             <input id="y" type="text">
             <input id="z" type="text">
-            <button type="submit" id="send-button"></button>
+            <button type="submit" id="send-button">Send</button>
         </form>
-
+        <button onclick="console.log('ok');emitSearch();">Emit search</button>
     </div>
 </body>
+<style>
+   .msg-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
 </html>

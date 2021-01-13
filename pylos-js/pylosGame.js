@@ -1,16 +1,16 @@
 
 const {Board} = require('./board.js')
 class PylosGame{
-    constructor(player1,player2){
+    constructor(ID,player1,player2){
         this.board = new Board();
+        this.ID;
         this.player1=player1;
         this.player2=player2;
         this.currentPlayer=1;
         this.popBallCpt=0;
     }
     playMovement(payload){
-        const {movement}= payload;
-        const popsBall=false; 
+        const {movement, popsBall}= payload;
         //check if coordinates valid
         if(!this.board.isEntryValid(movement.x,movement.y,movement.layer)){
             return {success:false, board:this.board, popBall:false, currentPlayer:this.currentPlayer, msg:"Error: entry is not valid."}; 
@@ -64,7 +64,13 @@ class PylosGame{
     clone=()=>{
         return Object.assign(Object.create(Object.getPrototypeOf(this)), this);
     }
-
+    cmpCurrentPlayer=(player)=>{
+        if(this.currentPlayer===1){
+            return this.player1===player;
+        }else if(this.currentPlayer===2){
+            return this.player2===player;
+        }
+    }
 }
 
 module.exports={
