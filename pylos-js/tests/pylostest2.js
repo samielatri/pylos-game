@@ -1,7 +1,5 @@
 import {PylosGame} from "../pylosGame.js";
 
-
-
 let pylosGame = new PylosGame("Player1","Player2");
 console.log(
     pylosGame.playMovement({

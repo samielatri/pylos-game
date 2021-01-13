@@ -89,20 +89,34 @@ export class Board{
     }
     _isSquareTopLeft=(movement,player)=>{
         const {layer,x,y} = movement;
-        return this.layers[layer][x+1][y] === this.layers[layer][x][y-1] === this.layers[layer][x+1][y-1] ===player;        
+        var bool1 =this.layers[layer][x+1][y] === this.layers[layer][x][y-1];
+        var bool2 =this.layers[layer][x][y-1] === this.layers[layer][x+1][y-1];
+        var bool3= player === this.layers[layer][x+1][y-1];
+        return  (bool1 && bool2 && bool3);
+        //return this.layers[layer][x+1][y] === this.layers[layer][x][y-1] === this.layers[layer][x+1][y-1] ===player;        
     }
 
     _isSquareTopRight=(movement,player)=>{
         const {layer,x,y} = movement;
-        return (this.layers[layer][x-1][y] === this.layers[layer][x][y-1] === this.layers[layer][x-1][y-1] ===player );        
+        var bool1 =this.layers[layer][x-1][y] === this.layers[layer][x][y-1];
+        var bool2 =this.layers[layer][x][y-1] === this.layers[layer][x-1][y-1];
+        var bool3= player === this.layers[layer][x-1][y-1];
+        return  (bool1 && bool2 && bool3);
     }
     _isSquareBotLeft=(movement,player)=>{
         const {layer,x,y} = movement;
-        return this.layers[layer][x+1][y] === this.layers[layer][x][y+1] === this.layers[layer][x+1][y+1] ===player;
+        var bool1 =this.layers[layer][x+1][y] === this.layers[layer][x][y+1];
+        var bool2 =this.layers[layer][x][y+1] === this.layers[layer][x+1][y+1];
+        var bool3= player === this.layers[layer][x+1][y+1];
+        return  (bool1 && bool2 && bool3);
     }
     _isSquareBotRight=(movement,player)=>{
         const {layer,x,y} = movement;
-        return  (this.layers[layer][x-1][y] === this.layers[layer][x][y+1] === this.layers[layer][x-1][y+1] ===player );
+        var bool1 =this.layers[layer][x-1][y] === this.layers[layer][x][y+1];
+        var bool2 =this.layers[layer][x][y+1] === this.layers[layer][x-1][y+1];
+        var bool3= player === this.layers[layer][x-1][y+1];
+        //return  (this.layers[layer][x-1][y] === this.layers[layer][x][y+1] === this.layers[layer][x-1][y+1] ===player );
+        return  (bool1 && bool2 && bool3);
     }
 
     isVictory=()=>{
