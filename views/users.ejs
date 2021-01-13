@@ -37,19 +37,19 @@
             </tr>
           </thead>
           <tbody>
-            <% var count=1;for(index in users){%>
+            <% let count = 1; for(index in users) { %>
             <tr>
               <td>
-                <%= count;%>
+                <%= count; %>
               </td>
               <td>
-                <%= users[index].email_id;%>
+                <%= users[index].email_id; %>
               </td>
               <td>
-                <%= users[index].username;%>
+                <%= users[index].username; %>
               </td>
             </tr>
-              <% count++;}%>
+              <% count ++; } %>
             <tbody>
           </tbody>
         </table>
