@@ -1,3 +1,5 @@
+// TODO : after signup you are signed in
+
 const express = require('express');
 
 const router = express.Router();
@@ -14,10 +16,19 @@ var fileUpload = require('../../controller/user/file-upload');
 //.get(mainMenu);
 
 /************************ GET routes ************************/
+
+// GET signup
 router.get('/signup', function(req,res){
     // console.log("/signup")
     res.render('users/signup', { title: "sign up" });
   });
+
+// GET terms
+router.get('/terms', function(req,res){
+    // console.log("/terms")
+    res.render('infos/terms', { title: "terms" });
+  });
+
 
 /************************ POST routes ************************/
 
