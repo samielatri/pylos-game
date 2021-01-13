@@ -7,6 +7,8 @@ const { addGameStats, updateGameStats } = require('../../controller/game/game');
 const { friendRequest, acceptRequest, changeFriendStatus } = require('../../controller/friends/friends');
 
 var fileUpload = require('../../controller/user/file-upload');
+
+// POST sign up
 router.route('/api/v1/signup')
     .post(registerUser);
 
@@ -14,7 +16,7 @@ router.route('/api/v1/signup')
 // .put(updateProfile)
 
 
-
+// PUT update profile
 router.put(`/api/v1/update_profile`, fileUpload.upload.single('file'), function (req, res, next) {
 
     var file = "http://localhost/uploads/" + req.file.filename;
@@ -36,10 +38,11 @@ router.put(`/api/v1/update_profile`, fileUpload.upload.single('file'), function 
 
 });
 
+// POST game stats
 router.route('/api/v1/game')
     .post(addGameStats);
 
-
+// PUT game stats
 router.put(`/api/v1/game`, function (req, res, next) {
 
     var user_id = req.body.user_id;
@@ -59,9 +62,11 @@ router.put(`/api/v1/game`, function (req, res, next) {
 
 });
 
+// POST send friend request
 router.route('/api/v1/send-request')
     .post(friendRequest);
 
+// POST accept friend request
 router.post(`/api/v1/accept-request`, function (req, res, next) {
    console.log(req.body);
     acceptRequest(req.body)
@@ -75,6 +80,7 @@ router.post(`/api/v1/accept-request`, function (req, res, next) {
 
 });
 
+// POST friend status
 router.post(`/api/v1/friend-status`, function (req, res, next) {
     // console.log(req.body);
     changeFriendStatus(req.body)
