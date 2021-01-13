@@ -54,8 +54,6 @@ socket.on("search-response",(res)=>{
 
 socket.on("play-movement-res", res=>{
     pylos=res.board;
-    reset();
-    redraw(1);
     console.log(pylos);   
     console.log(res);
 })

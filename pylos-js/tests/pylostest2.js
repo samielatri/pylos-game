@@ -1,76 +1,93 @@
 //const {PylosGame} = require ("../pylosGame.js");
 var PylosGame = require ("../pylosGame.js").PylosGame;
 let pylosGame = new PylosGame("Player1","Player2");
-console.log(
-    pylosGame.playMovement({
-        movement:{
-            layer:0,
-            x:0,
-            y:0
-        }
-    })
-)
-console.log(
-    pylosGame.playMovement({
-        movement:{
-            layer:0,
-            x:3,
-            y:3
-        }
-    })
-)
-console.log(
-    pylosGame.playMovement({
-        movement:{
-            layer:0,
-            x:0,
-            y:1
-        }
-    })
-)
-console.log(
-    pylosGame.playMovement({
-        movement:{
-            layer:0,
-            x:3,
-            y:2
-        }
-    })
-)
-console.log(
-    pylosGame.playMovement({
-        movement:{
-            layer:0,
-            x:1,
-            y:1
-        }
-    })
-)
-console.log(
-    pylosGame.playMovement({
-        movement:{
-            layer:0,
-            x:1,
-            y:3
-        }
-    })
-)
-console.log(
-    pylosGame.playMovement({
-        movement:{
-            layer:0,
-            x:1,
-            y:0
-        }
-    })
-)
-console.log(
-    pylosGame.playMovement({
-        movement:{
-            layer:0,
-            x:3,
-            y:2
-        }
-    })
-)
+
+function test1(){
+    
+    console.log(
+        pylosGame.playMovement({
+            movement:{
+                layer:0,
+                x:0,
+                y:0
+            }
+        })
+    )
+    console.log(
+        pylosGame.playMovement({
+            movement:{
+                layer:0,
+                x:3,
+                y:3
+            }
+        })
+    )
+    console.log(
+        pylosGame.playMovement({
+            movement:{
+                layer:0,
+                x:0,
+                y:1
+            }
+        })
+    )
+    console.log(
+        pylosGame.playMovement({
+            movement:{
+                layer:0,
+                x:3,
+                y:2
+            }
+        })
+    )
+    console.log(
+        pylosGame.playMovement({
+            movement:{
+                layer:0,
+                x:1,
+                y:1
+            }
+        })
+    )
+    console.log(
+        pylosGame.playMovement({
+            movement:{
+                layer:0,
+                x:1,
+                y:3
+            }
+        })
+    )
+    console.log(
+        pylosGame.playMovement({
+            movement:{
+                layer:0,
+                x:1,
+                y:0
+            }
+        })
+    )
+    console.log(
+        pylosGame.playMovement({
+            movement:{
+                layer:0,
+                x:3,
+                y:2
+            }
+        })
+    )
+}
+
+function test2(){
+    console.log(
+        pylosGame.playMovement({
+            movement:{
+                layer:0,
+                x:3,
+                y:0
+            }
+        })
+    )
+}
+test2();
 pylosGame.print();

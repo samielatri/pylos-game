@@ -21,7 +21,7 @@ class PylosGame{
             if(!popsBall){
                 this.popBallCpt=0;
                 this._switchTurn();
-                return {success:false, board:this.board.layers, popBall:false, currentPlayer:this.currentPlayer, msg:"Error: entry is not valid, cannot pop."};             
+                return {success:false, board:this.board.layers, popBall:false, currentPlayer:this.currentPlayer, msg:"Not popping"};             
             }
             //si erreur pop ball
             if(!this.board.popBall(movement,this.currentPlayer)){

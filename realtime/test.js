@@ -66,7 +66,6 @@ function reset(){
 function setup(){
 	createCanvas(canvasW,canvasH);
 	reset();
-	pylosBoard();
 	noLoop();
 }
 
@@ -95,14 +94,14 @@ function draw(){
 			grid3[i][j].show();				
 		}
 	}
-	
+	pylosBoard();
 }
 
 
 
 function mousePressed() {
-	//console.log("redraw")
-	//redraw(1);
+	console.log("redraw")
+	redraw(1);
 }
 
 

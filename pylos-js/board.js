@@ -67,7 +67,7 @@ class Board{
             return this._isSquareTopLeft(movement,player);
         }
         else if(x===this.layers[layer].length-1 && y===0){
-            return this._isSquareTopLeft(movement,player);
+            return this._isSquareBotRight(movement,player);
         }
         else if(x===this.layers[layer].length-1 && y===this.layers[layer].length-1){
             return this._isSquareTopRight(movement,player);

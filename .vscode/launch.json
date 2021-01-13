@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\pylos-js\\realtime\\socket.js"
+            "program": "${workspaceFolder}\\pylos-js\\tests\\pylostest2.js"
         }
     ]
 }
