@@ -121,7 +121,7 @@ exports.allUsers = async (req, res, next) => {
                         }
                     })
                 })
-                res.render('users', { users: finalResponse });
+                res.render('users', { users: finalResponse, title: "users" });
                 // return res.status(200).json({
                 //     success: true,
                 //     data: finalResponse

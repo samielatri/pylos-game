@@ -7,13 +7,13 @@ const { userLogin, forGotPassword, forGotUsername,resetPassword, allUsers, getFr
 
 router.get('/', function(req,res){
     // console.log("/")
-    res.render('index');
+    res.render('index', { title: "login" });
 });
 
 // GET users listing
 router.get('/login', function(req,res){
     // console.log("/login")
-    res.render('index');
+    res.render('index', { title: "login" });
   });
 
 // GET all users

@@ -17,6 +17,7 @@ var cookieParser = require('cookie-parser');
 
 dotenv.config({ path: './config/config.env' });
 
+// connect to database
 connectDB();
 
 const app = express();
@@ -79,8 +80,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); // views
+app.set('view engine', 'ejs'); // ejs
 
 // const trnasactions = require('./routes/transactions');
 const signup = require('./routes/user/signup');
@@ -89,13 +90,17 @@ const login = require('./routes/user/login');
 
 
 app.use(express.json());
+
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev')); // for logs
 }
+
 // app.use('/api/v1/transactions', trnasactions);
 app.use(signup);
 app.use(login);
 // app.use('',games);
+
+
 // Configuration for deploymnet of on server and run on one port
 // TODO : change it to normal build, this one is for REACT
 if (process.env.NODE_ENV === 'production') {
@@ -105,5 +110,7 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-const PORT = process.env.PORT || 3000;
+const DEFAULTPORT = 3000;
+const PORT = process.env.PORT || DEFAULTPORT;
+// listen for requests
 app.listen(PORT, console.log(`Server running  in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
