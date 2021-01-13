@@ -8,15 +8,20 @@ export class PylosGame{
         this.currentPlayer=1;
         this.popBallCpt=0;
     }
-
     playMovement(payload){
-        const {movement}= payload;
+        const {movement,popBall}= payload;
+
         //check if coordinates valid
         if(!this.board.isEntryValid(movement.x,movement.y,movement.layer)){
             return {success:false, board:this.board, popBall:false, currentPlayer:this.currentPlayer, msg:"Error: entry is not valid."}; 
         }
         //si on est en train de pop ball
         if(this.popBallCpt>0){
+            if(!popBall){
+                this.popBallCpt=0;
+                this._switchTurn();
+                return {success:false, board:this.board.layers, popBall:false, currentPlayer:this.currentPlayer, msg:"Error: entry is not valid, cannot pop."};             
+            }
             //si erreur pop ball
             if(!this.board.popBall(movement,this.currentPlayer)){
                 return {success:false, board:this.board.layers, popBall:true, currentPlayer:this.currentPlayer, msg:"Error: entry is not valid, cannot pop."}; 
@@ -39,6 +44,9 @@ export class PylosGame{
         }
         if(!this.board.setMovement(movement,this.currentPlayer)){
             return {success:false, board:this.board.layers,popBall:false,currentPlayer:this.currentPlayer,  msg:"Movement not valid."};             
+        }
+        if(this.board.isVictory()){
+            return {success:true,board:this.board.layers,popBall:false,currentPlayer:this.currentPlayer, msg:"Victory"};
         }
         this._switchTurn();
         return {success:true,board:this.board.layers,popBall:false,currentPlayer:this.currentPlayer, msg:"Ball added."};
