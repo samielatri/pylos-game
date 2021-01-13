@@ -21,19 +21,19 @@ connectDB();
 const app = express();
 
 // list of sockets, a socket by user
-setInterval(function(){
+//setInterval(function(){
     // package
-    let pack = [];
-    for (let i in socket_list) {
-        let socket = socket_list[i];
-        pack.push({
-            board:socket.board
-        })
-        socket.emit('newBoard', {
-            board:socket.board
-        });    
-    }
-},1000/25) // runs every 40ms
+//    let pack = [];
+//    for (let i in socket_list) {
+//        let socket = socket_list[i];
+//        pack.push({
+//            board:socket.board
+//        })
+//        socket.emit('newBoard', {
+//            board:socket.board
+//        });    
+//    }
+//},1000/25) // runs every 40ms
 
 
 app.use(cors());
