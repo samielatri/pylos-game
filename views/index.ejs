@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="./css/pageprincipale.css">
-	<%- include('partials/head') -%>
+  <%- include('partials/head') -%>
+  <link rel="stylesheet" href="./css/pageprincipale.css">
   </head>
 <body id="jeu2">
     <%- include('partials/nav') -%>
@@ -13,11 +13,12 @@
         <article class="card">
         <div class="card-body p-5 text-danger" id="text_photo">
             <p> <img src="../public/img/Pylos3.png">
-                Bonjour ! Appuyez sur le bouton du bas pour vous connectez.
+                Hey ! Try to press that button to let us impress you ;)
             </p>
-            <div class="text-center mt-4">
-                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal"> GO !</button>
-            </div>
+              <div class="text-center mt-4">
+                <a href="/login" class="btn btn-primary" type="button"> GO !</a>
+
+              </div>
         </div>
         </article> 
     </div>

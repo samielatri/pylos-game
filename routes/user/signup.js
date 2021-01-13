@@ -8,23 +8,28 @@ const { friendRequest, acceptRequest, changeFriendStatus } = require('../../cont
 
 var fileUpload = require('../../controller/user/file-upload');
 
+// get routes
+
+//router.route('/index')
+//.get(mainMenu);
+
 
 /************************ POST routes ************************/
 
 // POST sign up
-router.route('/api/v1/signup')
+router.route('/signup')
 .post(registerUser);
 
 // POST game stats
-router.route('/api/v1/game')
+router.route('game')
 .post(addGameStats);
 
 // POST send friend request
-router.route('/api/v1/send-request')
+router.route('send-request')
 .post(friendRequest);
 
 // POST accept friend request
-router.post(`/api/v1/accept-request`, function (req, res, next) {
+router.post(`accept-request`, function (req, res, next) {
     console.log(req.body);
      acceptRequest(req.body)
          .then((data) => {
@@ -38,7 +43,7 @@ router.post(`/api/v1/accept-request`, function (req, res, next) {
  });
 
 // POST friend status
-router.post(`/api/v1/friend-status`, function (req, res, next) {
+router.post(`friend-status`, function (req, res, next) {
     // console.log(req.body);
     changeFriendStatus(req.body)
          .then((data) => {
@@ -55,11 +60,11 @@ router.post(`/api/v1/friend-status`, function (req, res, next) {
 /*********************** PUT routes *************************/
 
 // not used yet !
-// router.route('/api/v1/update_profile',fileUpload.upload.single('file'))
+// router.route('update_profile',fileUpload.upload.single('file'))
 // .put(updateProfile)
 
 // PUT update profile
-router.put(`/api/v1/update_profile`, fileUpload.upload.single('file'), function (req, res, next) {
+router.put(`update_profile`, fileUpload.upload.single('file'), function (req, res, next) {
 
     var file = "http://localhost/uploads/" + req.file.filename;
     var user_id = req.body.user_id;

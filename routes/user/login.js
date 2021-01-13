@@ -13,7 +13,7 @@ router.get('/', function(req,res){
 // GET users listing
 router.get('/login', function(req,res){
     // console.log("/login")
-    res.render('index', { title: "login" });
+    res.render('users/signin', { title: "login" });
   });
 
 // GET all users

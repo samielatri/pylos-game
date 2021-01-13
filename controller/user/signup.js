@@ -1,6 +1,14 @@
 const Users = require('../../model/users');
 const bcrypt = require('bcryptjs');
 var fileUpload = require('../../controller/user/file-upload');
+const { render } = require('ejs');
+
+// mainMenu
+exports.mainMenu = async (req, res) => {
+    render('index', { title: "welcome" });
+}
+
+// registerUser
 exports.registerUser = async (req, res, next) => {
     try {
         // console.log('input data', req.body);
