@@ -70,7 +70,6 @@ let createUserToken = (email, id) => {
         process.env.SECRET_KEY, {
         expiresIn: '21h'
     });
-
 }
 
 // allUsers

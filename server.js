@@ -22,10 +22,11 @@ connectDB();
 const app = express();
 
 // list of sockets, a socket by user
-var socket_list = {};
+//var socket_list = {};
 
-const io = socketio(server); 
+//const io = socketio(server); 
 // Run when a client connect (socket)
+/*
 io.on('connection', socket => {
     console.log('new websocket connection');
 
@@ -50,7 +51,9 @@ io.on('connection', socket => {
     //})
     
 })
+*/
 
+/*
 // shows the board
 setInterval(function(){
     // package
@@ -65,6 +68,7 @@ setInterval(function(){
         });    
     }
 },1000/25) // runs every 40ms
+*/
 
 app.use(cors());
 // parse application/x-www-form-urlencoded
