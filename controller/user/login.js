@@ -6,7 +6,7 @@ const userLogin = require('../../model/users');
 const gameState = require('../../model/gameStats');
 const Friends = require('../../model/friend_list');
 
-// userLogin
+// userLogin : redirects to /users if success 
 exports.userLogin = async (req, res, next) => {
     try {
         console.log(req.body);
@@ -42,11 +42,13 @@ exports.userLogin = async (req, res, next) => {
                 // })
             } else {
                 // return response
-                return res.status(201).json({
-                    success: false,
-                    code: 201,
-                    error: 'Username or password Incorrect'
-                })
+                //res.status(201).json({
+                //    success: false,
+                //    code: 201,
+                //    error: 'Username or password Incorrect'
+                //})
+                // redirection
+                res.redirect('/login');
             }
         });
     } catch (error) { // intrernal server error
