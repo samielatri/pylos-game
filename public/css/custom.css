@@ -2,7 +2,7 @@
 
 body#jeu {
 	margin: 0px;
-	background-image: url("../../Pylos.png");
+	background-image: url("../img/Pylos.jpg");
 }
 
 nav > .nav.nav-tabs{
