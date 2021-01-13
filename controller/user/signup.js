@@ -1,6 +1,14 @@
 const Users = require('../../model/users');
 const bcrypt = require('bcryptjs');
 var fileUpload = require('../../controller/user/file-upload');
+const { render } = require('ejs');
+
+// mainMenu
+exports.mainMenu = async (req, res) => {
+    render('index', { title: "welcome" });
+}
+
+// registerUser
 exports.registerUser = async (req, res, next) => {
     try {
         // console.log('input data', req.body);
@@ -10,10 +18,13 @@ exports.registerUser = async (req, res, next) => {
         req.body.password = cryptedPassword;
         const transaction = await Users.create(req.body);
 
-        return res.status(200).json({
-            success: true,
-            data: transaction
-        })
+        //return res.status(200).json({
+        //    success: true,
+        //    data: transaction
+        //})
+
+        res.redirect('/game-menu');
+        
     } catch (error) {
         console.log("Server Error is ", error);
         return res.status(500).json({

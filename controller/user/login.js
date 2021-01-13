@@ -35,7 +35,7 @@ exports.userLogin = async (req, res, next) => {
                     "token": token
                 }
                 // redirection
-                res.redirect('/users');
+                res.redirect('/game-menu');
                 // return res.status(200).json({
                 //     success: true,
                 //     data: response

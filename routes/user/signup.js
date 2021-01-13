@@ -1,3 +1,5 @@
+// TODO : after signup you are signed in
+
 const express = require('express');
 
 const router = express.Router();
@@ -8,23 +10,42 @@ const { friendRequest, acceptRequest, changeFriendStatus } = require('../../cont
 
 var fileUpload = require('../../controller/user/file-upload');
 
+// get routes
+
+//router.route('/index')
+//.get(mainMenu);
+
+/************************ GET routes ************************/
+
+// GET signup
+router.get('/signup', function(req,res){
+    // console.log("/signup")
+    res.render('users/signup', { title: "sign up" });
+  });
+
+// GET terms
+router.get('/terms', function(req,res){
+    // console.log("/terms")
+    res.render('infos/terms', { title: "terms" });
+  });
+
 
 /************************ POST routes ************************/
 
 // POST sign up
-router.route('/api/v1/signup')
+router.route('/signup')
 .post(registerUser);
 
 // POST game stats
-router.route('/api/v1/game')
+router.route('game')
 .post(addGameStats);
 
 // POST send friend request
-router.route('/api/v1/send-request')
+router.route('send-request')
 .post(friendRequest);
 
 // POST accept friend request
-router.post(`/api/v1/accept-request`, function (req, res, next) {
+router.post(`accept-request`, function (req, res, next) {
     console.log(req.body);
      acceptRequest(req.body)
          .then((data) => {
@@ -38,7 +59,7 @@ router.post(`/api/v1/accept-request`, function (req, res, next) {
  });
 
 // POST friend status
-router.post(`/api/v1/friend-status`, function (req, res, next) {
+router.post(`friend-status`, function (req, res, next) {
     // console.log(req.body);
     changeFriendStatus(req.body)
          .then((data) => {
@@ -55,11 +76,11 @@ router.post(`/api/v1/friend-status`, function (req, res, next) {
 /*********************** PUT routes *************************/
 
 // not used yet !
-// router.route('/api/v1/update_profile',fileUpload.upload.single('file'))
+// router.route('update_profile',fileUpload.upload.single('file'))
 // .put(updateProfile)
 
 // PUT update profile
-router.put(`/api/v1/update_profile`, fileUpload.upload.single('file'), function (req, res, next) {
+router.put(`update_profile`, fileUpload.upload.single('file'), function (req, res, next) {
 
     var file = "http://localhost/uploads/" + req.file.filename;
     var user_id = req.body.user_id;
@@ -99,5 +120,18 @@ router.put(`/api/v1/game`, function (req, res, next) {
     // console.log("file name is",file);
 
 });
+
+
+// GET
+
+// Get gameMenu
+router.get('/game', function(req, res){
+    // console.log("/game")
+    res.render('game/play', { title: "game" });
+  });
+  
+// POST
+router.route('game')
+.post(addGameStats);
 
 module.exports = router;

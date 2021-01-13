@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%- include('partials/head') -%>
     <link rel="stylesheet" href="./css/index.css">
+	<%- include('../partials/head') -%>
   </head>
 
-  <%- include('partials/nav') -%>
+  <%- include('../partials/nav') -%>
 
 <body id="jeu2">
 <div class="container h-100">
@@ -16,7 +16,7 @@
                 </div> 
             <div class="d-flex justify-content-center form_container">
 
-                <form action="/api/v1/login" method="POST">
+                <form action="/login" method="POST">
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user">@</i></span>
@@ -38,17 +38,17 @@
     
             <div class="mt-4">
                 <div class="d-flex justify-content-center links">
-                    Don't have an account? <a href="Signup.html" class="ml-2"> Sign Up</a>
+                    Don't have an account? <a href="/signup" class="ml-2"> Sign Up</a>
                 </div>
                 <div class="d-flex justify-content-center links">
-                    <a href="signup.ejs">Forgot your password?</a>
+                    <a href="/forgot-password">Forgot your password?</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<%- include('partials/footer') -%>
+<%- include('../partials/footer') -%>
 
 </body>
 </html>

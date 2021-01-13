@@ -42,13 +42,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views')); // views
-app.set('view engine', 'ejs'); // ejs
+app.set('view engine', 'ejs'); //set views ejs
+app.set('views', path.join(__dirname, 'views')); // set views directory
 
 // const trnasactions = require('./routes/transactions');
 const signup = require('./routes/user/signup');
 const login = require('./routes/user/login');
-// const games = require('./routes/game/game');
+
+// TODO : call it
+//const games = require('./routes/game/game');
 
 
 app.use(express.json());
