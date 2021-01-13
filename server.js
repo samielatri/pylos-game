@@ -1,7 +1,7 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
-const socketio = require('scoket.io'); // socket io
+//const socketio = require('scoket.io'); // socket io
 
 var bodyParser = require('body-parser');
 var cors = require('cors');

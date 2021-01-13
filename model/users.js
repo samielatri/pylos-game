@@ -1,7 +1,7 @@
-import { Schema } from 'mongoose';
+const mogoose = require('mongoose');
 
 // userRegisterSchema
-const userRegisterSchema = new Schema({
+const userRegisterSchema = new mogoose.Schema({
     // email
     email_id: {
         type: String,
