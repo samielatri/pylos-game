@@ -20,8 +20,6 @@ document.getElementById("emit-search").addEventListener("click",()=>{
 });
 
 
-
-
 const buildPayload=()=>{
     //var element = document.getElementById(id);
     let payload = {
@@ -96,20 +94,23 @@ socket.on("play-movement-res", res=>{
     console.log(res.message); 
     logThis(res.message);
 
+    // get notif
     let notifElem = document.getElementById('notif');
     console.log(notifElem);
 
-    // logthis
+    // notif
     if (res.popsBall) { 
         console.log("you need to take a ball off");
         notifElem.innerHTML = "you need to take a ball off";
     }
 
+    // notif
     if (res.moveBall) {
         console.log("it is possible to place a ball on top but also on the floor");
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
     }
-
+    
+    // notif
     if (!res.succes) { // error
         console.log("error");
         notifElem.innerHTML = "error";
