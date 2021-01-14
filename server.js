@@ -37,19 +37,18 @@ const app = express();
 app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true })); // TODO : set it back to false ?
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({ secret: 'secret pylos',resave:true,saveUninitialized: true }));
+//app.use(session({ secret: 'secret pylos',resave:true,saveUninitialized: true }));
 
 // satatic
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, '/public')));
 
 // view engine setup
 
 // ejs
 app.set('view engine', 'ejs'); //set views ejs
-app.set('views', path.join(__dirname, 'views')); // set views directory
+app.set('views', path.join(__dirname, '/views')); // set views directory
 
 // hbs
 //app.engine('hbs', hbs({
@@ -62,8 +61,8 @@ app.set('views', path.join(__dirname, 'views')); // set views directory
 
 
 // passport
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.initialize());
+//app.use(passport.session());
 
 const signup = require('./routes/user/signup');
 const login = require('./routes/user/login');
@@ -98,6 +97,11 @@ app.use(login);
 //        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 //    });
 //}
+
+
+console.log("riri la souris");
+console.log(__dirname);
+console.log("riri la souris2");
 
 const DEFAULTPORT = 5000; 
 const PORT = process.env.PORT || DEFAULTPORT;
