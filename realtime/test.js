@@ -99,10 +99,10 @@ function draw(){
 
 
 
-function mousePressed() {
+setInterval(function () {
 	console.log("redraw")
 	redraw(1);
-}
+}, 1000/24);
 
 
 function pylosBoard(){
