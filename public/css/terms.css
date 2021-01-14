@@ -30,4 +30,10 @@ body#jeu2 {
 	text-align: center;
 }
 
+#tadiv
+{
+display: block;
+height: 600px;
+overflow: scroll;
+}
 
