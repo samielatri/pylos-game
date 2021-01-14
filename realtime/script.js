@@ -4,10 +4,10 @@ socket.on('hello-world', function(data) {
     console.log(data.msg)
 })
 
-let gameID=-1;
+let gameID = -1;
 
 document.getElementById("send-button").addEventListener("click",()=>{
-    if(gameID===-1){
+    if(gameID === -1){
         return;
     }
     const payload=buildPayload();
@@ -38,19 +38,23 @@ const buildPayload=()=>{
     return payload;
 }
 
-const emitSearch= ()=>{
-    socket.emit("search-game",null);
+// emit search for a game
+const emitSearch = ()=>{
+    socket.emit("search-game", null);
 }
 
-const emitMovmement=(payload)=>{
-    socket.emit("play-movement",payload);
+// emit movement
+const emitMovmement = (payload)=>{
+    socket.emit("play-movement", payload);
 }
 
-socket.on("search-response",(res)=>{
-    gameID=res.gameID;
+// if the socket receives a search response
+socket.on("search-response", (res)=>{
+    gameID = res.gameID;
     console.log(res);
 })
 
+// prints out to the logger the messages passed in
 const logThis = function logThis(message) {
     // if we pass an Error object, message.stack will have all the details, otherwise give us a string
     if (typeof message === 'object') {
@@ -66,9 +70,12 @@ const logThis = function logThis(message) {
     var dateTime = date + ' ' + time + ' ';
   
     //insert line
-    document.getElementById('logger').insertAdjacentHTML('afterbegin', dateTime + message + '<br>');
+    let logElm = document.getElementById('logger');
+    console.log(logElm);
+    logElm.insertAdjacentHTML('afterbegin', dateTime + message + '<br>');
   }
   
+  // converts an object to a String
   function objToString(obj) {
     var str = 'Object: ';
     for (var p in obj) {
@@ -81,8 +88,32 @@ const logThis = function logThis(message) {
 
 socket.on("play-movement-res", res=>{
     pylos=res.board;
-    logThis(res.message);
+
     console.log(pylos);
     console.log(res);
+
+    // logthis
+    console.log(res.message); 
+    logThis(res.message);
+
+    let notifElem = document.getElementById('notif');
+    console.log(notifElem);
+
+    // logthis
+    if (res.popsBall) { 
+        console.log("you need to take a ball off");
+        notifElem.innerHTML = "you need to take a ball off";
+    }
+
+    if (res.moveBall) {
+        console.log("it is possible to place a ball on top but also on the floor");
+        notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
+    }
+
+    if (!res.succes) { // error
+        console.log("error");
+        notifElem.innerHTML = "error";
+    }
+
 })
 
