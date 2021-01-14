@@ -27,11 +27,13 @@ exports.registerUser = async (req, res, next) => {
         
     } catch (error) {
         console.log("Server Error is ", error);
-        return res.status(500).json({
-            success: false,
-            Code: 500,
-            error: 'Server Error'
-        })
+        //return res.status(500).json({
+        //    success: false,
+        //    Code: 500,
+        //    error: 'Server Error'
+        //})
+        
+        res.redirect('/sign-up');
 
     }
 }
