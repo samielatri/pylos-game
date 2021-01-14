@@ -42,7 +42,7 @@ canvas{
     left: 30%;
     right: 5%;
     bottom: 5%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: grey;
     z-index: 20;
 
   }
