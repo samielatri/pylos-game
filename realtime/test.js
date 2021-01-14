@@ -1,9 +1,9 @@
-/*
-var firstBoard = [[2,1,1,2],[2,1,1,2],[2,2,1,1],[2,2,1,2]];
+
+/*var firstBoard = [[2,1,1,2],[2,1,1,2],[2,2,1,1],[2,2,1,2]];
 var secondBoard = [[1,1,2],[2,1,2],[1,1,2]];
 var thirdBoard = [[2,3],[2,1]];
-var fourthBoard = [[1]];
-*/
+var fourthBoard = [[1]];*/
+
 var firstBoard = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
 var secondBoard = [[0,0,0],[0,0,0],[0,0,0]];
 var thirdBoard = [[0,0],[0,0]];
@@ -11,6 +11,7 @@ var fourthBoard = [[0]];
 
 let pylos = [firstBoard,secondBoard,thirdBoard,fourthBoard];
 
+var time = setInterval(draw, 100);
 
 function make2DArray(cols, rows){
 	var arr = new Array(cols);
@@ -20,10 +21,7 @@ function make2DArray(cols, rows){
 	return arr;
 }
 
-var grid;
-var grid1;
-var grid2;
-var grid3;
+
 var cols = 4;
 var rows = 4;
 var canvasW = 300;
@@ -72,7 +70,7 @@ function setup(){
 
 
 function draw(){
-	console.log("draw")
+	console.log("draw");
 	background(255);
 	for(var i = 0; i < cols; i++){
 		for(var j = 0; j< rows; j++){
@@ -97,20 +95,11 @@ function draw(){
 	pylosBoard();
 }
 
-
-
-setInterval(function () {
-	console.log("redraw")
-	redraw(1);
-}, 1000/24);
-
-
 function pylosBoard(){
 	for(var u =0;u<4;u++){
 		var layer = pylos[u];
 		for(var i=0; i<layer.length;i++){
 			for(var j=0;j<layer.length;j++){
-				console.log(layer.length);
 				if(layer.length == 4){
 					if(layer[i][j] == 1){
 						//instruction si joueur 1
@@ -153,6 +142,9 @@ function pylosBoard(){
 	}
 }
 
-function drawBoard(pylos){
-
-}
+/*function mousePressed() {
+	if(mouseX<canvasW&&mouseX>0&&mouseY<canvasH&&mouseY>0){
+		console.log("redraw");
+		redraw();
+	}
+}*/
