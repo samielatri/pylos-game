@@ -99,9 +99,9 @@ app.use(login);
 //}
 
 
-console.log("riri la souris");
-console.log(__dirname);
-console.log("riri la souris2");
+process.on('uncaughtException', function (err) {
+    console.log(err);
+}); 
 
 const DEFAULTPORT = 5000; 
 const PORT = process.env.PORT || DEFAULTPORT;

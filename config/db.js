@@ -9,6 +9,7 @@ const MongoClient = require('mongodb').MongoClient;
 // mongodb+srv://herpes:wSdPOFFQR1LnpLMw@pylos.j4ui7.mongodb.net/pylos?retryWrites=true&w=majority
 // mongodb+srv://herpes:<password>@pylos.j4ui7.mongodb.net/<dbname>?retryWrites=true&w=majority
 const uri = "mongodb+srv://herpes:"+ pwd +"@pylos.j4ui7.mongodb.net/?retryWrites=true&w=majority"; // actual online uri
+// "mongodb+srv://herpes:wSdPOFFQR1LnpLMw@pylos.j4ui7.mongodb.net/?retryWrites=true&w=majority"
 
 // connection to database
 const connectDB = async ()=>{
