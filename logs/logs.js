@@ -1,60 +1,36 @@
-/* change console log behaviour */
-rewireLoggingToElement(
-    () => document.getElementById("log"),
-    () => document.getElementById("log-container"), true);
+const logThis = function logThis(message) {
+  // if we pass an Error object, message.stack will have all the details, otherwise give us a string
+  if (typeof message === 'object') {
+    message = message.stack || objToString(message);
+  }
 
-function rewireLoggingToElement(eleLocator, eleOverflowLocator, autoScroll) {
-    fixLoggingFunc('log');
-    fixLoggingFunc('debug');
-    fixLoggingFunc('warn');
-    fixLoggingFunc('error');
-    fixLoggingFunc('info');
+  console.log(message);
 
-    function fixLoggingFunc(name) {
-        console['old' + name] = console[name];
-        console[name] = function(...arguments) {
-            const output = produceOutput(name, arguments);
-            const eleLog = eleLocator();
+  // create the message line with current time
+  var today = new Date();
+  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  var time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+  var dateTime = date + ' ' + time + ' ';
 
-            if (autoScroll) {
-                const eleContainerLog = eleOverflowLocator();
-                const isScrolledToBottom = eleContainerLog.scrollHeight - eleContainerLog.clientHeight <= eleContainerLog.scrollTop + 1;
-                eleLog.innerHTML += output + "<br>";
-                if (isScrolledToBottom) {
-                    eleContainerLog.scrollTop = eleContainerLog.scrollHeight - eleContainerLog.clientHeight;
-                }
-            } else {
-                eleLog.innerHTML += output + "<br>";
-            }
-
-            console['old' + name].apply(undefined, arguments);
-        };
-    }
-
-    function produceOutput(name, args) {
-        return args.reduce((output, arg) => {
-            return output +
-                "<span class=\"log-" + (typeof arg) + " log-" + name + "\">" +
-                    (typeof arg === "object" && (JSON || {}).stringify ? JSON.stringify(arg) : arg) +
-                "</span>&nbsp;";
-        }, '');
-    }
+  //insert line
+  document.getElementById('logger').insertAdjacentHTML('afterbegin', dateTime + message + '<br>');
 }
 
-
-/*
-	type : log, debug, warn, error, info
-	message : message
-*/
-function logIt(type, message) {
-	setTimeout(() => {
-		console[type](type, message);
-	}, 11);
+function objToString(obj) {
+  var str = 'Object: ';
+  for (var p in obj) {
+    if (obj.hasOwnProperty(p)) {
+      str += p + '::' + obj[p] + ',\n';
+    }
+  }
+  return str;
 }
 
-logIt("info", "...");
+const object1 = {
+  a: 'somestring',
+  b: 42,
+  c: false
+};
 
-
-
-
-
+logThis(object1);
+logThis('And all the roads we have to walk are winding, And all the lights that lead us there are blinding');

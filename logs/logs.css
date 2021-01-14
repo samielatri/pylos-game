@@ -1,8 +1,12 @@
-#log-container { overflow: auto; height: 150px; }
-
-.log-warn { color: orange }
-.log-error { color: red }
-.log-info { color: skyblue }
-.log-log { color: silver }
-
-.log-warn, .log-error { font-weight: bold; }
+#logWindow {
+  overflow: auto;
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+}
