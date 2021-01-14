@@ -1,24 +1,31 @@
 {
-  "name": "game_app",
+  "name": "pylos",
   "version": "1.0.0",
-  "description": "Game Developer",
+  "description": "pylos game",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
+    "start": "node server.js",
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samielatri/pylos"
+  },
   "keywords": [
-    "game_app",
-    "game",
     "pylos",
-    "multiplayer",
-    "online"
+    "game"
   ],
-  "author": "samu",
+  "author": "herpes",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samielatri/pylos/issues"
+  },
+  "homepage": "https://github.com/samielatri/pylos#readme",
   "dependencies": {
+    "local": "^0.3.3",
+    "ajax": "0.0.4",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
@@ -27,14 +34,21 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.11",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "nodemailer": "^6.4.17",
     "path": "^0.12.7",
     "socket.io": "^3.0.5",
-    "socketio": "^1.0.0"
+    "socketio": "^1.0.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "session": "^0.1.0",
+    "start": "^5.1.0",
+    "mongodb": "^3.3.5",
+    "mongoose": "^5.11.11"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
