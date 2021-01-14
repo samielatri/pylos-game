@@ -1,0 +1,50 @@
+.signIn {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items:center;
+  color:  #8acbf7;
+}
+
+.signIn h1{
+  align-self: center;
+}
+
+#anniversary{
+  display: flex;
+}
+
+.signIn form{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: space-between;
+  height: 100%;
+}
+
+select {
+ padding:3px;
+ border:0.5px solid  #8acbf7;
+ border-radius:5px;
+ box-shadow:1px 1px 2px #C0C0C0 inset;
+ }
+
+ input {
+   padding:3px;
+   border:0.5px solid #8acbf7;
+   border-radius:5px;
+ }
+
+ input[type = submit]{
+   background-color:  #8acbf7;
+ }
+
+ input[type = reset]{
+   background-color:  #8acbf7;
+ }
+ input:focus, textarea:focus, select:focus {
+ outline: none;
+ border:1px solid  #8acbf7;
+ }

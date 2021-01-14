@@ -1,0 +1,48 @@
+#menu-deroulant, #menu-deroulant ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    height: 100%;
+}
+#menu-deroulant {
+    text-align: center;
+}
+#menu-deroulant li {
+/* hr place li elements */
+    display: inline-block;
+}
+
+#menu-deroulant a {
+  color : #f95f2d;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s 80ms;
+  margin-left: 20px;
+  border-bottom: solid 2px white;
+  background-color: white;
+}
+
+#menu-deroulant a:hover{
+  border-bottom: solid 2px #f95f2d;
+  font-size: 1.3em;
+}
+#menu-deroulant ul {
+    position: absolute;
+    left: -999em;
+    z-index: 1000;
+    background-color : white;
+    padding-left: 0px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-top: 25px;
+    display: flex;
+}
+#menu-deroulant li:hover ul {
+/* on hover of li we replace the elements */
+    left: auto;
+    flex-direction: column;
+    height: auto;
+    border-bottom: solid 2px #f95f2d;
+    align-items: flex-start;
+    font-size: 15px;
+}

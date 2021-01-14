@@ -1,0 +1,23 @@
+@font-face {/* new game police */
+    font-family: 'Aaargh';
+    src: url("font/Aaargh-webfont.eot") format('eot'),
+         url('font/Aaargh-webfont.woff') format('woff'),
+         url('font/Aaargh-webfont.ttf') format('truetype'),
+         url('font/Aaargh-webfont.svg') format('svg');}
+@font-face {
+    font-family: 'Amatic';
+    src: url('font/AmaticSC-Regular.ttf') format('truetype');}
+@font-face {
+    font-family: 'Gloria';
+    src: url('font/GloriaHallelujah.ttf') format('truetype');}
+@font-face {
+    font-family: 'deliusunicase-bold';
+    src: url('font/deliusunicase-bold.ttf') format('truetype');}
+@font-face {
+    font-family: 'deliusunicase-regular';
+    src: url('font/deliusunicase-regular.ttf') format('truetype');}
+
+@font-face {
+    font-family: 'berkshire';
+    src: url('font/berkshireswash-regular.ttf') format('truetype');}
+

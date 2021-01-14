@@ -1,0 +1,161 @@
+html, body {
+  height: 100%;
+  margin: 0; padding: 0;
+}
+
+body {
+  background-color: #8acbf7;
+  font-family: Arial Narrow, sans-serif;
+}
+
+header {
+  display: flex;
+  min-width: 100%;
+  min-height: 10%;
+  max-width: 100%;
+  max-height: 10%;
+  background-color: white;
+  border-top: solid 2px #34aaf9;
+  border-bottom: solid 1px #e0e0e0;
+  align-items: center;
+  box-shadow: 0px 1px 3px #EFE9EE;
+  z-index: 10;
+  position: relative;
+}
+
+header h1 {
+  color: #34aaf9;
+  font-family: "Amatic";
+  font-size: 3em;
+}
+
+header img {
+  width:2.5%;
+  height:2.5%;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 2px;
+  border : solid 2px #f95f2d;
+  border-radius : 50%;
+}
+
+header ul {
+  list-style-type: none;
+  display: flex;
+  color: #F63471;
+  font-size: 1.2em;
+}
+
+#menu {
+  height: 100%;
+}
+
+
+#menu a{
+  color : #f95f2d;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 30px;
+  margin-left: 20px;
+  border-bottom: solid 2px white;
+}
+
+#menu a:hover{
+  color : #f95f2d;
+  text-decoration: none;
+  line-height: 30px;
+  margin-left: 20px;
+  border-bottom: solid 2px #f95f2d;
+}
+
+#connexion{
+  margin-left: auto;
+  margin-right: 10px;
+  width: 20%;
+  justify-content : space-around;
+}
+
+#connexion a {
+  color : #f95f2d;
+  text-decoration: none;
+  border : solid 2px #f95f2d;
+  border-radius : 3em;
+  padding: 3px 10px 3px 10px;
+}
+
+#connexion a:hover {
+  color : white;
+  background-color:#f95f2d ;
+  text-decoration: none;
+  border : solid 2px #f95f2d;
+  border-radius : 3em;
+  padding: 3px 10px 3px 10px;
+}
+
+
+article {
+margin: 0% 8% 0% 8%;
+align-self: center;
+background-color: white;
+z-index: 5;
+position: relative;
+min-height: 80%;
+box-shadow: 1px 0px 3px #EFE9EE, -1px 0px 3px #EFE9EE;
+justify-content: space-around;
+align-items: center;
+display: flex;
+padding: 20px;
+padding-top: 20px;
+flex-direction : column;
+}
+
+article h1{
+  font-size: 1.5em;
+  color : #f95f2d;
+  font-family: 'Gloria';
+  padding: 0px;
+  margin: 0px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  font-size: 1.5em;
+  padding: 10px 10px 10px 10px;
+  align-content: center;
+  margin: 10px;
+  background-color: white;
+  border-right: solid 2px #f95f2d;
+  width: 10%;
+  color: grey;
+}
+
+nav h1 {
+  padding: 0px;
+}
+
+nav ul {
+  padding: 0px;
+}
+
+nav li {
+  margin-top: 5px;
+  list-style-type: none;
+  font-size: 4em;
+}
+
+nav a {
+  color : gray;
+  text-decoration: none;
+}
+footer {
+  background-color: white;
+  height: 5%;
+  align-self : flex-end;
+  border-top: solid 1px #e0e0e0;
+  border-bottom: solid 3px #f95f2d;
+  z-index: 7;
+  position: relative;
+  box-shadow: 0px -1px 3px #EFE9EE;
+}
