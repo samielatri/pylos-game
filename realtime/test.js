@@ -13,7 +13,7 @@ var fourthBoard = [[0]];
 let pylos = [firstBoard,secondBoard,thirdBoard,fourthBoard];
 //let pylos2 = [firstBoard1,secondBoard1,thirdBoard1,fourthBoard1];
 
-var time = setInterval(draw, 100);
+//var time = setInterval(draw, 100);
 
 function make2DArray(cols, rows){
 	var arr = new Array(cols);
@@ -167,9 +167,8 @@ function pylosBoard(){
 	}
 }*/
 
-function showBoard(tab){
+function showBoard(){
 	clear();
-	pylos = tab;
 	redraw();	
 }
 

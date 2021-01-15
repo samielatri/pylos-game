@@ -146,13 +146,18 @@ socket.on("play-movement-res", res=>{
     console.log(res.msg); 
 
     //update affichage
-
     pylos = res.board;
+    showBoard(pylos);
+    clear();
+    redraw();
+/*
     if(time != null){
       clearInterval(time);
       showBoard(pylos);
       time = setInterval(draw,100);
     }
+    */
+  
     
     
 
