@@ -19,7 +19,7 @@ dotenv.config({ path: './config/config.env' });
 console.log("going to connect to database...");
 
 // connect to database
-connectDB();
+//connectDB();
 
 const app = express();
 

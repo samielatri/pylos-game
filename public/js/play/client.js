@@ -217,6 +217,7 @@ function setBalls(res){
 	}
 }
 
+
 socket.on("play-movement-res", res=>{
     
     console.log("call : client.js -> play-movement-res");
@@ -257,6 +258,26 @@ socket.on("play-movement-res", res=>{
         console.log("it is possible to place a ball on top but also on the floor");
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
 	}
+
+
+  let balls1 = document.getElementById('number1');
+  balls1.innerHTML = res.player1Balls;
+
+  let balls2 = document.getElementById('number2');
+  balls2.innerHTML = res.player2Balls;
+
+  // victory
+  if(res.victory == 1){
+    console.log("player 1 RED wins");
+    notifElem.innerHTML = "player 1 RED wins";
+    logThis("player 1 RED wins");
+  }
+
+  if(res.victory == 2){
+    console.log("player 2 GRAY wins");
+    notifElem.innerHTML = "player 2 GRAT wins";
+    logThis("player 2 GRAY wins");
+  }
 
 })
 
