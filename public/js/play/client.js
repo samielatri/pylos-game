@@ -271,13 +271,6 @@ socket.on("play-movement-res", res=>{
     logThis("player 2 GRAY wins");
   }
 
-  let balls1 = document.getElementById('number1');
-  console.log("balls1");
-  balls1.innerHTML = res.player1Balls;
-
-  let balls2 = document.getElementById('number2');
-  console.log("balls2");
-  balls2.innerHTML = res.player2Balls;
 
 })
 
