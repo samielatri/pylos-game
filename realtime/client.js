@@ -129,8 +129,8 @@ socket.on("play-movement-res", res=>{
     let notifElem = document.getElementById('notif');
     console.log(notifElem);
     
+    logThis(res.msg);
     if(!res.isValid){
-      logThis("Entry not valid: try again")
       return;
     }
     console.log(res.msg); 
