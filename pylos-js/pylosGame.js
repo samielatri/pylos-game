@@ -22,6 +22,9 @@ class PylosGame{
         }
         if(movesBall===true && this.canMove===true){
             console.log("moveable");
+            if(this.moveableBalls===null){
+                return {success:false,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball cannot be moved", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
+            }
             let found=this.moveableBalls.find(ball => ball.x===movement.x&&ball.y===movement.y&&ball.layer===movement.layer);
             console.log(this.moveableBalls);
             // si on ne peux pas deplacer cette boulle
@@ -117,7 +120,9 @@ class PylosGame{
         res.popBallCpt=_.cloneDeep(this.popBallCpt);
         res.lastPayload=_.cloneDeep(this.lastPayload);
         res.canMove=_.cloneDeep(this.canMove);
-        res. moveableBalls=_.cloneDeep(this.popBallCpt);
+        res.moveableBalls=_.cloneDeep(this.moveableBalls);
+        res.moveDestination=_.cloneDeep(this.moveDestination);
+
         return res;
     } 
 

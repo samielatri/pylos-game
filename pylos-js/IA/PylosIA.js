@@ -11,26 +11,10 @@ var _= require("lodash");
 //forme un carre en montant une bille
 
 function eval(position){
+    return 0;
 }
 
-
-const generatePossiblePop=()=>{
-}
-
-/*
-
-                for(let i=0;i<payloads.length;i++){
-                    let response=pylosPosition.playMovement(payloads[i])
-                    if(response.success===true){
-                        if(response)
-                        positions.push({pylosGame:pylosPosition, lastResponse:response});
-                    }
-                }
-
-*/
-
-
-const  _generatePossibleGames=({lastResponse, pylosGame},{movesBall,popsBall})=>{
+const  _generatePossibleGames=({pylosGame},{movesBall,popsBall})=>{
     //on parcours toutes les cases
     let positions=[];
     for(let layer=0;layer<pylosGame.board.layers.length;layer++){
@@ -67,13 +51,132 @@ const executeAndAddPosition=(pylosPosition, payloads, positions)=>{
     }
 }
 
-const  generatePossiblePositionsPop=({lastResponse, pylosGame})=>{
-    
+
+//considere qu'on enelee une seul bille
+const  generatePossiblePositions=({lastResponse, pylosGame})=>{
+    let basicPositions=_generatePossibleGames({pylosGame},{movesBall:false,popsBall:false});
+    //cas aucun tour auparavant
+    if(lastResponse===null){
+        return basicPositions;
+    }
+    if(lastResponse.popBall){
+        // on considere qu'on enleve seuelemtn une bille
+        let positions =[];
+        positions=_generatePossibleGames({pylosGame},{movesBall:false,popsBall:true});
+        for(let i=0;i<positions.length;i++){
+            let payload={
+                movement:{
+                    x:0,
+                    y:0,
+                    layer:0,
+            },
+            popsBall:false, 
+            movesBall:false,
+            }   
+            positions[i].PylosGame.playMovement(payload);
+        }
+        //on retourne le set de position possible
+        return positions.concat(basicPositions);
+    }else if(lastResponse.moveBall){
+        positions=_generatePossibleGames({pylosGame},{movesBall:true,popsBall:false});
+        return positions.concat(basicPositions);
+    }else{
+        return basicPositions;
+    }        
 } 
 
-const generatePossiblePositionsMove=({lastResponse, pylosGame})
+var calcBestMove = function(depth, game, playerColor,
+    alpha=Number.NEGATIVE_INFINITY,
+    beta=Number.POSITIVE_INFINITY,
+    isMaximizingPlayer=true) {
+// Base case: evaluate board
+    if (depth === 0) {
+        value = eval(game.board(), playerColor);
+        return [value, null]
+    }
 
+var minmax= function(depth,{pylosGame, lastResponse}, playerColor,
+                            alpha=Number.NEGATIVE_INFINITY,
+                            beta=Number.POSITIVE_INFINITY,
+                            isMaximizingPlayer=true) {
+  // Base case: evaluate board
+  if (depth === 0) {
+    value = evaluateBoard(game.board(), playerColor);
+    return [value, null]
+  }
 
+  // Recursive case: search possible moves
+  var bestMove = null; // best move not set yet
+  var possibleMoves = game.moves();
+  // Set a default best move value
+  var bestMoveValue = isMaximizingPlayer ? Number.NEGATIVE_INFINITY
+                                         : Number.POSITIVE_INFINITY;
+  
+    let childPositions =generatePossiblePositions({lastResponse,pylosGame});
+                                         for (var i = 0; i < possibleMoves.length; i++) {
+    var move = possibleMoves[i];
+    // Make the move, but undo before exiting loop
+    game.move(move);
+    // Recursively get the value from this move
+    value = calcBestMove(depth-1, game, playerColor, alpha, beta, !isMaximizingPlayer)[0];
+    // Log the value of this move
+    console.log(isMaximizingPlayer ? 'Max: ' : 'Min: ', depth, move, value,
+                bestMove, bestMoveValue);
+
+    if (isMaximizingPlayer) {
+      // Look for moves that maximize position
+      if (value > bestMoveValue) {
+        bestMoveValue = value;
+        bestMove = move;
+      }
+      alpha = Math.max(alpha, value);
+    } else {
+      // Look for moves that minimize position
+      if (value < bestMoveValue) {
+        bestMoveValue = value;
+        bestMove = move;
+      }
+      beta = Math.min(beta, value);
+    }
+    // Undo previous move
+    game.undo();
+    // Check for alpha beta pruning
+    if (beta <= alpha) {
+      console.log('Prune', alpha, beta);
+      break;
+    }
+  }
+/*
+const minmax=({lastResponse,pylosGame},depth,alpha,beta,maximizingPlayer)=>{
+    if(depth===0){
+        return eval({lastResponse,pylosGame});
+    }
+    let childPositions =generatePossiblePositions({lastResponse,pylosGame});
+    if(maximizingPlayer){
+        let maxEval= -100000;
+        for(let i=0;i<childPositions.length;i++){
+            let eval=minmax(childPositions[i], depth-1,alpha,beta,false)
+            maxEval = Math.max(eval,maxEval);
+            alpha=Math.max(alpha,eval);
+            if(beta<=alpha){
+                break;
+            } 
+        }
+        return maxEval;
+    }else{
+        minEval = 100000;
+        for(let i=0;i<childPositions.length;i++){
+            let eval=-minmax(childPositions[i], depth-1, alpha,beta,true)
+            minEval = Math.min(eval,minEval); 
+            beta = Math.min(beta,eval);
+            if (beta<=alpha){
+                break;
+            }
+        }
+    }
+}
+
+/*
 
 const generatePossiblePositions=({lastResponse, pylosGame},player)=>{
     //on parcours toutes les cases
@@ -130,37 +233,11 @@ const generatePossiblePositions=({lastResponse, pylosGame},player)=>{
     }    
     return positions;        
 }
-
+*/
 //minmax(pos,3,-inf,+inf,true)
-const minmax=(position,depth,alpha,beta,maximizingPlayer)=>{
-    if(depth===0){
-        return eval(position)
-    }
-    let childPositions =generatePossiblePositions(position);
-    if(maximizingPlayer){
-        let maxEval= -10000;
-        for(childPosition in childPositions){
-            let eval=minmax(childPosition, depth-1,alpha,beta,false)
-            maxEval = Math.max(eval,maxEval);
-            alpha=Math.max(alpha,eval);
-            if(beta<=alpha){
-                break;
-            } 
-        }
-        return maxEval;
-    }else{
-        minEval = 10000;
-        for(childPosition in childPositions){
-            let eval=-minmax(childPosition, depth-1, alpha,beta,true)
-            minEval = Math.min(eval,minEval); 
-            beta = Math.min(beta,eval);
-            if (beta<=alpha){
-                break;
-            }
-        }
-    }
-}
+
 
 module.exports={
-    generatePossiblePositions
+    generatePossiblePositions,
+    minmax
 }
