@@ -4,10 +4,8 @@ module.exports=(server)=>{
         cors:{
             origin:"*"
         }
-    });
-    
+    }); 
     let id = 0;
-    
     // generation id
     function generateID(){
         id += 1;
@@ -73,8 +71,8 @@ module.exports=(server)=>{
     
         socket.on("play-movement", payload =>{
             const {gameID} = payload;
-            console.log("play-movement")
-            console.log(payload)
+            console.log("play-movement");
+            console.log(payload);
             let userGame = inGame[gameID];
             if(userGame===undefined ||gameID===undefined){
                 socket.emit("play-movement-res",{success:false,isValid:false, msg:"Not ingame.Please emit search."})
