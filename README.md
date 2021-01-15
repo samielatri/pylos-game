@@ -57,3 +57,30 @@ we kept the console logs for better understanding of the flow of the code
 stack : p5 library, bootstrap library, jquery library, mongodb and mongoose, nodejs and express, and socket.io.  
 By the way, it's our first time using this stack (beside bootstrap and jquery).
 of course, we also use html5, css3 and javascript
+
+what we did modify from our last meet up : 
+	the game (front and back) :
+		better search :
+			when searching, you can't search anymore, so we assure you're still searching
+		multiple search :
+			was implemented before but needed a quick fix for a case 
+		more logs :
+			more console logs and more logs of history of the game to make what's happening clear
+		know who is playing and turn :
+			show who is playing and turn
+		better look up :
+			better look for the game
+		more checks :
+			more checks for the game (especially outputs)
+		victory/lost : 
+			victory and lost implementations
+	code :
+		cleaner code :
+			added comments and cleaned unused/commented code
+		better reorganisation of files :
+			reorganize files
+	front of the website : 
+		complete redone of the general front of the website
+	AI : 
+		better ai
+	
