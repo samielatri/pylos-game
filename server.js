@@ -1,16 +1,21 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
-const hbs = require('express-handlebars');
-const session = require('express-session');
-const passport = require('passport');
+
+// const hbs = require('express-handlebars');
+// const session = require('express-session');
+// const passport = require('passport');
+
 var bodyParser = require('body-parser');
 var cors = require('cors');
+
 const dotenv = require('dotenv'); // env file
 const morgan = require('morgan'); // for logs
 const colors = require('colors'); // colors
+
 const connectDB = require('./config/db');
 var cookieParser = require('cookie-parser');
+
 dotenv.config({ path: './config/config.env' });
 
 // connect to database
@@ -33,6 +38,9 @@ const app = express();
 //    }
 //},1000/25) // runs every 40ms
 
+app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
+app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
+app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
 app.use(cors());
 // parse application/x-www-form-urlencoded
@@ -42,13 +50,13 @@ app.use(cookieParser());
 //app.use(session({ secret: 'secret pylos',resave:true,saveUninitialized: true }));
 
 // satatic
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // view engine setup
 
 // ejs
-app.set('view engine', 'ejs'); //set views ejs
 app.set('views', path.join(__dirname, '/views')); // set views directory
+app.set('view engine', 'ejs'); //set views ejs
 
 // hbs
 //app.engine('hbs', hbs({
@@ -90,7 +98,7 @@ app.use(login);
 // app.use('',games);
 
 
-// if react build (Configuration for deploymnet of on server and run on one port)
+// possible react build (Configuration for deploymnet of on server and run on one port)
 //if (process.env.NODE_ENV === 'production') {
 //    app.use(express.static('client/build'));
 //    app.get('*', (req, res) => {
@@ -99,11 +107,12 @@ app.use(login);
 //}
 
 
-process.on('uncaughtException', function (err) {
-    console.log(err);
-}); 
-
-const DEFAULTPORT = 5000; 
+const DEFAULTPORT = 3000; 
 const PORT = process.env.PORT || DEFAULTPORT;
 // listen for requests
 app.listen(PORT, console.log(`Server running  in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
+
+// if error log in
+process.on('uncaughtException', function (err) {
+    console.log(err);
+}); 
