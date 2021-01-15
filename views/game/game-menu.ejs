@@ -2,16 +2,51 @@
 <html>
   <head>
     <link rel="stylesheet" href="../css/play.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<%- include('../partials/head') -%>
   </head>
 <body id="jeu2">
     <%- include('../partials/nav') -%>
-
-    <nav class="nav nav-pills nav-fill" id="navbar_game">
-        <a class="nav-link text-danger" href="/game">Jouer</a>
-        <a class="nav-link"  href="/game">Jouer contre un ami</a>
-        <a class="nav-link" href="/game">Jouer contre l'ordinateur</a>
-    </nav>
+    
+    <section>
+        <div class="container">
+        
+          
+            <div class="row mbr-justify-content-center">
+                    <div class="col-lg-6 mbr-col-md-10">
+                        <div class="wrap">
+                            <div class="ico-wrap">
+                                <span class="mbr-iconfont fa-globe fa"></span>
+                            </div>
+                            <a href="/game">
+                            <div class="text-wrap vcenter">
+                                <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Play
+                                    <span>against a player</span>
+                                </h2>
+                                <p class="mbr-fonts-style text1 mbr-text display-6">If you choose this option, you will play against another player </p>
+                            </div>
+                          </a> 
+                        </div>
+                    </div>
+                 
+                    <div class="col-lg-6 mbr-col-md-10">
+                        <div class="wrap">
+                            <div class="ico-wrap">
+                                <span class="mbr-iconfont fa-trophy fa"></span>
+                            </div>
+                            <a href="/game"> 
+                            <div class="text-wrap vcenter">
+                                <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Play <span>against the computer</span></h2>
+                                <p class="mbr-fonts-style text1 mbr-text display-6">I you choose this option, you wil play against the computer</p>
+                            </div>
+                          </a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </section>
 
 
 
