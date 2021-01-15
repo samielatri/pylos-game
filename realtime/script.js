@@ -224,11 +224,12 @@ socket.on("play-movement-res", res=>{
     // get notif
     let notifElem = document.getElementById('notif');
     console.log(notifElem);
-    pylos=res.board;
+    
     if(!res.isValid){
         logThis("Entry not valid: try again")
         return;
     }
+    pylos=res.board;
     // notif
     
     if (res.popsBall) { 

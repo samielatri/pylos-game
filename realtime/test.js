@@ -71,7 +71,7 @@ function setup(){
 
 function draw(){
 	console.log("draw");
-	background(255);
+//	background(255);
 	for(var i = 0; i < cols; i++){
 		for(var j = 0; j< rows; j++){
 			grid[i][j].show();			
@@ -103,37 +103,46 @@ function pylosBoard(){
 				if(layer.length == 4){
 					if(layer[i][j] == 1){
 						//instruction si joueur 1
-						grid[i][j].player1 = true;
+						grid[i][j].player1Tour();
 					}if(layer[i][j] == 2){					
 						//instruction si joueur 2
-						grid[i][j].player2 = true;
+						grid[i][j].player2Tour();
+					}else{
+						grid[i][j].videCell();
 					}
+
 				}
 				if(layer.length == 3){
 					if(layer[i][j] == 1){
 						//instruction si joueur 1
-						grid1[i][j].player1 = true;
+						grid1[i][j].player1Tour();
 					}if(layer[i][j] == 2){					
 						//instruction si joueur 2
-						grid1[i][j].player2 = true;
+						grid1[i][j].player2Tour();
+					}else{
+						grid1[i][j].videCell();
 					}
 				}
 				if(layer.length == 2){
 					if(layer[i][j] == 1){
 						//instruction si joueur 1
-						grid2[i][j].player1 = true;
+						grid2[i][j].player1Tour();
 					}if(layer[i][j] == 2){					
 						//instruction si joueur 2
-						grid2[i][j].player2 = true;
+						grid2[i][j].player2Tour();
+					}else{
+						grid2[i][j].videCell();
 					}
 				}if(layer.length == 1){
 
 					if(layer[i][j] == 1){
 						//instruction si joueur 1
-						grid3[i][j].player1 = true;
+						grid3[i][j].player1Tour();
 					}if(layer[i][j] == 2){					
 						//instruction si joueur 2
-						grid3[i][j].player2 = true;
+						grid3[i][j].player2Tour();
+					}else{
+						grid3[i][j].videCell();
 					}
 				}
 

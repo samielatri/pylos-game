@@ -52,41 +52,7 @@ body {
     border-radius: 10px;
     position: absolute;
     top:30%;
-    left:25%;
-}
-
-#moveBallYes{
-
-}
-#moveBallYes msg-container1{
-	display: flex;
-    flex-direction: column;
-    align-items: center;
-    border:3px green;
-    border-radius: 10px;
-    position: absolute;
-    top:20%;
-    left:75%;
-}
-#moveBallYes msg-container2{
-	display: flex;
-    flex-direction: column;
-    align-items: center;
-    border:3px green;
-    border-radius: 10px;
-    position: absolute;
-    top:60%;
-    left:75%;
-}
-#moveBallYes msg-container3{
-	display: flex;
-    flex-direction: column;
-    align-items: center;
-    border:3px green;
-    border-radius: 10px;
-    position: absolute;
-    top:100%;
-    left:75%;
+    left:65%;
 }
 
 #notification{

@@ -102,15 +102,15 @@ class Board{
         if(ballsFormedSquare===null){
             return null;
         }
-        let ballDestination=hasBallOnTopOfBalls(ballsFormedSquare);
+        let ballDestination=this.hasBallOnTopOfBalls(ballsFormedSquare);
         if(ballDestination===null){
             return null;
         }
         for(let layer=0;layer<2;layer++){
             for(let x=0;x<this.layers[layer].length;x++){
                 for(let y=0;y<this.layers[layer][x].length;y++){
-                    if(!hasBallOnTop(this.layers[layer][x][y])&&!this.containsBallInBalls(ballsFormedSquare,{x:x,y:y,layer:layer})){
-                        balls.push(buildJsonSquare(layer,x,y));
+                    if(this.layers[layer][x][y]!==0 &&!hasBallOnTop(this.layers,layer,x,y)&&!this.containsBallInBalls(ballsFormedSquare,{x:x,y:y,layer:layer})){
+                        balls.push(this.buildJsonSquare(layer,x,y));
                     }
                 }
             }
@@ -283,10 +283,10 @@ class Board{
         var bool3= this.layers[layer][x][y-1] !==0;
         if((bool1 && bool2 && bool3)){
             const squares = [
-                buildJsonSquare(x+1,y,layer),
-                buildJsonSquare(x+1,y-1,layer),
-                buildJsonSquare(x,y-1,layer),
-                buildJsonSquare(x,y,layer)       
+                this.buildJsonSquare(x+1,y,layer),
+                this.buildJsonSquare(x+1,y-1,layer),
+                this.buildJsonSquare(x,y-1,layer),
+                this.buildJsonSquare(x,y,layer)       
             ]    
             return squares; 
         }else{
@@ -301,10 +301,10 @@ class Board{
         var bool3= this.layers[layer][x-1][y-1] !== 0;
         if((bool1 && bool2 && bool3)){
             const squares = [
-                buildJsonSquare(x-1,y,layer),
-                buildJsonSquare(x,y-1,layer),
-                buildJsonSquare(x-1,y-1,layer),
-                buildJsonSquare(x,y,layer)       
+                this.buildJsonSquare(x-1,y,layer),
+                this.buildJsonSquare(x,y-1,layer),
+                this.buildJsonSquare(x-1,y-1,layer),
+                this.buildJsonSquare(x,y,layer)       
             ]
             return squares; 
         }else{
@@ -319,10 +319,10 @@ class Board{
         var bool3= this.layers[layer][x+1][y+1]!==0;
         if((bool1 && bool2 && bool3)){
             const squares = [
-                buildJsonSquare(x+1,y,layer),
-                buildJsonSquare(x,y+1,layer),
-                buildJsonSquare(x+1,y+1,layer),
-                buildJsonSquare(x,y,layer)       
+                this.buildJsonSquare(x+1,y,layer),
+                this.buildJsonSquare(x,y+1,layer),
+                this.buildJsonSquare(x+1,y+1,layer),
+                this.buildJsonSquare(x,y,layer)       
             ]
             return squares; 
         }else{
@@ -337,10 +337,10 @@ class Board{
         //return  (this.layers[layer][x-1][y] === this.layers[layer][x][y+1] === this.layers[layer][x-1][y+1] ===player );
         if((bool1 && bool2 && bool3)){
             const squares = [
-                buildJsonSquare(x-1,y,layer),
-                buildJsonSquare(x,y+1,layer),
-                buildJsonSquare(x-1,y+1,layer),
-                buildJsonSquare(x,y,layer)       
+                this.buildJsonSquare(x-1,y,layer),
+                this.buildJsonSquare(x,y+1,layer),
+                this.buildJsonSquare(x-1,y+1,layer),
+                this.buildJsonSquare(x,y,layer)       
             ]
             return squares; 
         }else{
@@ -392,8 +392,6 @@ class Board{
             this.player2Balls--;
         }
     }
-
-
     popBall=(movement,player)=>{
         const {layer,x,y} = movement;
         if(!this.isPopValid(movement,player)){
