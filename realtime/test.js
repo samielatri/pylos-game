@@ -11,7 +11,7 @@ var thirdBoard = [[0,0],[0,0]];
 var fourthBoard = [[0]];
 
 let pylos = [firstBoard,secondBoard,thirdBoard,fourthBoard];
-//let pylos = [firstBoard1,secondBoard1,thirdBoard1,fourthBoard1];
+//let pylos2 = [firstBoard1,secondBoard1,thirdBoard1,fourthBoard1];
 
 var time = setInterval(draw, 100);
 
