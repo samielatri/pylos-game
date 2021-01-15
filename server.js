@@ -109,6 +109,7 @@ app.use(login);
 
 const DEFAULTPORT = 3200; 
 const PORT = process.env.PORT || DEFAULTPORT;
+
 // listen for requests
 const server =app.listen(PORT, console.log(`Server running  in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
 require("./realtime/socket.js")(server);

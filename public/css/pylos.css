@@ -1,6 +1,4 @@
 body {
-  background-image: url("img/boite.jpg");
-  background-attachment: fixed; /* Le fond restera fixe */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -122,4 +120,12 @@ canvas{
 
 .shown{
   display: flex;
+}
+
+.makeItMyTurn {
+  background: rgba(134, 1, 1, 0.753);
+}
+
+.makeItNotMyTurn {
+  background: hsla(0, 1%, 52%, 0.63);
 }

@@ -133,17 +133,35 @@ function showPopBall(){
   }    
 }
 
+
+
 socket.on("play-movement-res", res=>{
-    console.log("res:")
-    console.log(res);
-    let notifElem = document.getElementById('notif');
-    console.log(notifElem);
+
+  let classTurn = "makeItMyTurn";
+  let classNotTurn = "makeItNotMyTurn";
+
+  let playerYourUI = document.getElementById("youPing");
+  console.log(playerYourUI);
+  
+  let playerOpponentUI = document.getElementById("opponentPing");
+  console.log(playerOpponentUI);
+  
+  playerYourUI.classList.remove(classTurn);
+  playerYourUI.classList.add(classNotTurn);
+
+  playerOpponentUI.classList.remove(classNotTurn);
+  playerOpponentUI.classList.remove(classTurn);
+
+  console.log("res:")
+  console.log(res);
+  let notifElem = document.getElementById('notif');
+  console.log(notifElem);
     
-    logThis(res.msg);
-    if(!res.isValid){
-      return;
-    }
-    console.log(res.msg); 
+  logThis(res.msg);
+  if(!res.isValid){
+    return;
+  }
+  console.log(res.msg); 
 
     //update affichage
     pylos = res.board;

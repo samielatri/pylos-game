@@ -6,7 +6,7 @@ module.exports=(server)=>{
             origin:"*"
         }
     });
-    
+
     let id = 0;
     
     // generation id
