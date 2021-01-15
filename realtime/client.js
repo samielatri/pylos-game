@@ -88,8 +88,6 @@ const emitMovmement = (payload)=>{
     return str;
   }
 
-//className
-
   // first function for moveBall (the one that shows)
   function showMoveBall(){
     let el=document.getElementById("moveBall");
@@ -134,19 +132,18 @@ socket.on("play-movement-res", res=>{
       return;
     }
     console.log(res.msg); 
-    logThis(res.msg);
 
     //update affichage
     pylos=res.board;
 
-    if (res.popBall) { 
+    if (res.popsBall===true) { 
+        showPopBall();
         console.log("you need to take a ball off");
         notifElem.innerHTML = "you need to take a ball off";
-        showPopBall();
     }
     // notif
-    if (res.moveBall) {
-      showMoveBall();
+    if (res.movesBall===true) {
+        showMoveBall();
         console.log("it is possible to place a ball on top but also on the floor");
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
         logThis(res.moveableBalls)
@@ -157,10 +154,9 @@ socket.on("play-movement-res", res=>{
         console.log("error");
         notifElem.innerHTML = "error";
     }
-    logThis(res.msg);
 
-    // tests for firstFunction secondFunction and thirdFunction
-//    showMoveBall();
+    //tests for firstFunction secondFunction and thirdFunction
+    //showMoveBall();
     //showPopBall();
     clearMovePopBall();
   })

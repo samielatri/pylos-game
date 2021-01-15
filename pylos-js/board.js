@@ -409,7 +409,7 @@ class Board{
         if(x<0 || y<0){
             return false;
         }
-        if(x>this.layers[layer].length|| y>this.layers[layer].length ){
+        if(x>this.layers[layer].length-1|| y>this.layers[layer].length-1 ){
             return false
         }
         return true;

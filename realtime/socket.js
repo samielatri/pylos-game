@@ -52,6 +52,7 @@ io.sockets.on('connection', socket=>{
         }
         if(usersInGame.find(user=>user===socket.id)!==undefined){
             socket.emit("play-movement-res", {isValid:false, msg:"Vous êtes déjà en jeu!"});
+            return;
         }
         // first in first out
         let user = usersSearchingGame.pop();
@@ -81,11 +82,13 @@ io.sockets.on('connection', socket=>{
         console.log("play-movement")
         console.log(payload)
         let userGame = inGame[gameID];
-        if(userGame===undefined){
+        if(userGame===undefined ||gameID===undefined){
             socket.emit("play-movement-res",{success:false,isValid:false, msg:"Not ingame.Please emit search."})
+            return;
         }
         if(areUsersConnected(gameID)){
             socket.emit("play-movement-res",{success:false,isValid:false, msg:"On of the users disconnected. Please refresh game"})
+            return;
         }
         if(!userGame.cmpCurrentPlayer(socket.id)){
             console.log("bad player")
