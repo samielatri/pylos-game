@@ -146,7 +146,15 @@ socket.on("play-movement-res", res=>{
     console.log(res.msg); 
 
     //update affichage
-    pylos=res.board;
+
+    pylos = res.board;
+    if(time != null){
+      clearInterval(time);
+      showBoard(pylos);
+      time = setInterval(draw,100);
+    }
+    
+    
 
     if (res.popBall===true) { 
         showPopBall();

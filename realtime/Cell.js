@@ -27,6 +27,12 @@ Cell.prototype.show = function(){
 	}
 }
 
+Cell.prototype.delete = function(){
+	stroke(0);
+	noFill();
+	rect(this.x,this.y,this.w,this.w);
+}
+
 
 Cell.prototype.contains= function(x,y){
 	return (x > this.x && x < this.x + this.w && y > this.y && y < this.y + this.w)	;
@@ -48,8 +54,9 @@ Cell.prototype.player2Tour= function(){
 
 }
 
-Cell.prototype.videCell=function(){
+/*Cell.prototype.videCell=function(){
 	this.vide = true;
 	this.player1 = false;
 	this.player2 = false;
-}
+	clearRect(this.x,this.y,this.w,this.w);
+}*/
