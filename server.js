@@ -19,7 +19,7 @@ var cookieParser = require('cookie-parser');
 dotenv.config({ path: './config/config.env' });
 
 // connect to database
-connectDB();
+//connectDB();
 
 const app = express();
 

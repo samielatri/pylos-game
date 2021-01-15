@@ -165,6 +165,9 @@ function setBalls(res){
 		yourOponentsballs=res.player1Balls		
 	}
 }
+
+
+
 socket.on("play-movement-res", res=>{
     console.log(res);
     let notifElem = document.getElementById('notif');
@@ -194,5 +197,10 @@ socket.on("play-movement-res", res=>{
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
 	}
 
+  let balls1 = document.getElementById('number1');
+  balls1.innerHTML = res.player1Balls;
+
+  let balls2 = document.getElementById('number2');
+  balls2.innerHTML = res.player2Balls;
 })
 
