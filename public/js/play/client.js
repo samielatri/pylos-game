@@ -258,5 +258,19 @@ socket.on("play-movement-res", res=>{
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
 	}
 
+  // victory
+  if(res.victory == 1){
+    console.log("player 1 RED wins");
+    notifElem.innerHTML = "player 1 RED wins";
+    logThis("player 1 RED wins");
+  }
+
+  if(res.victory == 2){
+    console.log("player 2 GRAY wins");
+    notifElem.innerHTML = "player 2 GRAT wins";
+    logThis("player 2 GRAY wins");
+  }
+
+
 })
 
