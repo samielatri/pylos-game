@@ -66,7 +66,7 @@ class PylosGame{
                 return {success:false, board:this.board.layers,popBall:true,moveBall:this.canMove,currentPlayer:this.currentPlayer, msg:"Movement not valid.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};             
             }
             this.lastPayload=payload;
-            console.log("is return")
+            console.log("is return");
             return {success:true, board:this.board.layers,popBall:true,moveBall:this.canMove,currentPlayer:this.currentPlayer, msg:"You may pop a ball or two.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};             
         }
         let moveableBalls = this.board.getMovableBallsIfFormedSquare(movement);
@@ -79,8 +79,13 @@ class PylosGame{
             this.canMove=true;
             this.moveableBalls=moveableBalls;
         }
+        console.log("moveable balls");
+        console.log(moveableBalls);
         this._switchTurn();
         this.lastPayload=payload;
+        if(this.canMove){
+            return {success:true,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball added. You may move ball.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
+        }
         return {success:true,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball added.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
     }
     _switchTurn=()=>{
