@@ -24,9 +24,33 @@ router.get('/signup', function(req,res){
   });
 
 // GET terms
-router.get('/terms', function(req,res){
+router.get('/signup/terms', function(req,res){
     // console.log("/terms")
-    res.render('infos/terms', { title: "terms" });
+    res.render('infos/terms', { title: "terms", page: "signup" });
+  });
+
+// GET terms
+router.get('/general/terms', function(req,res){
+    // console.log("/terms")
+    res.render('infos/terms', { title: "terms", page: "genaral" });
+  });
+
+// GET about
+router.get('/general/about', function(req,res){
+    // console.log("/terms")
+    res.render('infos/about', { title: "terms", page: "genaral" });
+  });
+
+// GET help
+router.get('/general/help', function(req,res){
+    // console.log("/terms")
+    res.render('infos/help', { title: "terms", page: "genaral" });
+  });
+
+  // GET contact
+router.get('/general/contact', function(req,res){
+    // console.log("/terms")
+    res.render('infos/contact', { title: "terms", page: "genaral" });
   });
 
 
@@ -102,7 +126,7 @@ router.put(`update_profile`, fileUpload.upload.single('file'), function (req, re
 });
 
 // PUT game stats
-router.put(`/api/v1/game`, function (req, res, next) {
+router.put(`/game`, function (req, res, next) {
 
     var user_id = req.body.user_id;
     let inputdata = {

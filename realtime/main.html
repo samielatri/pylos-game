@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script defer src="http://localhost:3200/socket.io/socket.io.js"></script>
@@ -12,22 +13,38 @@
 
 </head>
 <body>
-    <div id="board" class="plateau">
+
+        <div class="msg-container">
+                Enter the x : 
+                <input id="x" type="text"><br>
+                Enter the y :
+                <input id="y" type="text"><br>
+                Enter the Layer number :
+                <input id="z" type="text"><br>
+                <button id="send-button">Send</button>
+                <button id="emit-search">Emit search</button>
+        </div>
         
-    </div>
-    <div class="msg-container">
-            <input id="x" type="text">
-            <input id="y" type="text">
-            <input id="z" type="text">
-            <button id="send-button">Send</button>
-            <button id="emit-search">Emit search</button>
-    </div>
+        <div id="notification">
+            <pre id="notif"></pre>
+        </div>
+        
+        <div id="logWindow" style = "width: 150px; height: 150px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
+    		<pre id="logger"></pre>
+    	</div>	
+
+    <!--     <div class="row">
+            <div class="container"> 
+                <div class="pull-right">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Actions</h5>
+                            <p>Par exemple jour 1 commence, à remplacer par console.log</p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
 </body>
-<style>
-   .msg-container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-</style>
 </html>

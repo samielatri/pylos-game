@@ -1,0 +1,66 @@
+.connect{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items:center;
+  color: #34AAF9;
+  border:1px solid  #34AAF9;
+  border-radius:5px;
+  height: 40%;
+  box-shadow:1px 1px 2px #C0C0C0;
+  padding: 10px;
+  line-height: 20px;
+}
+
+.logIn {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items:center;
+  color: #6E3E28;
+  background-size: cover;
+}
+
+
+.logIn h1{
+  align-self: center;
+}
+
+.center{
+  display: flex;
+  justify-content: space-around;
+}
+
+.logIn form{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: space-around;
+  height: 30%;
+}
+
+
+ input[type = submit ], input[type = reset]{
+   background-color: #FFF1FF;
+   width: 100px;
+   text-align: center;
+   align-items: center;
+ }
+
+  input[type = reset]{
+   background-color: #FFF1FF;
+   width: 100px;
+   text-align: center;
+   align-items: center;
+ }
+
+ input:focus, textarea:focus, select:focus {
+ outline: none;
+ padding:3px;
+ border:0.5px solid #F63471;
+ border-radius:5px;
+ box-shadow:1px 1px 2px #C0C0C0 inset;
+ }

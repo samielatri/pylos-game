@@ -1,0 +1,213 @@
+#table {
+  display: flex;
+}
+
+#game table {
+  border: solid 1px #4683AB;
+  background-color: #5eb4ed;
+
+  box-shadow: -10px 10px 7px #226C9D;
+}
+
+#game td {
+  height: 70px;
+  width: 70px;
+  border: solid 1px #4683AB;
+  border-radius: 100%;
+  background-color: #99D1F6;
+  box-shadow: inset -3px -3px 3px #8CBDDE;
+  cursor: pointer;
+}
+
+#game td:hover{
+  background-color: #4483aa;
+  box-shadow: inset -3px -3px 3px #3c5b6d;
+}
+
+#game td.player11 {
+  background-color: #c92626;
+  box-shadow: inset -3px -3px 3px #961f1f;
+}
+
+#game td.player12 {
+  background-color: #BF49BB;
+  box-shadow: inset -3px -3px 3px #7B2F78;
+}
+
+#game td.player13 {
+  background-color: #F88C36;
+  box-shadow: inset -3px -3px 3px #985A28;
+}
+
+#game td.player14 {
+  background-color: #8BDD32;
+  box-shadow: inset -3px -3px 3px #4E7621;
+}
+
+#game td.player15 {
+  background-color:  #4298EC;
+  box-shadow: inset -3px -3px 3px #2B5986;
+}
+
+#game td.player16 {
+  background-color: #f2eb30;
+  box-shadow: inset -3px -3px 3px #d8d22b;
+}
+
+#game td.player21 {
+  background-color: #c92626;
+  box-shadow: inset -3px -3px 3px #961f1f;
+}
+
+#game td.player22 {
+  background-color: #BF49BB;
+  box-shadow: inset -3px -3px 3px #7B2F78;
+}
+
+#game td.player23 {
+  background-color: #F88C36;
+  box-shadow: inset -3px -3px 3px #985A28;
+}
+
+#game td.player24 {
+  background-color: #8BDD32;
+  box-shadow: inset -3px -3px 3px #4E7621;
+}
+
+#game td.player25 {
+  background-color:  #4298EC;
+  box-shadow: inset -3px -3px 3px #2B5986;
+}
+
+#game td.player26 {
+  background-color: #f2eb30;
+  box-shadow: inset -3px -3px 3px #d8d22b;
+}
+
+#game td.player3 {
+  background-color: #8BDD32;
+  box-shadow: inset -3px -3px 3px #4E7621;
+}
+
+#game td.player4 {
+  background-color: #4298EC;
+  box-shadow: inset -3px -3px 3px #2B5986;
+}
+
+#game td.player5 {
+  background-color: #F88C36;
+  box-shadow: inset -3px -3px 3px #985A28;
+}
+
+#game td.player6 {
+  background-color:#BF49BB;
+  box-shadow: inset -3px -3px 3px #7B2F78;
+}
+
+.play{
+  font-family: 'Gloria';
+  background-color: #99D1F6;
+  padding: 20px;
+  margin :30px;
+  border : solid 1px #4683AB;
+  border-radius: 1em;
+  font-size: 2em;
+  width: 15%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-shadow: 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white, 0 0 2px white;
+}
+
+.jeton td {
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  padding: 10px;
+    transition: all 0.2s;
+}
+
+.jeton td:hover {
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  padding: 10px;
+}
+
+#newpart {
+  display: none;
+  z-index: 100;
+	position:absolute;
+	left: 50%;
+	top: 50%;
+	width: 200px;
+	height: 100px;
+	margin-left: -100px;
+	margin-top: -100px;
+  background-color: #00509b;
+  color: white;
+  border : solid 2px white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1em;
+}
+
+#ok {
+  cursor: pointer;
+  border-radius: 100%;
+  border : solid 2px white;
+  padding: 5px;
+  display: flex;
+  border-right: 3px;
+  border-left: 3px;
+}
+
+#ok a{
+  text-decoration: none;
+  color: white;
+}
+
+#game td.anime0 {
+  height: 77px;
+  width: 77px;
+  opacity: 20%;
+}
+
+#game td.anime1 {
+  height: 76px;
+  width: 76px;
+  opacity: 30%;
+}
+
+#game td.anime2 {
+  height: 75px;
+  width: 75px;
+  opacity: 40%;
+}
+
+#game td.anime3 {
+  height: 74px;
+  width: 74px;
+  opacity: 60%;
+}
+
+#game td.anime4 {
+  height: 73px;
+  width: 73px;
+  opacity: 70%;
+}
+
+#game td.anime5 {
+  height: 72px;
+  width: 72px;
+  opacity: 80%;
+}
+
+#game td.anime6 {
+  height: 71px;
+  width: 71px;
+  opacity: 90%;
+}

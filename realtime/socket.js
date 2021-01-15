@@ -2,80 +2,103 @@ const express = require("express");
 const http = require("http");
 const app = express();
 const {PylosGame} = require("../pylos-js/pylosGame.js");
+
 //const server = http.createServer(app)
+
 const server =app.listen(3200,()=>{
     console.log("listening...")
 })
+
 const io = require('socket.io')(server,{
     cors:{
         origin:"*"
     }
 });
 
-let id=0;
+let id = 0;
+
+// generation id
 function generateID(){
-    id+=1;
+    id += 1;
     return id;
 }
+
 let connectedUsers = {};
 let usersSearchingGame=[];
 let inGame={};
 
 io.sockets.on('connection', socket=>{
+
+    // every connected user has an id
     connectedUsers[socket.id] = socket;
-    console.log("hey there its "+ socket.id)
+
+    console.log("hey there its " + socket.id);
+
+    // socket sends
     socket.emit("hello-world", {
         msg:"hello world"
-    
+   
     });
-    socket.on("search-game", message=>{
-        if(usersSearchingGame.length===0){
+
+    // search game
+    socket.on("search-game", message=>{  
+        if(usersSearchingGame.length === 0) { // empty
             usersSearchingGame.push(socket);
             return;
         }
-        if(usersSearchingGame.indexOf(socket)>-1){
+        
+        if(usersSearchingGame.indexOf(socket) > -1) { // int max
             return;
         }
-        let user=usersSearchingGame.pop();
-        let gameID=generateID(); 
-        inGame[gameID]=new PylosGame(gameID,user.id,socket.id); 
+        
+        // first in first out
+        let user = usersSearchingGame.pop();
+        // generation of id
+        let gameID = generateID();
+        inGame[gameID] = new PylosGame(gameID,user.id,socket.id); 
         user.emit("search-response", {
             found:true,
             gameID:gameID
-        })
+        });
+
         socket.emit("search-response", {
             found:true,
             gameID:gameID
-        })
-        console.log("found")
+        });
+        
+        console.log("found");
     })
     
     socket.on("play-movement", payload =>{
         const {gameID} = payload;
-        let userGame=inGame[gameID];
+        console.log("play-movement")
+        console.log(payload)
+        let userGame = inGame[gameID];
         if(!userGame.cmpCurrentPlayer(socket.id)){
-            socket.emit("play-movement-res",{isValid:false})
+            console.log("bad player")
+            socket.emit("play-movement-res",{success:false,isValid:false})
             return; 
         }
         let res=userGame.playMovement(payload);
-        if(!res.success){
-            socket.emit("play-movement-res",res)
-            return
+        if(res===undefined){
+            console.log("undefind!!!!!")
         }
-        connectedUsers[userGame.player1].emit("play-movement-res",res);
-        connectedUsers[userGame.player2].emit("play-movement-res",res);
+        console.log(res);
+        if(!res.success){
+            socket.emit("play-movement-res",{...res, isValid:true});
+            return;
+        }
+        connectedUsers[userGame.player1].emit("play-movement-res", {...res, isValid:true});
+        connectedUsers[userGame.player2].emit("play-movement-res", {...res, isValid:true});
     })
 
     socket.on('disconnect', function() {
         console.log('Got disconnect!');
-        let userSocket= connectedUsers[socket.id];
+        let userSocket = connectedUsers[socket.id];
         console.log(userSocket.id);
         delete connectedUsers[socket.id]; 
-        //        connectedUsers.splice(i, 1)
+//        connectedUsers.splice(i, 1)
 //        user= usersSearchingGame.indexOf(socket);
 //        usersSearchingGame.splice(i, 1)
     })
 })
-
-
-

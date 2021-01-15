@@ -24,12 +24,11 @@ class PylosGame{
             return {victory:true, currentPlayer:this.currentPlayer, msg:"Victory!"}; 
         }
         if(movesBall && this.canMove){
-            const {moveableBall} = payload;
-            let found=moveableBalls.find(ball => ball.x===moveableBall.x&&ball.y===moveableBall.y&&ball.layer===moveableBall.layer);
+            let found=moveableBalls.find(ball => ball.x===movement.x&&ball.y===movement.y&&ball.layer===movement.layer);
             if(found ===undefined){
                 return {success:false,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball cannot be moved", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
             }else {
-                this.board.moveBall(moveableBall,this.moveDestination);
+                this.board.moveBall(movement,this.moveDestination);
                 this.moveableBalls=null;
                 this.canMove=false;
                 return {success:true,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball cannot be moved", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
@@ -61,11 +60,13 @@ class PylosGame{
         }
         //si forme un carre de meme couleur
         if(this.board.isInSameColorSquare(movement,this.currentPlayer)){
+            console.log("is same color")
             this.popBallCpt=2;
             if(!this.board.setMovement(movement,this.currentPlayer)){
                 return {success:false, board:this.board.layers,popBall:true,moveBall:this.canMove,currentPlayer:this.currentPlayer, msg:"Movement not valid.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};             
             }
             this.lastPayload=payload;
+            console.log("is return")
             return {success:true, board:this.board.layers,popBall:true,moveBall:this.canMove,currentPlayer:this.currentPlayer, msg:"You may pop a ball or two.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};             
         }
         let moveableBalls = this.board.getMovableBallsIfFormedSquare(movement);
@@ -83,9 +84,9 @@ class PylosGame{
         return {success:true,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball added.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
     }
     _switchTurn=()=>{
-        if (this.currentPlayer===1 && this.player2Balls>0){
+        if (this.currentPlayer===1 && this.board.player2Balls>0){
             this.currentPlayer=2;
-        }else if(this.currentPlayer===2 && this.player1Balls>0){
+        }else if(this.currentPlayer===2 && this.board.player1Balls>0){
             this.currentPlayer=1;
         }
     }

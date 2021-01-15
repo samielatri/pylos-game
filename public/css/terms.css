@@ -1,0 +1,40 @@
+body#jeu2 {
+	margin: 0px;
+	background-image: url("../img/Pylos2.jpg");
+}
+
+.noir {
+	margin: 5em 4em 2em 4em;
+	font-size: 100%;
+	font-family: 'Courier New', Courier, monospace;
+	color: rgb(185, 210, 232);
+}
+
+#img .noir .exit_wrap .exit {
+	display: inline-block;
+	height: 35px;
+	padding: 0 20px;
+	line-height: 35px;
+	background: #1f3345;
+	border-radius: 5px;
+	color: #fff;
+	font-weight: 600;
+	vertical-align: middle;
+}
+
+
+#img {
+	background-image: url("../img/fondC.JPG");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin: 5em;
+	text-align: center;
+}
+
+#tadiv
+{
+display: block;
+height: 400px;
+overflow: scroll;
+}
+
