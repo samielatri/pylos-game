@@ -146,10 +146,10 @@ socket.on("play-movement-res", res=>{
     }
     // notif
     if (res.moveBall) {
+      showMoveBall();
         console.log("it is possible to place a ball on top but also on the floor");
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
         logThis(res.moveableBalls)
-        showMoveBall();
     }
     
     // notif

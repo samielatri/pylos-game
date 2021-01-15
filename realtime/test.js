@@ -70,6 +70,7 @@ function setup(){
 
 
 function draw(){
+//	clear();
 	console.log("draw");
 //	background(255);
 	for(var i = 0; i < cols; i++){
@@ -110,7 +111,6 @@ function pylosBoard(){
 					}else{
 						grid[i][j].videCell();
 					}
-
 				}
 				if(layer.length == 3){
 					if(layer[i][j] == 1){
