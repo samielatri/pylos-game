@@ -90,6 +90,130 @@ const emitMovmement = (payload)=>{
     return str;
   }
 
+  // first function for moveBall (the one that shows)
+  function firstFunction(){
+
+    // question
+    let elt = document.getElementById("moveBallQuestion");
+    console.log(elt);
+    elt.className = "shown moveBallQuestion";
+
+    // yes
+    let elt1 = document.getElementById("checkYesMoveBall");
+    console.log(elt1);
+    elt1.className = "shown moveBall  btn-success";
+
+    // no
+    let elt2 = document.getElementById("checkNoMoveBall");
+    console.log(elt2);
+    elt2.className = "shown moveBall  btn-danger";
+    
+    elt2.onclick = (elt, elt1, elt2) => {
+        elt = document.getElementById("moveBallQuestion");
+        elt1 = document.getElementById("checkYesMoveBall");
+        elt2 = document.getElementById("checkNoMoveBall");
+        elt.className = "hidden moveBallQuestion";
+        elt1.className = "hidden moveBall  btn-success";
+        elt2.className = "hidden moveBall  btn-danger";
+        console.log("no");
+    }
+
+    // yes
+    elt1.onclick = () => {
+        let eltN = document.getElementById("moveBallYes");
+        console.log(eltN);
+        eltN.className = "shown moveBall";
+        console.log("3 inputs show up !!");
+        // do your thing with the 3 inputs here ...
+        console.log("yes");
+    }
+
+  }
+
+  // second function for moveBall and the other BOTH CLEANS (the one that clears)
+  function secondFunction(){
+    // question
+    let elt = document.getElementById("moveBallQuestion");
+    console.log(elt);
+    elt.className = "hidden moveBallQuestion";
+
+    // yes
+    let elt1 = document.getElementById("checkYesMoveBall");
+    console.log(elt1);
+    elt1.className = "hidden moveBall  btn-success";
+
+    // no
+    let elt2 = document.getElementById("checkNoMoveBall");
+    console.log(elt2);
+    elt2.className = "hidden moveBall  btn-danger";
+    
+    // if it was a yes
+    let eltN = document.getElementById("moveBallYes");
+    console.log(eltN);
+    eltN.className = "hidden moveBall";
+
+    let eltNNN = document.getElementById("popBallYes");
+    console.log(eltNNN);
+    eltNNN.className = "hidden popBallYes";
+  
+      // question
+      let eltx = document.getElementById("popBallMaybe");
+      console.log(eltx);
+      eltx.className = "hidden popBall";
+  
+      // yes
+      let eltxx = document.getElementById("checkYesPopBall");
+      console.log(eltxx);
+      eltxx.className = "hidden btn-success popBall";
+  
+      // no
+      let eltyy = document.getElementById("checkNoPopBall");
+      console.log(eltyy);
+      eltyy.className = "hidden btn-danger popBall";
+
+  }
+
+// third function (popBall == true)
+  function thirdFunction(){
+    // question
+    let elt = document.getElementById("popBallMaybe");
+    console.log(elt);
+    elt.className = "shown popBall";
+
+    // yes
+    let elt1 = document.getElementById("checkYesPopBall");
+    console.log(elt1);
+    elt1.className = "shown btn-success popBall";
+
+    // no
+    let elt2 = document.getElementById("checkNoPopBall");
+    console.log(elt2);
+    elt2.className = "shown btn-danger popBall";
+
+    elt2.onclick = (elt, elt1, elt2) => {
+        elt = document.getElementById("popBallMaybe");
+        elt1 = document.getElementById("checkYesPopBall");
+        elt2 = document.getElementById("checkNoPopBall");
+        elt.className = "hidden popBall";
+        elt1.className = "hidden btn-success popBall";
+        elt2.className = "hidden btn-danger popBall";
+        console.log("no");
+    }
+
+    // yes
+    elt1.onclick = () => {
+        let eltN = document.getElementById("popBallYes");
+        console.log(eltN);
+        eltN.className = "shown popBallYes";
+        console.log("a button shows up !!");
+        console.log("yes");
+    }
+    
+  }
+
+
+
+
 socket.on("play-movement-res", res=>{
     console.log("res:")
     console.log(res);
@@ -126,5 +250,9 @@ socket.on("play-movement-res", res=>{
     }
     logThis(res.msg);
 
+    // tests for firstFunction secondFunction and thirdFunction
+    //firstFunction();
+    //secondFunction();
+    //thirdFunction();
 })
 

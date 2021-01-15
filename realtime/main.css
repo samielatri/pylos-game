@@ -72,3 +72,15 @@ canvas{
   }
 
 }
+
+#notif {
+  color: red;
+}
+
+.hidden{
+  display: none;
+}
+
+.shown{
+  display: flex;
+}
