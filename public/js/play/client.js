@@ -253,7 +253,7 @@ socket.on("play-movement-res", res=>{
     }
 
     // notif
-    if ( res.moveBall === true && myPlayer !== res.currentPlayer ) {
+    if ( res.moveBall === true && myPlayer === res.currentPlayer ) {
         showMoveBall();
         console.log("it is possible to place a ball on top but also on the floor");
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";

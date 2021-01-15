@@ -108,20 +108,14 @@ module.exports=(server)=>{
                 
                 return;
             }
-
             // users are in game
-
             // check if connected
             if( areUsersConnected(gameID) ) {
                 console.log("On of the users disconnected. Please refresh game");
-
                 socket.emit("play-movement-res",{success:false,isValid:false, msg:"On of the users disconnected. Please refresh game"});
-                
                 return;
             }
-
             // users are connected
-
             // check if the user is the current player (the one to play)
             if( !userGame.cmpCurrentPlayer(socket.id) ) {
                 console.log("it's the bad player playing...So it's other players turn!");
@@ -140,27 +134,22 @@ module.exports=(server)=>{
             if(res === undefined){
                 console.log("player movement is undefined !!!");
             }
-
-            console.log("res = " + res);
-            
+            console.log("res = " + JSON.stringify(res));
+            console.log(JSON.stringify(res));
             // check if res was successful 
             if(!res.success){
                 console.log("res was not successful");
                 socket.emit("play-movement-res",{...res, isValid:true});
                 return;
             }
-
             console.log("res was successful");
-
             //res was successful 
-
             console.log("sending res to the two users...");
             // send response (res) to the two players 
             connectedUsers[userGame.player1].emit("play-movement-res", {...res, isValid:true});
             console.log("1/2 - first response is sent");
             connectedUsers[userGame.player2].emit("play-movement-res", {...res, isValid:true});
             console.log("2/2 - second response is sent - All went OK !");
-
             return ;
         });
     
