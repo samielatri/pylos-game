@@ -107,11 +107,11 @@ app.use(login);
 //}
 
 
-const DEFAULTPORT = 3000; 
+const DEFAULTPORT = 3200; 
 const PORT = process.env.PORT || DEFAULTPORT;
 // listen for requests
-app.listen(PORT, console.log(`Server running  in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
-
+const server =app.listen(PORT, console.log(`Server running  in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
+require("./realtime/socket.js")(server);
 // if error log in
 process.on('uncaughtException', function (err) {
     console.log(err);
