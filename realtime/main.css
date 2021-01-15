@@ -20,11 +20,13 @@ body {
 #notification{
 	border : 10px solid black;
 	border-radius: 10px;
-	position: absolute;
-	width: 20%;
-    height:	30%;
-    left: 30%;
-    top: 10%;
+  position: relative;
+  background-color: whitesmoke;
+	width: 60%;
+  height:	80%;
+  left: 0%;
+  right: 0%;
+  top: 105%;
 }
 
 canvas{
@@ -37,14 +39,14 @@ canvas{
 
 #logWindow {
     overflow: auto;
-/*    position: absolute;*/
-    width: 500;
-    height: 500;
+    position: relative;
+    width: 800;
+    height: 800;
     top: 50%;
     left: 30%;
-    right: 5%;
+    right: 200%;
     bottom: 5%;
-    background-color: grey;
+    background-color: whitesmoke;
     z-index: 20;
 
   }
