@@ -137,7 +137,15 @@ socket.on("play-movement-res", res=>{
     logThis(res.msg);
 
     //update affichage
-    pylos=res.board;
+
+    pylos = res.board;
+    if(time != null){
+      clearInterval(time);
+      showBoard(pylos);
+      time = setInterval(draw,100);
+    }
+    
+    
 
     if (res.popBall) { 
         console.log("you need to take a ball off");

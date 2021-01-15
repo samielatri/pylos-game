@@ -11,7 +11,7 @@ var thirdBoard = [[0,0],[0,0]];
 var fourthBoard = [[0]];
 
 let pylos = [firstBoard,secondBoard,thirdBoard,fourthBoard];
-let pylos1 = [firstBoard1,secondBoard1,thirdBoard1,fourthBoard1];
+//let pylos = [firstBoard1,secondBoard1,thirdBoard1,fourthBoard1];
 
 var time = setInterval(draw, 100);
 
@@ -22,7 +22,6 @@ function make2DArray(cols, rows){
 	}
 	return arr;
 }
-
 
 var cols = 4;
 var rows = 4;
@@ -112,7 +111,7 @@ function pylosBoard(){
 							//instruction si joueur 2
 							grid[i][j].player2Tour();
 						}else{
-							grid[i][j].videCell();
+							grid[i][j].delete();
 						}
 					}
 				}
@@ -125,7 +124,7 @@ function pylosBoard(){
 							//instruction si joueur 2
 							grid1[i][j].player2Tour();
 						}else{
-							grid1[i][j].videCell();
+							grid1[i][j].delete();
 						}
 					}
 				}
@@ -138,7 +137,7 @@ function pylosBoard(){
 							//instruction si joueur 2
 							grid2[i][j].player2Tour();
 						}else{
-							grid2[i][j].videCell();
+							grid2[i][j].delete();
 						}
 					}
 				}if(layer.length == 1){
@@ -151,7 +150,7 @@ function pylosBoard(){
 							//instruction si joueur 2
 							grid3[i][j].player2Tour();
 						}else{
-							grid3[i][j].videCell();
+							grid3[i][j].delete();
 						}
 					}
 				}
@@ -168,8 +167,10 @@ function pylosBoard(){
 	}
 }*/
 
-function clearBoard(){
-	pylos2 = make2DArray()
+function showBoard(tab){
 	clear();
-	
+	pylos = tab;
+	redraw();	
 }
+
+
