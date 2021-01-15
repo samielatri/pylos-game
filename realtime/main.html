@@ -13,12 +13,25 @@
 
 </head>
 <body>
-
-        <!-- moveBall -->
+    
+        <div id="info-panel">
+            <div class="ball-info left turn">
+                <div class="note">you</div>
+                <div class="ball"></div>
+                <div class="number">15</div>
+            </div>
+            <div class='divider'></div>
+            <div class="ball-info right">
+                <div class="note">opponent</div>
+                <div class="ball"></div>
+                <div class="number">15</div>
+            </div>
+        </div>
+       
         <p class="hidden moveBall" id="moveBallQuestion">Do you want to move ball ?</p>
-        <input type="button" value="yes" class="hidden moveBall  btn-success" id="checkYesMoveBall"></div>
-        <input type="button" value="no" class="hidden moveBall  btn-danger" id="checkNoMoveBall"></div>
-        <!-- if moveBall yes-->
+        <input type="button" value="yes" class="hidden moveBall  btn-success" id="checkYesMoveBall">
+        <input type="button" value="no" class="hidden moveBall  btn-danger" id="checkNoMoveBall">
+        
         <div class="hidden moveBall" id="moveBallYes">
             <div id="msg-container1">
                 Enter the x : 
@@ -48,14 +61,14 @@
                 <button id="send-button3">Send</button>
             </div>
         </div>
-        <!-- end if -->
+    
 
-        <!-- popBall -->
+        
         <p class="hidden popBall" id="popBallMaybe">Do you want to pop ball ?</p>
-        <input type="button" value="yes" class="hidden btn-success popBall" id="checkYesPopBall"></div>
-        <input type="button" value="no" class="hidden btn-danger popBall" id="checkNoPopBall"></div>
+        <input type="button" value="yes" class="hidden btn-success popBall" id="checkYesPopBall">
+        <input type="button" value="no" class="hidden btn-danger popBall" id="checkNoPopBall">
 
-        <!-- if popBall yes -->
+        
         <input type="button" value="newButton" class="hidden popBall" id="popBallYes">
 
         <div class="msg-container">
@@ -73,7 +86,7 @@
             <pre id="notif"></pre>
         </div>
         
-        <div id="logWindow" style = "width: 150px; height: 150px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
+        <div id="logWindow" style = "width: 200px; height: 400px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
     		<pre id="logger"></pre>
     	</div>	
 
@@ -89,6 +102,5 @@
                 </div>
             </div>
         </div> -->
-
 </body>
 </html>

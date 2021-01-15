@@ -224,13 +224,13 @@ socket.on("play-movement-res", res=>{
     // get notif
     let notifElem = document.getElementById('notif');
     console.log(notifElem);
-
+    pylos=res.board;
     if(!res.isValid){
         logThis("Entry not valid: try again")
         return;
     }
     // notif
-    pylos=res.board;
+    
     if (res.popsBall) { 
         console.log("you need to take a ball off");
         notifElem.innerHTML = "you need to take a ball off";
