@@ -17,6 +17,11 @@ const getValidMovements=()=>{
 
 }
 
+const getMovableBalls = ()=>{
+    
+}
+
+
 const hasBallOnTop=(layers,layer,x,y)=>{
     if(layer>=layers.length-1){
         return false;

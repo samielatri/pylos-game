@@ -7,6 +7,9 @@ class Board{
         let layer3=initLayer(2,0);
         let layer4=initLayer(1,0);
         this.layers= [layer1,layer2,layer3,layer4];
+        this.player1Balls=15;
+        this.player2Balls=15;
+        this.totalBoardBalls=0;
     }
     isMovementValid= (movement)=>{
         const {layer,x,y} = movement;
@@ -54,6 +57,11 @@ class Board{
         
     }
 
+    moveBall=(ball,dest)=>{
+        this.layers[dest.layer][dest.x][dest.y]=this.layers[ball.layer][ball.x][ball.y];
+        this.layers[ball.layer][ball.x][ball.y]=0;
+    }
+
     isInSameColorSquare=(movement,player)=>{
         const {layer,x,y} = movement;
         //si le layer le plus haut
@@ -61,56 +69,195 @@ class Board{
             return false;
         }
         if(x===0 && y===0){
-            return  this._isSquareBotLeft(movement,player);
+            return  this._isColorSquareBotLeft(movement,player);
         }
         else if(x===0 && y===this.layers[layer].length-1){
-            return this._isSquareTopLeft(movement,player);
+            return this._isColorSquareTopLeft(movement,player);
         }
         else if(x===this.layers[layer].length-1 && y===0){
-            return this._isSquareBotRight(movement,player);
+            return this._isColorSquareBotRight(movement,player);
         }
         else if(x===this.layers[layer].length-1 && y===this.layers[layer].length-1){
-            return this._isSquareTopRight(movement,player);
+            return this._isColorSquareTopRight(movement,player);
         }
         else if(x===0){
-            return (this._isSquareTopLeft(movement,player) || this._isSquareBotLeft(movement,player))
+            return (this._isColorSquareTopLeft(movement,player) || this._isColorSquareBotLeft(movement,player))
         }
         else if(y===0){
-            return (this._isSquareBotLeft(movement,player) |(this._isSquareBotRight(movement,player)))
+            return (this._isColorSquareBotLeft(movement,player) |(this._isColorSquareBotRight(movement,player)))
         }    
         else if(x===this.layers[layer].length-1){
-            return (this._isSquareTopRight(movement,player) || this._isSquareBotRight(movement,player))
+            return (this._isColorSquareTopRight(movement,player) || this._isColorSquareBotRight(movement,player))
         }    
         else if(y===this.layers[layer].length-1){
-            return (this._isSquareTopLeft(movement,player) |(this._isSquareTopRight(movement,player)))
+            return (this._isColorSquareTopLeft(movement,player) |(this._isColorSquareTopRight(movement,player)))
         }else{
-            return this._isSquareBotLeft(movement,player) || this._isSquareBotRight(movement,player) || this._isSquareTopLeft(movement,player) || this._isSquareTopRight(movement,player); 
+            return this._isColorSquareBotLeft(movement,player) || this._isColorSquareBotRight(movement,player) || this._isColorSquareTopLeft(movement,player) || this._isColorSquareTopRight(movement,player); 
         }    
     }
-    _isSquareTopLeft=(movement,player)=>{
+
+    getMovableBallsIfFormedSquare=(movement)=>{
+        let balls = [];
+        let ballsFormedSquare = this.hasFormedSquare(movement);
+        if(ballsFormedSquare===null){
+            return null;
+        }
+        let ballDestination=hasBallOnTopOfBalls(ballsFormedSquare);
+        if(ballDestination===null){
+            return null;
+        }
+        for(let layer=0;layer<2;layer++){
+            for(let x=0;x<this.layers[layer].length;x++){
+                for(let y=0;y<this.layers[layer][x].length;y++){
+                    if(!hasBallOnTop(this.layers[layer][x][y])&&!this.containsBallInBalls(ballsFormedSquare,{x:x,y:y,layer:layer})){
+                        balls.push(buildJsonSquare(layer,x,y));
+                    }
+                }
+            }
+        }
+        if(balls.length===0){
+            return null
+        }
+        return {moveableBalls:balls, destination:ballDestination}
+    }
+    //regarde si il y a une boulle au dessus de 4 boules
+    hasBallOnTopOfBalls=(balls)=>{
+        if(balls===null || balls.length===0){
+            return null;
+        }
+        let minX=balls[0].x;
+        let minY=balls[0].y;
+        for(let ball in balls){
+            if(ball.x<minX){
+                minX=ball.x
+            }
+            if(ball.y<minY){
+                minY=ball.y
+            }
+        }
+        if(this.layers[balls[0].layer+1][minX][minY]===0){
+            return  {layer:balls[0].layer+1,x:minX,y:minY};
+        }
+        return null;
+
+    }
+    
+    containsBallInBalls=(balls,ball)=>{
+        for(let i=0;i<balls.length;i++){
+            if(balls[i].x === ball.x && balls[i].y === ball.y && balls[i].z === ball.z){
+                return true;
+            }  
+        }
+        return false;
+    }
+
+    //retourne null si forme pas carre,sinon les 4 carres
+    hasFormedSquare=(movement)=>{
+        const {layer,x,y} = movement;
+        //si le layer le plus haut
+
+        if(layer === this.layers.length-1){
+            return null;
+        }
+        if(x===0 && y===0){
+            return this._isSquareBotLeft(movement);
+        }
+        else if(x===0 && y===this.layers[layer].length-1){
+            return  this._isSquareTopLeft(movement);
+        }
+        else if(x===this.layers[layer].length-1 && y===0){
+            return this._isSquareBotRight(movement);
+        }
+        else if(x===this.layers[layer].length-1 && y===this.layers[layer].length-1){
+            return this._isSquareTopRight(movement);
+        }
+        else if(x===0){
+            let res = this._isSquareTopLeft(movement) 
+            if(res!==null){
+                return res;
+            }
+            res=this._isSquareBotLeft(movement);
+            if(res!==null){
+                return res;
+            }
+            return null;
+        }
+        else if(y===0){
+            let res = this._isSquareBotLeft(movement) 
+            if(res!==null){
+                return res;
+            }
+            res=this._isSquareBotRight(movement);
+            if(res!==null){
+                return res;
+            }
+            return null;
+        }    
+        else if(x===this.layers[layer].length-1){
+            let res = this._isSquareTopRight(movement) 
+            if(res!==null){
+                return res;
+            }
+            res=this._isSquareBotRight(movement);
+            if(res!==null){
+                return res;
+            }
+            return null;
+        }                
+        else if(y===this.layers[layer].length-1){
+            let res = this._isSquareTopLeft(movement) 
+            if(res!==null){
+                return res;
+            }
+            res=this._isSquareTopRight(movement);
+            if(res!==null){
+                return res;
+            }
+            return null;
+        }else{
+            let res = this._isSquareBotLeft(movement) 
+            if(res!==null){
+                return res;
+            }
+            res=this._isSquareBotRight(movement);
+            if(res!==null){
+                return res;
+            }
+            res = this._isSquareTopLeft(movement) 
+            if(res!==null){
+                return res;
+            }
+            res=this._isSquareTopRight(movement);
+            if(res!==null){
+                return res;
+            }
+            return null;
+        }    
+    }
+
+    _isColorSquareTopLeft=(movement,player)=>{
         const {layer,x,y} = movement;
         var bool1 =this.layers[layer][x+1][y] === this.layers[layer][x][y-1];
         var bool2 =this.layers[layer][x][y-1] === this.layers[layer][x+1][y-1];
         var bool3= player === this.layers[layer][x+1][y-1];
         return  (bool1 && bool2 && bool3);
-        //return this.layers[layer][x+1][y] === this.layers[layer][x][y-1] === this.layers[layer][x+1][y-1] ===player;        
     }
 
-    _isSquareTopRight=(movement,player)=>{
+    _isColorSquareTopRight=(movement,player)=>{
         const {layer,x,y} = movement;
         var bool1 =this.layers[layer][x-1][y] === this.layers[layer][x][y-1];
         var bool2 =this.layers[layer][x][y-1] === this.layers[layer][x-1][y-1];
         var bool3= player === this.layers[layer][x-1][y-1];
         return  (bool1 && bool2 && bool3);
     }
-    _isSquareBotLeft=(movement,player)=>{
+    _isColorSquareBotLeft=(movement,player)=>{
         const {layer,x,y} = movement;
         var bool1 =this.layers[layer][x+1][y] === this.layers[layer][x][y+1];
         var bool2 =this.layers[layer][x][y+1] === this.layers[layer][x+1][y+1];
         var bool3= player === this.layers[layer][x+1][y+1];
         return  (bool1 && bool2 && bool3);
     }
-    _isSquareBotRight=(movement,player)=>{
+    _isColorSquareBotRight=(movement,player)=>{
         const {layer,x,y} = movement;
         var bool1 =this.layers[layer][x-1][y] === this.layers[layer][x][y+1];
         var bool2 =this.layers[layer][x][y+1] === this.layers[layer][x-1][y+1];
@@ -119,8 +266,97 @@ class Board{
         return  (bool1 && bool2 && bool3);
     }
 
+
+    buildJsonSquare=(x,y,layer)=>{
+        return {
+            x:x,
+            y:y,
+            layer:layer
+        }
+    }
+
+    // ces fonction ci dessous retourne null si forme pas carre sinon retourne les 4 carres
+    _isSquareTopLeft=(movement)=>{
+        const {layer,x,y} = movement;
+        var bool1 =this.layers[layer][x+1][y] !== 0;
+        var bool2 =this.layers[layer][x+1][y-1]!==0;
+        var bool3= this.layers[layer][x][y-1] !==0;
+        if((bool1 && bool2 && bool3)){
+            const squares = [
+                buildJsonSquare(x+1,y,layer),
+                buildJsonSquare(x+1,y-1,layer),
+                buildJsonSquare(x,y-1,layer),
+                buildJsonSquare(x,y,layer)       
+            ]    
+            return squares; 
+        }else{
+            return null;
+        }
+    }
+
+    _isSquareTopRight=(movement)=>{
+        const {layer,x,y} = movement;
+        var bool1 =this.layers[layer][x-1][y]!==0;
+        var bool2 =this.layers[layer][x][y-1] !==0;
+        var bool3= this.layers[layer][x-1][y-1] !== 0;
+        if((bool1 && bool2 && bool3)){
+            const squares = [
+                buildJsonSquare(x-1,y,layer),
+                buildJsonSquare(x,y-1,layer),
+                buildJsonSquare(x-1,y-1,layer),
+                buildJsonSquare(x,y,layer)       
+            ]
+            return squares; 
+        }else{
+            return null;
+        }
+
+    }
+    _isSquareBotLeft=(movement)=>{
+        const {layer,x,y} = movement;        
+        var bool1 =this.layers[layer][x+1][y] !==0;
+        var bool2 =this.layers[layer][x][y+1] !==0;
+        var bool3= this.layers[layer][x+1][y+1]!==0;
+        if((bool1 && bool2 && bool3)){
+            const squares = [
+                buildJsonSquare(x+1,y,layer),
+                buildJsonSquare(x,y+1,layer),
+                buildJsonSquare(x+1,y+1,layer),
+                buildJsonSquare(x,y,layer)       
+            ]
+            return squares; 
+        }else{
+            return null;
+        }
+    }
+    _isSquareBotRight=(movement)=>{
+        const {layer,x,y} = movement;
+        var bool1 =this.layers[layer][x-1][y] !== 0;
+        var bool2 =this.layers[layer][x][y+1] !== 0;
+        var bool3=  this.layers[layer][x-1][y+1]!==0;
+        //return  (this.layers[layer][x-1][y] === this.layers[layer][x][y+1] === this.layers[layer][x-1][y+1] ===player );
+        if((bool1 && bool2 && bool3)){
+            const squares = [
+                buildJsonSquare(x-1,y,layer),
+                buildJsonSquare(x,y+1,layer),
+                buildJsonSquare(x-1,y+1,layer),
+                buildJsonSquare(x,y,layer)       
+            ]
+            return squares; 
+        }else{
+            return null;
+        }
+    }
+
     isVictory=()=>{
-        return this.layers[3][0][0]!==0;
+/*        if(this.player1Balls===0 && this.player2Balls!==0){
+            return 2;
+        }
+        if(this.player2Balls===0 && this.player1Balls!==0){
+            return 1;
+        }
+    */
+        return this.layers[3][0][0];
     }
 
     print=()=>{
@@ -134,17 +370,37 @@ class Board{
         try{
             const {layer,x,y} = movement;
             this.layers[layer][x][y]=player;
+            this.decrementPlayerBalls(player);
             return true;
         }catch(e){
             return false;
         }
     }
+    incrementPlayerBalls=(player)=>{
+        this.totalBoardBalls--;
+        if(player===1){
+            this.player1Balls++;
+        }else if (player===2){
+            this.player2Balls++;
+        }
+    }
+    decrementPlayerBalls=(player)=>{
+        this.totalBoardBalls++;
+        if(player===1){
+            this.player1Balls--;
+        }else if (player===2){
+            this.player2Balls--;
+        }
+    }
+
+
     popBall=(movement,player)=>{
         const {layer,x,y} = movement;
         if(!this.isPopValid(movement,player)){
             return false;
         }
         this.layers[layer][x][y]=0;
+        this.incrementPlayerBalls(player);
         return true;
     }
 

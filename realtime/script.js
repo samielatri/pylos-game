@@ -31,7 +31,9 @@ const buildPayload=()=>{
             y:parseInt(document.getElementById("y").value)
         },
         popsBall:false,
-        gameID:gameID
+        gameID:gameID,
+        movesBall:null,
+        moveableBall:null
     }
     console.log("payload built:")
     console.log(payload);
@@ -51,9 +53,9 @@ socket.on("search-response",(res)=>{
     console.log(res);
 })
 
-
 socket.on("play-movement-res", res=>{
     pylos=res.board;
+    
     console.log(pylos);   
     console.log(res);
 })
