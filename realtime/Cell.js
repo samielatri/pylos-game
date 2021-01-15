@@ -8,6 +8,7 @@ function Cell(x,y,w){
 	this.neighbourCount2=0;
 	this.player1 = false;
 	this.player2 = false;
+	this.vide = true;
 	this.revealed = true;
 }
 
@@ -37,7 +38,18 @@ Cell.prototype.reveal= function(){
 
 Cell.prototype.player1Tour= function(){
 	this.player1 = true;
+	this.player2 = false;
+	this.vide = false;
 }
 Cell.prototype.player2Tour= function(){
 	this.player2 = true;
+	this.player1 = false;
+	this.vide = false;
+
+}
+
+Cell.prototype.videCell=function(){
+	this.vide = true;
+	this.player1 = false;
+	this.player2 = false;
 }

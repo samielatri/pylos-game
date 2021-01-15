@@ -7,26 +7,65 @@ body {
   align-items: center;
 }
 
+#info-panel {
+  height: 100px;
+  margin-bottom: 20px;
+  display: flex;
+  position: relative;
+  top: 50%;
+}
+
+#info-panel .ball-info {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  transition: all 0.5s ease;
+}
+
+#info-panel .ball-info .ball {
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: 8px 0;
+}
+
+/*#info-panel .ball-info.turn {
+  background: rgba(44, 165, 0, 0.5);
+}*/
+
+#info-panel .ball-info .number, #info-panel .ball-info .note {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2em;
+}
+
+#info-panel .divider {
+  width: 50%;
+}
+
 .msg-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     border:3px solid black;
     border-radius: 10px;
-    margin-left: 0%;
-    margin-right: 80%;
+    position: absolute;
+    top:30%;
+    left:65%;
 }
 
 #notification{
-	border : 10px solid black;
+	border : 5px solid black;
 	border-radius: 10px;
-  position: relative;
-  background-color: whitesmoke;
-	width: 60%;
-  height:	80%;
-  left: 0%;
-  right: 0%;
-  top: 105%;
+	position: relative;
+	background-color: whitesmoke;
+	width: 300px;
+	height:	100px;
+	left: 0%;
+	right: 0%;
+	top: 50%;
+	margin: 0px;
 }
 
 canvas{
@@ -34,18 +73,17 @@ canvas{
     border-style: outset;
     border-radius: 10px;
     padding: 0;
-    margin: auto;
+    position: relative;
+    top:;
+
 }
 
 #logWindow {
-    overflow: auto;
-    position: relative;
+    position: absolute;
     width: 800;
     height: 800;
-    top: 50%;
-    left: 30%;
-    right: 200%;
-    bottom: 5%;
+    top: 20%;
+    left: 5%;
     background-color: whitesmoke;
     z-index: 20;
 
@@ -75,6 +113,8 @@ canvas{
 
 #notif {
   color: red;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1em;
 }
 
 .hidden{

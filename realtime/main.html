@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RRPS</title>
     <script defer src="http://localhost:3200/socket.io/socket.io.js"></script>
     <script defer src="client.js"></script>
     <script defer src="affichage.js"></script>
@@ -14,6 +14,55 @@
 
 </head>
 <body>
+<<<<<<< HEAD
+    
+        
+       
+        <p class="hidden moveBall" id="moveBallQuestion">Do you want to move ball ?</p>
+        <input type="button" value="yes" class="hidden moveBall  btn-success" id="checkYesMoveBall">
+        <input type="button" value="no" class="hidden moveBall  btn-danger" id="checkNoMoveBall">
+        
+        <div class="hidden moveBall" id="moveBallYes">
+            <div id="msg-container1">
+                Enter the x : 
+                <input id="x1" type="text"><br>
+                Enter the y :
+                <input id="y1" type="text"><br>
+                Enter the Layer number :
+                <input id="z1" type="text"><br>
+                <button id="send-button1">Send</button>
+            </div>
+            <div id="msg-container2">
+                Enter the x : 
+                <input id="x2" type="text"><br>
+                Enter the y :
+                <input id="y2" type="text"><br>
+                Enter the Layer number :
+                <input id="z3" type="text"><br>
+                <button id="send-button2">Send</button>
+            </div>
+            <div id="msg-container3">
+                Enter the x : 
+                <input id="x1" type="text"><br>
+                Enter the y :
+                <input id="y2" type="text"><br>
+                Enter the Layer number :
+                <input id="z3" type="text"><br>
+                <button id="send-button3">Send</button>
+            </div>
+        </div>
+    
+
+        
+        <p class="hidden popBall" id="popBallMaybe">Do you want to pop ball ?</p>
+        <input type="button" value="yes" class="hidden btn-success popBall" id="checkYesPopBall">
+        <input type="button" value="no" class="hidden btn-danger popBall" id="checkNoPopBall">
+
+        
+        <input type="button" value="newButton" class="hidden popBall" id="popBallYes">
+
+=======
+>>>>>>> e2b8ac470266c486d527652b0272fe49c21db1e1
         <div class="msg-container">
                 Enter the x : 
                 <input id="x" type="text"><br>
@@ -37,22 +86,68 @@
             <pre id="notif"></pre>
         </div>
         
-        <div id="logWindow" style = "width: 150px; height: 150px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
+        <div id="logWindow" style = "width: 200px; height: 400px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
     		<pre id="logger"></pre>
     	</div>	
+</body>
+</html>
+----------------------------- -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="http://localhost:3200/socket.io/socket.io.js"></script>
+    <script defer src="client.js"></script>
+    <script defer src="affichage.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+    <script type="text/javascript" src="Cell.js"></script>
 
-    <!--     <div class="row">
-            <div class="container"> 
-                <div class="pull-right">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Actions</h5>
-                            <p>Par exemple jour 1 commence, à remplacer par console.log</p> 
-                        </div>
-                    </div>
-                </div>
+</head>
+<body>
+    <div id="info-panel">
+            <div class="ball-info left turn">
+                <div class="note">you</div>
+                <div class="ball"></div>
+                <div class="number">15</div>
             </div>
-        </div> -->
+            <div class='divider'></div>
+            <div class="ball-info right">
+                <div class="note">opponent</div>
+                <div class="ball"></div>
+                <div class="number">15</div>
+            </div>
+        </div>
+
+        <div class="msg-container">
+                Enter the x : 
+                <input id="x" type="text"><br>
+                Enter the y :
+                <input id="y" type="text"><br>
+                Enter the Layer number :
+                <input id="z" type="text"><br>
+                <div class="hidden moveBall  btn-success" id="moveBall">
+                    <label>Is move ball</label>
+                    <input type="checkbox" id="isMoveBall">
+                </div>
+                <div class="hidden checkYesPopBall" id="popBall">
+                    <label>Do you want to pop ball ?</label>
+                    <input type="checkbox" id="popBallBoolean"></div>
+                </div>
+                <button id="send-button">Send</button>
+                <button id="emit-search">Emit search</button>        
+        </div>
+        
+        <div id="notification">
+            <pre id="notif"></pre>
+        </div>
+        
+        <div id="logWindow" style = "width: 300px; height: 400px; line-height: 3em; overflow:scroll; border: thin #000 solid; padding: 5px;">
+            <pre id="logger"></pre>
+        </div>  
 
 </body>
 </html>
