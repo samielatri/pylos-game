@@ -1,8 +1,9 @@
 
-/*var firstBoard = [[2,1,1,2],[2,1,1,2],[2,2,1,1],[2,2,1,2]];
-var secondBoard = [[1,1,2],[2,1,2],[1,1,2]];
-var thirdBoard = [[2,3],[2,1]];
-var fourthBoard = [[1]];*/
+
+var firstBoard1 = [[2,1,1,2],[2,1,1,2],[2,2,1,1],[2,2,1,2]];
+var secondBoard1 = [[1,1,2],[2,1,2],[1,1,2]];
+var thirdBoard1 = [[2,3],[2,1]];
+var fourthBoard1 = [[1]];
 
 var firstBoard = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
 var secondBoard = [[0,0,0],[0,0,0],[0,0,0]];
@@ -10,6 +11,7 @@ var thirdBoard = [[0,0],[0,0]];
 var fourthBoard = [[0]];
 
 let pylos = [firstBoard,secondBoard,thirdBoard,fourthBoard];
+let pylos1 = [firstBoard1,secondBoard1,thirdBoard1,fourthBoard1];
 
 var time = setInterval(draw, 100);
 
@@ -105,44 +107,52 @@ function pylosBoard(){
 					if(layer[i][j] == 1){
 						//instruction si joueur 1
 						grid[i][j].player1Tour();
-					}if(layer[i][j] == 2){					
-						//instruction si joueur 2
-						grid[i][j].player2Tour();
 					}else{
-						grid[i][j].videCell();
+						if(layer[i][j] == 2){					
+							//instruction si joueur 2
+							grid[i][j].player2Tour();
+						}else{
+							grid[i][j].videCell();
+						}
 					}
 				}
 				if(layer.length == 3){
 					if(layer[i][j] == 1){
 						//instruction si joueur 1
 						grid1[i][j].player1Tour();
-					}if(layer[i][j] == 2){					
-						//instruction si joueur 2
-						grid1[i][j].player2Tour();
 					}else{
-						grid1[i][j].videCell();
+						if(layer[i][j] == 2){					
+							//instruction si joueur 2
+							grid1[i][j].player2Tour();
+						}else{
+							grid1[i][j].videCell();
+						}
 					}
 				}
 				if(layer.length == 2){
 					if(layer[i][j] == 1){
 						//instruction si joueur 1
 						grid2[i][j].player1Tour();
-					}if(layer[i][j] == 2){					
-						//instruction si joueur 2
-						grid2[i][j].player2Tour();
 					}else{
-						grid2[i][j].videCell();
+						if(layer[i][j] == 2){					
+							//instruction si joueur 2
+							grid2[i][j].player2Tour();
+						}else{
+							grid2[i][j].videCell();
+						}
 					}
 				}if(layer.length == 1){
 
 					if(layer[i][j] == 1){
 						//instruction si joueur 1
 						grid3[i][j].player1Tour();
-					}if(layer[i][j] == 2){					
-						//instruction si joueur 2
-						grid3[i][j].player2Tour();
 					}else{
-						grid3[i][j].videCell();
+						if(layer[i][j] == 2){					
+							//instruction si joueur 2
+							grid3[i][j].player2Tour();
+						}else{
+							grid3[i][j].videCell();
+						}
 					}
 				}
 
@@ -157,3 +167,9 @@ function pylosBoard(){
 		redraw();
 	}
 }*/
+
+function clearBoard(){
+	pylos2 = make2DArray()
+	clear();
+	
+}
