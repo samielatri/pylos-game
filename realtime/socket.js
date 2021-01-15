@@ -56,11 +56,11 @@ module.exports=(server)=>{
                 found:true,
                 gameID:gameID,
                 player:1
-            });
-    
+            });    
             socket.emit("search-response", {
                 found:true,
-                gameID:gameID
+                gameID:gameID,
+                player:2
             });
             usersInGame.push(socket.id);
             usersInGame.push(user.id);
