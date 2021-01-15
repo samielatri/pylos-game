@@ -1,43 +1,69 @@
-let socket = io("http://localhost:3200");
+let socket = io("http://localhost:3200"); // socket -> 3200
 
 let gameID = -1;
 let myPlayer; 
 let yourBalls;
 let yourOponentsballs;
 
-document.getElementById("send-button").addEventListener("click",()=>{
-    if(gameID === -1){
+// send button
+document.getElementById("send-button").addEventListener("click", () => {
+
+    console.log("send button");
+
+    if(gameID === -1) {
+        console.log("gameID negative") ;
         return;
     }
-    const payload=buildPayload();
-    if(payload===false){
-      logThis("Entrer doit pas etre vide!")
+
+    // gameID not negative
+
+    const payload = buildPayload();
+    
+    if(payload === false) {
+      console.log("Entrer need to not be empty !");
+      logThis("Entrer need to not be empty !");
     }else {
+      console.log("will emit a movement");
       emitMovmement(payload);
     }
 });
 
+// emit search
 document.getElementById("emit-search").addEventListener("click",()=>{
     console.log("emiting search");
-    emitSearch();
+    setTimeout(emitSearch(), 3000);
+    document.getElementById("emit-search").style.display = "none"; 
 });
 
 //document.getElementById("ton-truc")
 
+// setPlayerTurn
 const setPlayerTurn=(player)=>{
+  console.log("setPlayerTurn");
 	document.getElementById("turn").innerHTML="It's " +convertPlayer(player)+"'s turn"; 
 }
 
-const buildPayload=()=>{
-    let popsBall=document.getElementById("popBallBoolean").checked;
-    let movesBall=document.getElementById("isMoveBall").checked;
-    let layer=document.getElementById("z").value;
-    let x=document.getElementById("x").value;
-    let y=document.getElementById("y").value;
-    if(layer===""|| x==="" ||layer===""){
+// buildPayLoad
+const buildPayload = () => {
+    console.log("build pay load");
+    let popsBall = document.getElementById("popBallBoolean").checked;
+    console.log("popsBall = " + popsBall); 
+    let movesBall = document.getElementById("isMoveBall").checked;
+    console.log("movesBall = " + movesBall);
+    let layer = document.getElementById("z").value;
+    console.log("layer = " + layer);
+    let x = document.getElementById("x").value;
+    console.log("x = " + x);
+    let y = document.getElementById("y").value;
+    console.log("y = " + y);
+
+    // check if empty entries
+    if( layer === "" || x === "" || layer === "" ) {
+      console.log("emptry entries")
       return false;
     }
 
+    // entires are not empty
     let payload = {
         movement:{
             layer:parseInt(layer) ,
@@ -46,47 +72,61 @@ const buildPayload=()=>{
         },
         popsBall:popsBall,
         gameID:gameID,
-        movesBall:movesBall,
-        
+        movesBall:movesBall,        
     }
-    console.log("payload built:")
+
+    console.log("payload built: (look down)");
     console.log(payload);
+    console.log("clearing move pop ball");
     clearMovePopBall();
+    console.log("cleared, return payload");
     return payload;
 }
 
 // emit search for a game
 const emitSearch = ()=>{
+    console.log("searching for game...");
     logThis("Searching for game...");
     socket.emit("search-game", null);
 }
 
-
+// hello-world
 socket.on('hello-world', function(data) {
-    console.log(data.msg)
+    console.log(data.msg);
 })
 
+// convertPlayer
 const convertPlayer=(player)=>{
-  if(player===1){
+  console.log("converPlayer");
+  if(player === 1){
+    console.log("player 1 : red");
     return "red ";
-  }else {
-    return "gray "
+  } else {
+    console.log("player 2 : gray");
+    return "gray ";
   }
 }
 
 // if the socket receives a search response
 socket.on("search-response", (res)=>{
+    console.log("client : search response");
     gameID = res.gameID; 
-	myPlayer=res.player;
+    myPlayer = res.player;
+    
     document.getElementById("mePlayer").innerHTML="You are playing as " +convertPlayer(res.player) ;
-    //cest le joeur 1 qui commence
-	setPlayerTurn(1);
+    console.log("selector of mePlayer =  " + document.getElementById("mePlayer"));
+
+    // it s player 1 who begins
+    console.log("setting player 1 begins");
+    setPlayerTurn(1);
+    console.log("Game found !");
     logThis("Game found!");
-    console.log(res);
+    console.log("res :" + res);
 })
 
 // prints out to the logger the messages passed in
 const logThis = function logThis(message) {
+    console.log("logThis");
     // if we pass an Error object, message.stack will have all the details, otherwise give us a string
     if (typeof message === 'object') {
       message = message.stack || objToString(message);
@@ -106,14 +146,17 @@ const logThis = function logThis(message) {
   
   // emit movement
 const emitMovmement = (payload)=>{
+    console.log("emitMovement");
     let notifElem = document.getElementById('notif');
+    console.log("selector notifElem = " + notifElem);
     notifElem.innerHTML="";
-    console.log(notifElem);
+    console.log("notifElem = " + notifElem);
     socket.emit("play-movement", payload);
 }
 
   // converts an object to a String
   function objToString(obj) {
+    console.log("objToString");
     var str = 'Object: ';
     for (var p in obj) {
       if (obj.hasOwnProperty(p)) {
@@ -125,14 +168,21 @@ const emitMovmement = (payload)=>{
 
   // first function for moveBall (the one that shows)
   function showMoveBall(){
-    let el=document.getElementById("moveBall");
+    console.log("showMoveBall");
+    let el = document.getElementById("moveBall");
+    console.log("selector el = " + el);
+
     if(el.classList.contains("hidden")){
+      console.log("is hidden so remove hidden to show");
       el.classList.remove("hidden");
     }
   }
   // second function for moveBall and the other BOTH CLEANS (the one that clears)
   function clearMovePopBall(){
+    console.log("clearMovePopBall");
     let movesBall=document.getElementById("moveBall");
+    console.log('movesBall selector =' + movesBall);
+
     if(!movesBall.classList.contains("hidden")){
       movesBall.classList.add("hidden");
     }
@@ -157,7 +207,8 @@ function showPopBall(){
 }
 
 function setBalls(res){
-	if(myPlayer===1){
+  console.log("setBalls");
+	if(myPlayer === 1){
 		yourBalls=res.player1Balls;
 		yourOponentsballs=res.player2Balls		
 	}else{
@@ -165,30 +216,43 @@ function setBalls(res){
 		yourOponentsballs=res.player1Balls		
 	}
 }
+
 socket.on("play-movement-res", res=>{
+    
+    console.log("call : client.js -> play-movement-res");
+
     console.log(res);
+    
     let notifElem = document.getElementById('notif');
+    
     console.log(notifElem);
+    
     if(!res.isValid){
       return;
     }
+    
     if(res.currentPlayer!==undefined){
       setPlayerTurn(res.currentPlayer);
-	}
-	logThis(res.msg);
+    }
+    
+	  logThis(res.msg);
+    
     console.log(res.msg); 
-    //update affichage
+    
+    //update bord on the view 
     pylos = res.board;
     showBoard(pylos);
     clear();
     redraw();
-    if (res.popBall===true && myPlayer===res.currentPlayer) { 
+
+    if ( res.popBall === true && myPlayer === res.currentPlayer ) { 
         showPopBall();
         console.log("you can take ball off");
         notifElem.innerHTML = "you need to take a ball off";
     }
+
     // notif
-    if (res.moveBall===true && myPlayer!==res.currentPlayer) {
+    if ( res.moveBall === true && myPlayer !== res.currentPlayer ) {
         showMoveBall();
         console.log("it is possible to place a ball on top but also on the floor");
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
