@@ -1,10 +1,9 @@
 let socket = io("http://localhost:3200");
 
-socket.on('hello-world', function(data) {
-    console.log(data.msg)
-})
-
 let gameID = -1;
+let myPlayer; 
+let yourBalls;
+let yourOponentsballs;
 
 document.getElementById("send-button").addEventListener("click",()=>{
     if(gameID === -1){
@@ -25,6 +24,10 @@ document.getElementById("emit-search").addEventListener("click",()=>{
 
 //document.getElementById("ton-truc")
 
+const setPlayerTurn=(player)=>{
+	document.getElementById("turn").innerHTML="It's " +convertPlayer(player)+"'s turn"; 
+}
+
 const buildPayload=()=>{
     let popsBall=document.getElementById("popBallBoolean").checked;
     let movesBall=document.getElementById("isMoveBall").checked;
@@ -35,7 +38,7 @@ const buildPayload=()=>{
       return false;
     }
 
-let payload = {
+    let payload = {
         movement:{
             layer:parseInt(layer) ,
             x:parseInt(x),
@@ -45,7 +48,7 @@ let payload = {
         gameID:gameID,
         movesBall:movesBall,
         
-      }
+    }
     console.log("payload built:")
     console.log(payload);
     clearMovePopBall();
@@ -58,9 +61,26 @@ const emitSearch = ()=>{
     socket.emit("search-game", null);
 }
 
+
+socket.on('hello-world', function(data) {
+    console.log(data.msg)
+})
+
+const convertPlayer=(player)=>{
+  if(player===1){
+    return "red ";
+  }else {
+    return "gray "
+  }
+}
+
 // if the socket receives a search response
 socket.on("search-response", (res)=>{
-    gameID = res.gameID;
+    gameID = res.gameID; 
+	myPlayer=res.player;
+    document.getElementById("mePlayer").innerHTML="You are playing as " +convertPlayer(res.player) ;
+    //cest le joeur 1 qui commence
+	setPlayerTurn(1);
     logThis("Game found!");
     console.log(res);
 })
@@ -86,6 +106,9 @@ const logThis = function logThis(message) {
   
   // emit movement
 const emitMovmement = (payload)=>{
+    let notifElem = document.getElementById('notif');
+    notifElem.innerHTML="";
+    console.log(notifElem);
     socket.emit("play-movement", payload);
 }
 
@@ -133,53 +156,43 @@ function showPopBall(){
   }    
 }
 
+function setBalls(res){
+	if(myPlayer===1){
+		yourBalls=res.player1Balls;
+		yourOponentsballs=res.player2Balls		
+	}else{
+		yourBalls=res.player2Balls;
+		yourOponentsballs=res.player1Balls		
+	}
+}
 socket.on("play-movement-res", res=>{
-
-    console.log("res:")
     console.log(res);
     let notifElem = document.getElementById('notif');
-    notifElem.innerHTML="";
     console.log(notifElem);
-    
-    logThis(res.msg);
     if(!res.isValid){
       return;
     }
+    if(res.currentPlayer!==undefined){
+      setPlayerTurn(res.currentPlayer);
+	}
+	logThis(res.msg);
     console.log(res.msg); 
-
     //update affichage
     pylos = res.board;
     showBoard(pylos);
     clear();
     redraw();
-    if (res.popBall===true) { 
+    if (res.popBall===true && myPlayer===res.currentPlayer) { 
         showPopBall();
-        console.log("you need to take a ball off");
+        console.log("you can take ball off");
         notifElem.innerHTML = "you need to take a ball off";
     }
     // notif
-    if (res.moveBall===true) {
+    if (res.moveBall===true && myPlayer!==res.currentPlayer) {
         showMoveBall();
         console.log("it is possible to place a ball on top but also on the floor");
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
-    }
+	}
 
-    let balls1 = document.getElementById('number1');
-    console.log("balls1");
-    balls1.innerHTML = res.player1Balls;
-
-    let balls2 = document.getElementById('number2');
-    console.log("balls2");
-    balls2.innerHTML = res.player2Balls;
-
-    // notif
-    //if (!res.success) { // error
-    //    console.log("error");
-    //    notifElem.innerHTML = "error";
-    //}
-
-    //tests for firstFunction secondFunction and thirdFunction
-    //showMoveBall();
-    //showPopBall();
-  })
+})
 

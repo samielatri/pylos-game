@@ -47,66 +47,24 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(session({ secret: 'secret pylos',resave:true,saveUninitialized: true }));
 
 // satatic
 app.use(express.static(path.join(__dirname, 'public')));
-
-// view engine setup
 
 // ejs
 app.set('views', path.join(__dirname, '/views')); // set views directory
 app.set('view engine', 'ejs'); //set views ejs
 
-// hbs
-//app.engine('hbs', hbs({
-//  extname: 'hbs',
-//  defaultLayout: 'default',
-//  layoutsDir: __dirname + '/views/',
-//}));
-//app.set('view engine', 'hbs');
-
-
-
-// passport
-//app.use(passport.initialize());
-//app.use(passport.session());
-
 const signup = require('./routes/user/signup');
 const login = require('./routes/user/login');
-
-// to uncomment
-//app.use('/', require('./server/users'));
-//app.use('/', require('./server/p'));
-//app.use('/', require('./server/passport'));
-
-
-// TODO : call it
-//const games = require('./routes/game/game');
-
-
 app.use(express.json());
 
 // configure logs
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev')); // for logs
 }
-
-// app.use('/transactions', trnasactions);
 app.use(signup);
 app.use(login);
-// app.use('',games);
-
-
-// possible react build (Configuration for deploymnet of on server and run on one port)
-//if (process.env.NODE_ENV === 'production') {
-//    app.use(express.static('client/build'));
-//    app.get('*', (req, res) => {
-//        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-//    });
-//}
-
-
 const DEFAULTPORT = 3200; 
 const PORT = process.env.PORT || DEFAULTPORT;
 // listen for requests

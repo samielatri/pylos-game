@@ -244,7 +244,6 @@ class Board{
             return null;
         }    
     }
-
     _isColorSquareTopLeft=(movement,player)=>{
         const {layer,x,y} = movement;
         var bool1 =this.layers[layer][x+1][y] === this.layers[layer][x][y-1];
@@ -252,7 +251,6 @@ class Board{
         var bool3= player === this.layers[layer][x+1][y-1];
         return  (bool1 && bool2 && bool3);
     }
-
     _isColorSquareTopRight=(movement,player)=>{
         const {layer,x,y} = movement;
         var bool1 =this.layers[layer][x-1][y] === this.layers[layer][x][y-1];
@@ -275,7 +273,7 @@ class Board{
         //return  (this.layers[layer][x-1][y] === this.layers[layer][x][y+1] === this.layers[layer][x-1][y+1] ===player );
         return  (bool1 && bool2 && bool3);
     }
-    
+
     buildJsonSquare=(x,y,layer)=>{
         return {
             x:x,

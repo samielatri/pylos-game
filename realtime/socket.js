@@ -17,18 +17,14 @@ module.exports=(server)=>{
     let inGame={};
     let usersInGame=[];
     io.sockets.on('connection', socket=>{
-    
         // every connected user has an id
         connectedUsers[socket.id] = socket;
-    
         console.log("hey there its " + socket.id);
-    
         // socket sends
         socket.emit("hello-world", {
             msg:"hello world"
        
-        });
-    
+        });    
         // search game
         socket.on("search-game", message=>{  
             //si personne cherche partie
@@ -107,10 +103,6 @@ module.exports=(server)=>{
             console.log(userSocket.id);
             usersInGame.splice(usersInGame.indexOf(socket.id),1);
             delete connectedUsers[socket.id]; 
-            //usersInGame.dele
-    //        connectedUsers.splice(i, 1)
-    //        user= usersSearchingGame.indexOf(socket);
-    //        usersSearchingGame.splice(i, 1)
         })
     })
 }
