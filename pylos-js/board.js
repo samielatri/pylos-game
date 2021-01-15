@@ -275,8 +275,7 @@ class Board{
         //return  (this.layers[layer][x-1][y] === this.layers[layer][x][y+1] === this.layers[layer][x-1][y+1] ===player );
         return  (bool1 && bool2 && bool3);
     }
-
-
+    
     buildJsonSquare=(x,y,layer)=>{
         return {
             x:x,
@@ -344,7 +343,6 @@ class Board{
         var bool1 =this.layers[layer][x-1][y] !== 0;
         var bool2 =this.layers[layer][x][y+1] !== 0;
         var bool3=  this.layers[layer][x-1][y+1]!==0;
-        //return  (this.layers[layer][x-1][y] === this.layers[layer][x][y+1] === this.layers[layer][x-1][y+1] ===player );
         if((bool1 && bool2 && bool3)){
             const squares = [
                 this.buildJsonSquare(x-1,y,layer),
@@ -359,13 +357,6 @@ class Board{
     }
 
     isVictory=()=>{
-/*        if(this.player1Balls===0 && this.player2Balls!==0){
-            return 2;
-        }
-        if(this.player2Balls===0 && this.player1Balls!==0){
-            return 1;
-        }
-    */
         return this.layers[3][0][0];
     }
 
