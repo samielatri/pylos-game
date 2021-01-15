@@ -35,11 +35,6 @@ const buildPayload=()=>{
         movesBall:movesBall,
         
       }
-  if(popsBall.checked){
-    popsBall.checked=false;
-  }if(movesBall.checked){
-    popsBall.checked=false;
-  }
     console.log("payload built:")
     console.log(payload);
     return payload;
@@ -104,10 +99,20 @@ const emitMovmement = (payload)=>{
   }
   // second function for moveBall and the other BOTH CLEANS (the one that clears)
   function clearMovePopBall(){
-    let el=document.getElementById("moveBall");
-    if(!el.classList.contains("hidden")){
-      el.classList.add("hidden");
+    let movesBall=document.getElementById("moveBall");
+    if(!movesBall.classList.contains("hidden")){
+      movesBall.classList.add("hidden");
     }
+    let popsBall=document.getElementById("popBall");
+    if(!popsBall.classList.contains("hidden")){
+      popsBall.classList.add("hidden");
+    }
+    if(popsBall.checked){
+      popsBall.checked=false;
+    }if(movesBall.checked){
+      movesBall.checked=false;
+    }
+  
   }
 
 // third function (popBall == true)
@@ -121,8 +126,6 @@ function showPopBall(){
 socket.on("play-movement-res", res=>{
     console.log("res:")
     console.log(res);
-    // logthis
-    // get notif
     let notifElem = document.getElementById('notif');
     console.log(notifElem);
     
@@ -136,7 +139,7 @@ socket.on("play-movement-res", res=>{
     //update affichage
     pylos=res.board;
 
-    if (res.popsBall) { 
+    if (res.popBall) { 
         console.log("you need to take a ball off");
         notifElem.innerHTML = "you need to take a ball off";
         showPopBall();
