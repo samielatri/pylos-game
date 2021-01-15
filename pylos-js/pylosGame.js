@@ -4,15 +4,15 @@ const {Board} = require('./board.js')
 class PylosGame{
     constructor(ID,player1,player2){
         this.board = new Board();
-        this.ID=ID;
-        this.player1=player1;
-        this.player2=player2;
-        this.currentPlayer=1;
-        this.popBallCpt=0;
-        this.lastPayload=null;
-        this.canMove=false;
-        this.moveableBalls=[];
-        this.moveDestination=null;
+        this.ID=ID;/*l'ID du jeu */
+        this.player1=player1;/*Les ID de sockets */
+        this.player2=player2;/*Les ID de sockets */
+        this.currentPlayer=1;/*joueur courant */
+        this.popBallCpt=0;/* les boules qu'on peut pop*/ 
+        this.lastPayload=null;/* le dernier mouvement, pour l'IA */
+        this.canMove=false;/*peux deplacer des billes */
+        this.moveableBalls=[];/*boules qu'il peux deplacer temporaires */
+        this.moveDestination=null;/* la destination de deplacement temporaire(une seule...) */
     }
     playMovement(payload){
         const {movement, popsBall, movesBall}= payload;
@@ -27,8 +27,10 @@ class PylosGame{
             console.log("moveable");
             let found=this.moveableBalls.find(ball => ball.x===movement.x&&ball.y===movement.y&&ball.layer===movement.layer);
             console.log(this.moveableBalls);
+            // si on ne peux pas deplacer cette boulle
             if(found ===undefined){
                 return {success:false,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball cannot be moved", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
+            //sinon
             }else {
                 this.board.moveBall(movement,this.moveDestination);
                 this.moveableBalls=null;
@@ -38,11 +40,7 @@ class PylosGame{
         }        
         //si on est en train de pop ball
         if(this.popBallCpt>0){
-            //si aucune boulle n'as pas ete pop
-            if(this.popBallCpt>1 &&!popsBall){
-                return {success:false, board:this.board.layers, popBall:false,moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Error: entry is not valid, cannot pop.",player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};             
-            }
-            else if(this.popBallCpt===1 && !popsBall){
+            if(!popsBall){
                 this.popBallCpt=0;
                 this._switchTurn();
                 return {success:true, board:this.board.layers, popBall:false,moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Must pop a ball", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};             
@@ -53,7 +51,9 @@ class PylosGame{
             }
             --this.popBallCpt;
             let popBall=true;
+            //si on a repris toutes boulles
             if(this.popBallCpt===0){
+                //on met popball à false
                 popball=false;
                 this._switchTurn();
             }
@@ -63,6 +63,7 @@ class PylosGame{
         //si forme un carre de meme couleur
         if(this.board.isInSameColorSquare(movement,this.currentPlayer)){
             console.log("is same color")
+            //alors on peut pop ball
             this.popBallCpt=2;
             if(!this.board.setMovement(movement,this.currentPlayer)){
                 return {success:false, board:this.board.layers,popBall:true,moveBall:this.canMove,currentPlayer:this.currentPlayer, msg:"Movement not valid.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};             
@@ -71,7 +72,10 @@ class PylosGame{
             console.log("is return");
             return {success:true, board:this.board.layers,popBall:true,moveBall:this.canMove,currentPlayer:this.currentPlayer, msg:"You may pop a ball or two.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};             
         }
+
+        //renvoie null si on ne peut pas bouger de billes( check les carres formees)
         let moveableBalls = this.board.getMovableBallsIfFormedSquare(movement);
+        //si mouvement marche pas
         if(!this.board.setMovement(movement,this.currentPlayer)){
             return {success:false, board:this.board.layers,popBall:false,moveBall:this.canMove,currentPlayer:this.currentPlayer,  msg:"Movement not valid.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};                         
                          

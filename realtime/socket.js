@@ -1,4 +1,3 @@
-const express = require("express");
 const {PylosGame} = require("../pylos-js/pylosGame.js");
 module.exports=(server)=>{
     const io = require('socket.io')(server,{
@@ -34,14 +33,16 @@ module.exports=(server)=>{
     
         // search game
         socket.on("search-game", message=>{  
+            //si personne cherche partie
             if(usersSearchingGame.length === 0) { // empty
                 usersSearchingGame.push(socket);
                 return;
             }
-            
+            //si personne cherche déjà 
             if(usersSearchingGame.indexOf(socket) !== -1) { // int max
                 return;
             }
+            //si deja en jeu
             if(usersInGame.find(user=>user===socket.id)!==undefined){
                 socket.emit("play-movement-res", {isValid:false, msg:"Vous êtes déjà en jeu!"});
                 return;
@@ -53,7 +54,8 @@ module.exports=(server)=>{
             inGame[gameID] = new PylosGame(gameID,user.id,socket.id); 
             user.emit("search-response", {
                 found:true,
-                gameID:gameID
+                gameID:gameID,
+                player:1
             });
     
             socket.emit("search-response", {
@@ -96,6 +98,7 @@ module.exports=(server)=>{
                 socket.emit("play-movement-res",{...res, isValid:true});
                 return;
             }
+            //envoie la réponse au 2 joueur si succes
             connectedUsers[userGame.player1].emit("play-movement-res", {...res, isValid:true});
             connectedUsers[userGame.player2].emit("play-movement-res", {...res, isValid:true});
         })
@@ -106,7 +109,7 @@ module.exports=(server)=>{
             console.log(userSocket.id);
             usersInGame.splice(usersInGame.indexOf(socket.id),1);
             delete connectedUsers[socket.id]; 
-            usersInGame.dele
+            //usersInGame.dele
     //        connectedUsers.splice(i, 1)
     //        user= usersSearchingGame.indexOf(socket);
     //        usersSearchingGame.splice(i, 1)

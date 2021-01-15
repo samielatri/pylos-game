@@ -134,9 +134,11 @@ function showPopBall(){
 }
 
 socket.on("play-movement-res", res=>{
+
     console.log("res:")
     console.log(res);
     let notifElem = document.getElementById('notif');
+    notifElem.innerHTML="";
     console.log(notifElem);
     
     logThis(res.msg);
@@ -150,17 +152,6 @@ socket.on("play-movement-res", res=>{
     showBoard(pylos);
     clear();
     redraw();
-/*
-    if(time != null){
-      clearInterval(time);
-      showBoard(pylos);
-      time = setInterval(draw,100);
-    }
-    */
-  
-    
-    
-
     if (res.popBall===true) { 
         showPopBall();
         console.log("you need to take a ball off");
@@ -171,7 +162,6 @@ socket.on("play-movement-res", res=>{
         showMoveBall();
         console.log("it is possible to place a ball on top but also on the floor");
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
-        logThis(res.moveableBalls)
     }
 
     let balls1 = document.getElementById('number1');

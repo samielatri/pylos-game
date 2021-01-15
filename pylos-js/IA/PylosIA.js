@@ -8,6 +8,7 @@ const {PylosBoard} = require("../pylosGame.js");
 //3)if after place billes qte%2=0 is good else pop 1 when possible
 //can form ball if qte%2=1 after palce +++
 //attention forme carré
+//forme un carre en montant une bille
 
 function eval(position){
     
@@ -69,7 +70,7 @@ const minmax=(position,depth,alpha,beta,maximizingPlayer)=>{
         minEval = 10000;
         for(childPosition in childPositions){
             let eval=minmax(childPosition, depth-1, alpha,beta,true)
-            maxEval = Math.min(eval,minEval); 
+            minEval = Math.min(eval,minEval); 
             beta = Math.min(beta,eval);
             if (beta<=alpha){
                 break;
