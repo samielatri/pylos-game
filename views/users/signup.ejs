@@ -8,7 +8,7 @@
   <body id="jeu2">
   <%- include('../partials/nav') -%>
 
-        <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+        <div class="mask d-flex justify-content-center align-items-center">
           <div class="container">
             <div class="row wow fadeIn">
                 <div class="col-md-6 mb-4 text-primary text-center text-md-left">
@@ -21,29 +21,29 @@
                   <strong> Hey ! Welcome to Pylos Game. Sign up for free and get the best of the best of the game. </strong>
                 </p>
               </div>
-              <div class="col-md-6 col-xl-5 mb-4">
-                <div class="card">
+              <div class="col-md-6 col-xl-5 mb-4 text-white">
+                <div class="card"></div>
                   <div class="card-body">
                     
                     <!-- form -->
                     <form action="/signup" method="POST" >
                       <p class="h4 text-center mb-4">Sign up</p>
-                      <div class="md-form">
+                      
                          <i class="fa fa-user prefix grey-text"></i>
 				    <label for="materialFormRegisterNameEx">username</label>
-                         <input type="text" id="username" name="username" class="form-control" required>
-                      </div>
-                      <div class="md-form">
+                         <input type="text" id="username" name="username" placeholder="username" class="form-control" required>
+                      
+                      
                          <i class="fa fa-envelope prefix grey-text"></i>
 			         <label for="materialFormRegisterEmailEx">Email</label>
-                         <input type="email" id="email_id" name="email_id" class="form-control" required>
-                       </div>
+                         <input type="email" id="email_id" name="email_id" placeholder="Email" class="form-control" required>
+                       
 
-                      <div class="md-form">
+                      
                         <i class="fa fa-lock prefix grey-text"></i>
 				  <label for="materialFormRegisterPasswordEx">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" required>
-                      </div>
+                        <input type="password" id="password" name="password" placeholder="Password" class="form-control" required>
+                      
 
   
 
