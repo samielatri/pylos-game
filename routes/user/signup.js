@@ -23,6 +23,13 @@ router.get('/signup', function(req,res){
     res.render('users/signup', { title: "sign up" });
   });
 
+// GET signup
+router.get('/rules', function(req,res){
+    // console.log("/signup")
+    res.render('infos/rules', { title: "sign up" });
+  });
+
+
 // GET terms
 router.get('/signup/terms', function(req,res){
     // console.log("/terms")
