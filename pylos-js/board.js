@@ -103,6 +103,8 @@ class Board{
             return null;
         }
         let ballDestination=this.hasBallOnTopOfBalls(ballsFormedSquare);
+        console.log("getMovableBallsIfFormedSquare");
+        console.log(ballDestination);
         if(ballDestination===null){
             return null;
         }
@@ -110,7 +112,7 @@ class Board{
             for(let x=0;x<this.layers[layer].length;x++){
                 for(let y=0;y<this.layers[layer][x].length;y++){
                     if(this.layers[layer][x][y]!==0 &&!hasBallOnTop(this.layers,layer,x,y)&&!this.containsBallInBalls(ballsFormedSquare,{x:x,y:y,layer:layer})){
-                        balls.push(this.buildJsonSquare(layer,x,y));
+                        balls.push(this.buildJsonSquare(x,y,layer));
                     }
                 }
             }
@@ -125,17 +127,25 @@ class Board{
         if(balls===null || balls.length===0){
             return null;
         }
+        console.log("hasBallOnTopOfBalls");
+        console.log(balls);
         let minX=balls[0].x;
         let minY=balls[0].y;
-        for(let ball in balls){
-            if(ball.x<minX){
-                minX=ball.x
+        console.log("minX,minY");
+        for(let i=0;i<balls.length;i++){
+            console.log(balls[i].x)
+            console.log(balls[i].y)
+            if(balls[i].x<minX){
+                minX=balls[i].x
             }
-            if(ball.y<minY){
-                minY=ball.y
+            if(balls[i].y<minY){
+                minY=balls[i].y
             }
         }
+        console.log({minX,minY});
         if(this.layers[balls[0].layer+1][minX][minY]===0){
+            console.log("dest:")
+            console.log({layer:balls[0].layer+1,x:minX,y:minY})
             return  {layer:balls[0].layer+1,x:minX,y:minY};
         }
         return null;
@@ -403,6 +413,9 @@ class Board{
     }
 
     isEntryValid =(x,y,layer)=>{
+        if(x === NaN || y ===NaN || layer === NaN){
+            return false;
+        }
         if(layer<0 || layer>this.layers.length){
             return false;
         }

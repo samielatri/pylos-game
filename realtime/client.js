@@ -11,7 +11,11 @@ document.getElementById("send-button").addEventListener("click",()=>{
         return;
     }
     const payload=buildPayload();
-    emitMovmement(payload);
+    if(payload===false){
+      logThis("Entrer doit pas etre vide!")
+    }else {
+      emitMovmement(payload);
+    }
 });
 
 document.getElementById("emit-search").addEventListener("click",()=>{
@@ -24,11 +28,18 @@ document.getElementById("emit-search").addEventListener("click",()=>{
 const buildPayload=()=>{
     let popsBall=document.getElementById("popBallBoolean").checked;
     let movesBall=document.getElementById("isMoveBall").checked;
-    let payload = {
+    let layer=document.getElementById("z").value;
+    let x=document.getElementById("x").value;
+    let y=document.getElementById("y").value;
+    if(layer===""|| x==="" ||layer===""){
+      return false;
+    }
+
+let payload = {
         movement:{
-            layer:parseInt(document.getElementById("z").value) ,
-            x:parseInt(document.getElementById("x").value),
-            y:parseInt(document.getElementById("y").value)
+            layer:parseInt(layer) ,
+            x:parseInt(x),
+            y:parseInt(y)
         },
         popsBall:popsBall,
         gameID:gameID,
@@ -37,6 +48,7 @@ const buildPayload=()=>{
       }
     console.log("payload built:")
     console.log(payload);
+    clearMovePopBall();
     return payload;
 }
 
@@ -136,13 +148,13 @@ socket.on("play-movement-res", res=>{
     //update affichage
     pylos=res.board;
 
-    if (res.popsBall===true) { 
+    if (res.popBall===true) { 
         showPopBall();
         console.log("you need to take a ball off");
         notifElem.innerHTML = "you need to take a ball off";
     }
     // notif
-    if (res.movesBall===true) {
+    if (res.moveBall===true) {
         showMoveBall();
         console.log("it is possible to place a ball on top but also on the floor");
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
@@ -158,6 +170,6 @@ socket.on("play-movement-res", res=>{
     //tests for firstFunction secondFunction and thirdFunction
     //showMoveBall();
     //showPopBall();
-    clearMovePopBall();
+
   })
 
