@@ -11,7 +11,7 @@ class PylosGame{
         this.popBallCpt=0;
         this.lastPayload=null;
         this.canMove=false;
-        this.moveableBalls=null;
+        this.moveableBalls=[];
         this.moveDestination=null;
     }
     playMovement(payload){
@@ -23,15 +23,17 @@ class PylosGame{
         if (this.board.isVictory()!==0){
             return {victory:true, currentPlayer:this.currentPlayer, msg:"Victory!"}; 
         }
-        if(movesBall && this.canMove){
-            let found=moveableBalls.find(ball => ball.x===movement.x&&ball.y===movement.y&&ball.layer===movement.layer);
+        if(movesBall===true && this.canMove===true){
+            console.log("moveable");
+            let found=this.moveableBalls.find(ball => ball.x===movement.x&&ball.y===movement.y&&ball.layer===movement.layer);
+            console.log(this.moveableBalls);
             if(found ===undefined){
                 return {success:false,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball cannot be moved", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
             }else {
                 this.board.moveBall(movement,this.moveDestination);
                 this.moveableBalls=null;
                 this.canMove=false;
-                return {success:true,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball cannot be moved", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
+                return {success:true,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball has been moved", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
             }
         }        
         //si on est en train de pop ball
@@ -77,7 +79,8 @@ class PylosGame{
         //check si form un carre
         if(moveableBalls!==null){
             this.canMove=true;
-            this.moveableBalls=moveableBalls;
+            this.moveableBalls=moveableBalls.moveableBalls;
+            this.moveDestination=moveableBalls.destination;
         }
         console.log("moveable balls");
         console.log(moveableBalls);
