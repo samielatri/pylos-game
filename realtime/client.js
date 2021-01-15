@@ -168,16 +168,23 @@ socket.on("play-movement-res", res=>{
         notifElem.innerHTML = "it is possible to place a ball on top but also on the floor";
         logThis(res.moveableBalls)
     }
-    
+
+    let balls1 = document.getElementById('number1');
+    console.log("balls1");
+    balls1.innerHTML = res.player1Balls;
+
+    let balls2 = document.getElementById('number2');
+    console.log("balls2");
+    balls2.innerHTML = res.player2Balls;
+
     // notif
-    if (!res.success) { // error
-        console.log("error");
-        notifElem.innerHTML = "error";
-    }
+    //if (!res.success) { // error
+    //    console.log("error");
+    //    notifElem.innerHTML = "error";
+    //}
 
     //tests for firstFunction secondFunction and thirdFunction
     //showMoveBall();
     //showPopBall();
-
   })
 
