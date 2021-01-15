@@ -1,9 +1,16 @@
-#footer{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    padding-top:50px;
-} 
+html {
+    position: relative;
+    min-height: 100%;
+}
+ 
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: #000000;
+    color: #FFFFFF;
+}
 
 body {
     font-family: 'Roboto';font-size: 20px;
