@@ -1,6 +1,6 @@
 
 const {Board} = require('./board.js')
-
+const _ = require("lodash");
 class PylosGame{
     constructor(ID,player1,player2){
         this.board = new Board();
@@ -14,14 +14,11 @@ class PylosGame{
         this.moveableBalls=[];/*boules qu'il peux deplacer temporaires */
         this.moveDestination=null;/* la destination de deplacement temporaire(une seule...) */
     }
-    playMovement(payload){
+    _playMovement=(payload)=>{
         const {movement, popsBall, movesBall}= payload;
         //check if coordinates valid
         if(!this.board.isEntryValid(movement.x,movement.y,movement.layer)){
             return {success:false, board:this.board, popBall:false, currentPlayer:this.currentPlayer,moveBall:this.canMove, msg:"Error: entry is not valid.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls}; 
-        }
-        if (this.board.isVictory()!==0){
-            return {victory:true, currentPlayer:this.currentPlayer, msg:"Victory!"}; 
         }
         if(movesBall===true && this.canMove===true){
             console.log("moveable");
@@ -95,6 +92,12 @@ class PylosGame{
         }
         return {success:true,board:this.board.layers,popBall:false, moveBall:this.canMove, currentPlayer:this.currentPlayer, msg:"Ball added.", player1Balls:this.board.player1Balls, player2Balls:this.board.player2Balls};
     }
+    //^pour voir si victory
+    playMovement=(payload)=>{
+        let res =this._playMovement(payload);
+        return {...res,victory:this.board.isVictory()}; 
+    }
+
     _switchTurn=()=>{
         if (this.currentPlayer===1 && this.board.player2Balls>0){
             this.currentPlayer=2;
@@ -105,9 +108,24 @@ class PylosGame{
     print=()=>{
         console.log(JSON.stringify(this));
     }
+
+    
+    clone=()=> {
+        let res = new PylosGame(this.ID,this.player1,this.player2);
+        res.board = this.board.clone();
+        res.currentPlayer=_.cloneDeep(this.currentPlayer);
+        res.popBallCpt=_.cloneDeep(this.popBallCpt);
+        res.lastPayload=_.cloneDeep(this.lastPayload);
+        res.canMove=_.cloneDeep(this.canMove);
+        res. moveableBalls=_.cloneDeep(this.popBallCpt);
+        return res;
+    } 
+
+    /*
     clone=()=>{
         return Object.assign(Object.create(Object.getPrototypeOf(this)), this);
     }
+    */
     cmpCurrentPlayer=(player)=>{
         if(this.currentPlayer===1){
             return this.player1===player;

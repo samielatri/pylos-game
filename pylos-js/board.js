@@ -1,5 +1,6 @@
 //import {initLayer,hasBallOnTop} from './boardHelper.js';
 const {initLayer,hasBallOnTop} = require('./boardHelper.js');
+const _ = require("lodash");
 class Board{
     constructor(){
         let layer1=initLayer(4,0);
@@ -11,6 +12,16 @@ class Board{
         this.player2Balls=15;
         this.totalBoardBalls=0;
     }
+
+    clone=()=>{
+        let res = new Board();
+        res.layers = _.cloneDeep(this.layers);
+        res.player1Balls=_.cloneDeep(this.player1Balls);
+        res.player2Balls=_.cloneDeep(this.player2Balls);
+        res.totalBoardBalls=_._.cloneDeep(this.totalBoardBalls);
+        return res;
+    }
+
     isMovementValid= (movement)=>{
         const {layer,x,y} = movement;
         //si la case n'est pas vide
@@ -56,7 +67,7 @@ class Board{
         return true;
         
     }
-
+    
     moveBall=(ball,dest)=>{
         this.layers[dest.layer][dest.x][dest.y]=this.layers[ball.layer][ball.x][ball.y];
         this.layers[ball.layer][ball.x][ball.y]=0;
